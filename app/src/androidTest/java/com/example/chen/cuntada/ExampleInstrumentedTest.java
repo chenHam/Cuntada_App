@@ -1,4 +1,4 @@
-package com.example.chen.cuntada_app.app;
+package com.example.chen.cuntada;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.chen.cuntada_app.app.test", appContext.getPackageName());
+        assertEquals("com.example.chen.cuntada", appContext.getPackageName());
     }
 }
