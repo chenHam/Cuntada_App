@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context="com.example.chen.cuntada_app.app.RegisterActivity">
 
     <EditText
         android:id="@+id/first_name"
@@ -84,6 +84,7 @@
         android:onClick="RegisterButton"
         android:text="SignUp"
         tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="379dp" />
+        tools:layout_editor_absoluteY="379dp"
+        tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 
+
 public class RegisterActivity extends AppCompatActivity{
     private static final String TAG = MainActivity.class.getSimpleName();
 
