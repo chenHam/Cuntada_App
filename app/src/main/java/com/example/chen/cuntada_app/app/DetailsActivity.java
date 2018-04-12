@@ -25,16 +25,17 @@ public class DetailsActivity extends Activity{
         setContentView(R.layout.activity_details);
         rg = (RadioGroup) findViewById(R.id.gender);
 
-        weight = findViewById(R.id.weight);
+       // weight = findViewById(R.id.weight);
         String[] ListOfWeight = new String[]{"35", "36", "37", "38", "39", "40", "41", "42", "43", "44"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, ListOfWeight);
         weight.setAdapter(adapter);
 
-        height = findViewById(R.id.height);
+       // height = findViewById(R.id.height);
         String[] ListOfHeight = new String[]{"1", "2", "3"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, ListOfHeight);
         height.setAdapter(adapter1);
     }
+
 
     public void rbclick(View v){
         int radiobuttondid = rg.getCheckedRadioButtonId();
@@ -43,7 +44,7 @@ public class DetailsActivity extends Activity{
 
     }
 
-    protected void RegisterButton(View view){
+    protected void SaveDetailsButton(View view){
         String weight = findViewById(R.id.weight).toString();
         String height = findViewById(R.id.height).toString();
         RadioButton gender = findViewById(rg.getCheckedRadioButtonId());
