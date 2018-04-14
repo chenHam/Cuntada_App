@@ -1,17 +1,15 @@
 package com.example.chen.cuntada_app.app;
 
-import android.widget.TextView;
-
 public class User {
 
     String userid;
-    TextView FirstName;
-    TextView LastName;
-    TextView Email;
-    TextView Password;
+    String FirstName;
+    String LastName;
+    String Email;
+    String Password;
     Boolean dietician;
 
-    public User(String userid, TextView firstName, TextView lastName, TextView email, TextView password, Boolean dietician) {
+    public User(String userid, String firstName, String lastName, String email, String password, Boolean dietician) {
         this.userid = userid;
         this.FirstName = firstName;
         this.LastName = lastName;
@@ -24,19 +22,19 @@ public class User {
         return userid;
     }
 
-    public TextView getFirstName() {
+    public String getFirstName() {
         return FirstName;
     }
 
-    public TextView getLastName() {
+    public String getLastName() {
         return LastName;
     }
 
-    public TextView getEmail() {
+    public String getEmail() {
         return Email;
     }
 
-    public TextView getPassword() {
+    public String getPassword() {
         return Password;
     }
 

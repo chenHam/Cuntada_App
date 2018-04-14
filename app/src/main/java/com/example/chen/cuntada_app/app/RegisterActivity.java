@@ -19,40 +19,53 @@ import com.google.firebase.database.ValueEventListener;
 public class RegisterActivity extends AppCompatActivity{
     private static final String TAG = MainActivity.class.getSimpleName();
     private DatabaseReference UsersDB;
-    TextView firstname;
-    TextView lastname;
-    TextView mail;
-    TextView pass;
-    TextView confirm_pass;
+    EditText firstname;
+    EditText lastname;
+    EditText mail;
+    EditText pass;
+    EditText confirm_pass;
     Boolean diet;
+
     Button buttonAdd;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
         UsersDB = FirebaseDatabase.getInstance().getReference("users");
 
+        firstname = (EditText) findViewById(R.id.first_name);
+        lastname = (EditText) findViewById(R.id.last_name);
+        mail = (EditText) findViewById(R.id.email);
+        pass = (EditText) findViewById(R.id.password);
+        confirm_pass = (EditText) findViewById(R.id.confirm_password);
+
+        buttonAdd = (Button) findViewById(R.id.button_register);
+        buttonAdd.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                RegisterButton(view);
+            }
+        });
     }
 
     public void RegisterButton(View view){
 
-        firstname = this.findViewById(R.id.first_name);
-        lastname = findViewById(R.id.last_name);
-        mail = findViewById(R.id.email);
-        pass = findViewById(R.id.password);
-        confirm_pass = findViewById(R.id.confirm_password);
+        String fname = firstname.getText().toString().trim();
+        String lname = lastname.getText().toString().trim();
+        String email = mail.getText().toString().trim();
+        String ps = pass.getText().toString().trim();
+        String cps = confirm_pass.getText().toString().trim();
         diet = false;
 //        boolean checked = ((CheckBox) view).isChecked();
 //        if (checked){
-//            dietician = true;
+//            diet = true;
 //        }
-//        CheckValidation(first_name,last_name,email,password,confirm_password);
-//        checkPassword(password,confirm_password);
+        CheckValidation(fname,lname,email,ps,cps);
+        checkPassword(ps,cps);
 
         String id = UsersDB.push().getKey();
-        User user = new User(id,firstname,lastname,mail,pass,diet);
+        User user = new User(id,fname,lname,email,ps,diet);
         UsersDB.child(id).setValue(user);
         Toast.makeText(this,"User added", Toast.LENGTH_LONG).show();
     }
@@ -87,15 +100,4 @@ public class RegisterActivity extends AppCompatActivity{
         }
     }
 
-//    private void addUser(){
-//     first_name.toString();
-//     last_name.toString();
-//     email.toString();
-//     password.toString();
-//
-//     String id = UsersDB.push().getKey();
-//     User user = new User(id,first_name,last_name,email,password,dietician);
-//     UsersDB.child(id).setValue(user);
-//     Toast.makeText(this,"User added", Toast.LENGTH_LONG).show();
-//    }
 }
