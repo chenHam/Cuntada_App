@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,12 +20,14 @@ import com.google.firebase.database.ValueEventListener;
 public class RegisterActivity extends AppCompatActivity{
     private static final String TAG = MainActivity.class.getSimpleName();
     private DatabaseReference UsersDB;
+    DatabaseReference ref;
     EditText firstname;
     EditText lastname;
     EditText mail;
     EditText pass;
     EditText confirm_pass;
     Boolean diet;
+    String fname,lname,email,ps,cps;
 
     Button buttonAdd;
 
@@ -51,11 +54,11 @@ public class RegisterActivity extends AppCompatActivity{
 
     public void RegisterButton(View view){
 
-        String fname = firstname.getText().toString().trim();
-        String lname = lastname.getText().toString().trim();
-        String email = mail.getText().toString().trim();
-        String ps = pass.getText().toString().trim();
-        String cps = confirm_pass.getText().toString().trim();
+        fname = firstname.getText().toString().trim();
+        lname = lastname.getText().toString().trim();
+        email = mail.getText().toString().trim();
+        ps = pass.getText().toString().trim();
+        cps = confirm_pass.getText().toString().trim();
         diet = false;
 //        boolean checked = ((CheckBox) view).isChecked();
 //        if (checked){
@@ -64,6 +67,29 @@ public class RegisterActivity extends AppCompatActivity{
         CheckValidation(fname,lname,email,ps,cps);
         checkPassword(ps,cps);
 
+        ref = FirebaseDatabase.getInstance().getReference();
+
+        ref.child("users").child("email").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    Toast.makeText(getApplicationContext(),"The user is already exist",Toast.LENGTH_SHORT).show();
+                }
+                else{
+
+                    CreateUser();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+     void CreateUser(){
         String id = UsersDB.push().getKey();
         User user = new User(id,fname,lname,email,ps,diet);
         UsersDB.child(id).setValue(user);
