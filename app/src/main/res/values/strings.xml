@@ -4,6 +4,11 @@
     <string name="button_login">Login</string>
     <string name="button_register">Register</string>
     <string name="button_save">Details</string>
+    <string name="privateDetails">Private Details</string>
+    <string name="forum">Forum</string>
+    <string name="recipes">Recipes</string>
+    <string name="SignUp">SignUp</string>
+
 
 
 </resources>

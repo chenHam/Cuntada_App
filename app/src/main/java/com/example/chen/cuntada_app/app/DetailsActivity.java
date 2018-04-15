@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -18,6 +19,7 @@ public class DetailsActivity extends Activity{
     private Spinner weight, height;
     RadioGroup rg;
     RadioButton rb;
+    Button saveButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +28,22 @@ public class DetailsActivity extends Activity{
         rg = (RadioGroup) findViewById(R.id.gender);
 
        // weight = findViewById(R.id.weight);
-        String[] ListOfWeight = new String[]{"35", "36", "37", "38", "39", "40", "41", "42", "43", "44"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, ListOfWeight);
-        weight.setAdapter(adapter);
+//        String[] ListOfWeight = new String[]{"35", "36", "37", "38", "39", "40", "41", "42", "43", "44"};
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, ListOfWeight);
+//        weight.setAdapter(adapter);
 
        // height = findViewById(R.id.height);
-        String[] ListOfHeight = new String[]{"1", "2", "3"};
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, ListOfHeight);
-        height.setAdapter(adapter1);
+//        String[] ListOfHeight = new String[]{"1", "2", "3"};
+//        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, ListOfHeight);
+//        height.setAdapter(adapter1);
+
+        saveButton = (Button)findViewById(R.id.button_save);
+        saveButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                SaveDetailsButton(view);
+            }
+        });
     }
 
 

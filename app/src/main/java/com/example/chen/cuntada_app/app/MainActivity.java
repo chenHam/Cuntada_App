@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonSignIn;
     private EditText Email;
     private EditText Pass;
-    private TextView SignUp;
+    private Button SignUp;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
 
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Email = (EditText) findViewById(R.id.user_login);
         Pass = (EditText) findViewById(R.id.pass_login);
-        SignUp = (TextView) findViewById(R.id.button_register);
+        SignUp = (Button) findViewById(R.id.SignUpFromLogin);
         buttonSignIn = (Button) findViewById(R.id.button_login);
         progressDialog = new ProgressDialog(this);
 
@@ -61,13 +61,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 login_Button(view);
             }
         });
-//        SignUp.setOnClickListener(this);
+
+        SignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SignUp(view);
+            }
+        });
     }
 
         public void login_Button(View view){
         String userEmail = Email.getText().toString().trim();
         String pas = Pass.getText().toString().trim();
         UserLogin();
+    }
+    public void SignUp(View view){
+        finish();
+        startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
     }
 
 

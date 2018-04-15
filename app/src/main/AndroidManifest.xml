@@ -26,7 +26,10 @@
         <activity
             android:name=".DetailsActivity"
             android:exported="true" />
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".ProfileActivity"
+            android:exported="true" />
+        <activity android:name=".AllActivity"
+            android:exported="true" ></activity>
     </application>
 
 </manifest>

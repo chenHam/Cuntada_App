@@ -1,5 +1,6 @@
 package com.example.chen.cuntada_app.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -94,7 +95,9 @@ public class RegisterActivity extends AppCompatActivity{
         User user = new User(id,fname,lname,email,ps,diet);
         UsersDB.child(id).setValue(user);
         Toast.makeText(this,"User added", Toast.LENGTH_LONG).show();
-    }
+         startActivity(new Intent(getApplicationContext(), DetailsActivity.class));
+
+     }
 
     private void CheckValidation(String first_name,String last_name, String email, String password, String confirm_password){
 
