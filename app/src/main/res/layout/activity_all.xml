@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.chen.cuntada_app.app.AllActivity">
+
+    <Button
+        android:id="@+id/privateDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="Details"
+        android:text="Details"
+        app:layout_column="0"
+        app:layout_row="3"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="200dp" />
+
+    <Button
+        android:id="@+id/forum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="Forum"
+        android:text="Forum"
+        app:layout_column="0"
+        app:layout_row="4"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="119dp" />
+
+    <Button
+        android:id="@+id/recipes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="Recipes"
+        android:text="Recipes"
+        app:layout_column="0"
+        app:layout_row="2"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="286dp" />
+
+</android.support.constraint.ConstraintLayout>
