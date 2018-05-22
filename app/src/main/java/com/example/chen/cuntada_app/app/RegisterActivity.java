@@ -99,6 +99,7 @@ public class RegisterActivity extends AppCompatActivity{
 
      }
 
+     //TODO : check if this log error show on the screen
     private void CheckValidation(String first_name,String last_name, String email, String password, String confirm_password){
 
         //check for null
