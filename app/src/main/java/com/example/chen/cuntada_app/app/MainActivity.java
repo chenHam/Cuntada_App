@@ -23,8 +23,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    User userLogIn;
     private Button buttonSignIn;
     private EditText Email;
     private EditText Pass;
@@ -74,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String userEmail = Email.getText().toString().trim();
         String pas = Pass.getText().toString().trim();
         UserLogin();
-        startActivity(new Intent(getApplicationContext(), AllActivity.class));
+//        startActivity(new Intent(getApplicationContext(), AllActivity.class));
 
         }
     public void SignUp(View view){
@@ -86,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      void UserLogin(){
 
         String email = Email.getText().toString().trim();
-        String password = Pass.getText().toString().trim();
+        final String password = Pass.getText().toString().trim();
 
         if(TextUtils.isEmpty(email)){
             Toast.makeText(this, "Please enter email", Toast.LENGTH_LONG).show();
@@ -97,19 +102,55 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
+
+         FirebaseDatabase database = FirebaseDatabase.getInstance();
+         DatabaseReference myRef = database.getReference("users").child(email);
+         ValueEventListener listener = myRef.addValueEventListener(new ValueEventListener() {
+             @Override
+             public void onDataChange(DataSnapshot dataSnapshot) {
+                 if(dataSnapshot.exists()){
+
+
+                    String userDetails = dataSnapshot.getValue().toString();
+                    String[] arrayDetails = userDetails.split(",");
+                     String pass = arrayDetails[6].split("=")[1];
+                     pass= pass.substring(0, pass.length() - 1);
+                    if(pass.equals(password)){
+                        String id = arrayDetails[0].toString().split("=")[1];
+                        String fname = arrayDetails[2].split("=")[1];
+                        String lname = arrayDetails[4].split("=")[1];
+                        String email = arrayDetails[5].split("=")[1];
+
+                        userLogIn = new User(id, fname, lname, email, pass, Boolean.FALSE);
+                        startActivity(new Intent(getApplicationContext(), AllActivity.class));
+
+                    }
+//                     userLogIn = new User(id,arrayDetails[2],arrayDetails[4],arrayDetails[5],arrayDetails[6],Boolean.FALSE);
+
+                 }
+                 else{
+                 }
+             }
+
+             @Override
+             public void onCancelled(DatabaseError databaseError) {
+
+             }
+         });
+
 //        progressDialog.setMessage("Sign In please wait...");
 //        progressDialog.show();
 //
-        firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                progressDialog.dismiss();
-                if(task.isSuccessful()) {
-                    finish();
-                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                }
-            }
-        });
+//        firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//            @Override
+//            public void onComplete(@NonNull Task<AuthResult> task) {
+//                progressDialog.dismiss();
+//                if(task.isSuccessful()) {
+//                    finish();
+//                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+//                }
+//            }
+//        });
 
 
 

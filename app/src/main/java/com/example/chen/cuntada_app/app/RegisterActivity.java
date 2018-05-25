@@ -16,7 +16,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity{
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -66,20 +71,20 @@ public class RegisterActivity extends AppCompatActivity{
 //            diet = true;
 //        }
         CheckValidation(fname,lname,email,ps,cps);
-        checkPassword(ps,cps);
+//        checkPassword(ps,cps);
 
-        ref = FirebaseDatabase.getInstance().getReference();
 
-        ref.child("users").child("email").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("users").child(email);
+        ValueEventListener listener = myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
-                    Toast.makeText(getApplicationContext(),"The user is already exist",Toast.LENGTH_SHORT).show();
+
+
                 }
                 else{
-
                     CreateUser();
-
                 }
             }
 
@@ -88,14 +93,64 @@ public class RegisterActivity extends AppCompatActivity{
 
             }
         });
+
+//        getSpecificUser(email,new Callback<List<User>>() {
+//            @Override
+//            public void onComplete(List<User> data) {
+//                Log.d("TAG", "Found : " + email);
+//
+//
+//                CreateUser();
+//            }
+//        });
     }
+
+
+    public interface OnCreationUser {
+        void onCompletion(boolean success);
+    }
+
+    public interface OnCreation{
+        public void onCompletion(boolean success);
+    }
+
+
+    public static void addUser(User user, final OnCreation listener) {
+        Log.d("TAG", "add user to firebase");
+        HashMap<String, Object> json = user.toJson();
+        json.put("lastUpdated", ServerValue.TIMESTAMP);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("users");
+        DatabaseReference ref = myRef.child(user.Email);
+        ref.setValue(json, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                if (databaseError != null) {
+                    Log.e("TAG", "Error: User could not be saved "
+                            + databaseError.getMessage());
+                    listener.onCompletion(false);
+                } else {
+                    Log.e("TAG", "Success : User saved successfully.");
+                    listener.onCompletion(true);
+                }
+            }
+        });
+
+    }
+
 
      void CreateUser(){
         String id = UsersDB.push().getKey();
         User user = new User(id,fname,lname,email,ps,diet);
-        UsersDB.child(id).setValue(user);
+         addUser(user, new OnCreation() {
+             @Override
+             public void onCompletion(boolean success) {
+                 Log.d("TAG","created user");
+              //Toast.makeText(getActivity(), "User Details Updated!", Toast.LENGTH_SHORT).show();
+             }
+         });
         Toast.makeText(this,"User added", Toast.LENGTH_LONG).show();
-         startActivity(new Intent(getApplicationContext(), DetailsActivity.class));
+        startActivity(new Intent(getApplicationContext(), DetailsActivity.class));
 
      }
 
@@ -112,9 +167,9 @@ public class RegisterActivity extends AppCompatActivity{
         if(email == null){
             Log.e(TAG, "please enter Email" );
         }
-        if (!(android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())){
-            Log.e(TAG, "please enter valid Email" );
-        }
+//        if (!(android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())){
+//            Log.e(TAG, "please enter valid Email" );
+//        }
         if(password == null){
             Log.e(TAG, "please enter Password" );
         }
@@ -124,10 +179,63 @@ public class RegisterActivity extends AppCompatActivity{
 
     }
 
-    private void checkPassword(String password , String confirm_password){
-        if(password != confirm_password){
-            Log.e(TAG, "Confirm password not match password" );
-        }
+
+    public interface Callback<T> {
+        void onComplete(T data);
     }
+
+    public static void getAllUsersAndObserve(final Callback<List<User>> callback) {
+        Log.d("TAG", "getAllUsersAndObserve");
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("users");
+        ValueEventListener listener = myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<User> list = new LinkedList<User>();
+                for (DataSnapshot snap : dataSnapshot.getChildren()) {
+                    User user = snap.getValue(User.class);
+                    list.add(user);
+                }
+                callback.onComplete(list);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onComplete(null);
+            }
+        });
+    }
+
+
+    public static void getSpecificUser(String userMail,final Callback<List<User>> callback) {
+        Log.d("TAG", "getAllUsersAndObserve");
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("users").child(userMail);
+        ValueEventListener listener = myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<User> list = new LinkedList<User>();
+                for (DataSnapshot snap : dataSnapshot.getChildren()) {
+                    User user = snap.getValue(User.class);
+                    list.add(user);
+                }
+                callback.onComplete(list);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onComplete(null);
+            }
+        });
+    }
+
+
+
+//
+//    private void checkPassword(String password , String confirm_password){
+//        if(password != confirm_password){
+//            Log.e(TAG, "Confirm password not match password" );
+//        }
+//    }
 
 }
