@@ -1,5 +1,7 @@
 package com.example.chen.cuntada_app.app;
 
+import java.util.HashMap;
+
 public class User {
 
     String userid;
@@ -40,5 +42,40 @@ public class User {
 
     public Boolean getDietician() {
         return dietician;
+    }
+
+    public void setDietician(Boolean dietician) {
+        this.dietician = dietician;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public void setFirstName(String firstName) {
+        FirstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        LastName = lastName;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    HashMap<String,Object> toJson(){
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("userid", userid);
+        result.put("FirstName", FirstName);
+        result.put("LastName", LastName);
+        result.put("Email", Email);
+        result.put("Password", Password);
+        result.put("dietician", dietician);
+        return result;
     }
 }
