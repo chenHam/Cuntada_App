@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.chen.cuntada_app.app.RecipesActivity">
+
+    <TextView
+        android:id="@+id/new_recipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_recipe"/>
+    <TextView
+        android:id="@+id/ingredients_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/new_recipe"
+        android:text="@string/ingredients_title"/>
+    <EditText
+        android:id="@+id/ingredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ingredients_title"
+        android:layout_centerHorizontal="true"
+        android:hint="add here..."/>
+    <TextView
+        android:id="@+id/preparation_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ingredients"
+        android:text="@string/preparation_title"/>
+    <EditText
+        android:id="@+id/preparation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/preparation_title"
+        android:layout_centerHorizontal="true"
+        android:hint="add here..."/>
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/preparation"
+        android:onClick="SaveRecipeButton"
+        android:text="SAVE"
+        tools:ignore="MissingConstraints" />
+
+
+</android.support.constraint.ConstraintLayout>

@@ -58,6 +58,7 @@ public class DetailsActivity extends Activity{
         String weight = findViewById(R.id.weight).toString();
         String height = findViewById(R.id.height).toString();
         RadioButton gender = findViewById(rg.getCheckedRadioButtonId());
+        //TODO: need to save to DB?
     }
 //    String[] ListOfWeight(){
 //        String[] list = null;
