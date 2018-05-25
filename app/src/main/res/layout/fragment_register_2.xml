@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.chen.cuntada_app.app.DetailsActivity">
+    android:orientation="vertical">
 
     <Spinner
-        android:id="@+id/weight"
+        android:id="@+id/weightSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:entries="@array/weight_arrays"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"
         tools:ignore="MissingConstraints"
@@ -18,14 +20,32 @@
         tools:layout_editor_absoluteY="205dp" />
 
     <Spinner
-        android:id="@+id/height"
+        android:id="@+id/heightSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:entries="@array/height_arrays"
+        android:popupBackground="@android:color/transparent"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="146dp" />
+
+    <EditText
+        android:id="@+id/weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:hint="weight(in kg)" />
+
+    <EditText
+        android:id="@+id/height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/weight"
+        android:layout_centerHorizontal="true"
+        android:hint="height(in cm)" />
 
     <RadioGroup
         android:id="@+id/gender"
@@ -49,15 +69,7 @@
             android:checked="false"
             android:text="Famle" />
     </RadioGroup>
-    <Button
-        android:id="@+id/button_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="SaveDetailsButton"
-        android:text="SAVE"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="379dp"
-        tools:ignore="MissingConstraints" />
 
 
-</android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

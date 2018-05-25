@@ -11,6 +11,26 @@
     <string name="new_recipe">Add wew Recipe</string>
     <string name="ingredients_title">Ingredients :</string>
     <string name="preparation_title">Preparation :</string>
+    <string-array name="weight_arrays">
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+    </string-array>
+    <string-array name="height_arrays">
+        <item>140</item>
+        <item>141</item>
+        <item>142</item>
+        <item>143</item>
+        <item>144</item>
+        <item>145</item>
+        <item>146</item>
+        <item>147</item>
+    </string-array>
 
 
 
