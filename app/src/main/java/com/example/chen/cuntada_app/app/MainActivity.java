@@ -74,7 +74,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String userEmail = Email.getText().toString().trim();
         String pas = Pass.getText().toString().trim();
         UserLogin();
-    }
+        startActivity(new Intent(getApplicationContext(), AllActivity.class));
+
+        }
     public void SignUp(View view){
         finish();
         startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
