@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -29,6 +30,7 @@ public class Register1 extends Fragment {
     private DatabaseReference UsersDB;
     DatabaseReference ref;
     EditText first_name,last_name,mail,password,confirm_password,weight,height;
+    CheckBox dietican;
     Boolean diet;
     String fname,lname,email,pass,confirm_pass,weightStr,heightStr;
 
@@ -51,6 +53,7 @@ public class Register1 extends Fragment {
         mail = (EditText) view.findViewById(R.id.email);
         password = (EditText) view.findViewById(R.id.password);
         confirm_password = (EditText) view.findViewById(R.id.confirm_password);
+        dietican = (CheckBox) view.findViewById(R.id.checkbox_Dietician);
         weight = (EditText) view.findViewById(R.id.confirm_password);
         height = (EditText) view.findViewById(R.id.confirm_password);
 
@@ -71,7 +74,7 @@ public class Register1 extends Fragment {
         email = mail.getText().toString();
         pass = password.getText().toString().trim();
         confirm_pass = confirm_password.getText().toString();
-        diet = false;
+        diet = dietican.isChecked();
         weightStr = weight.getText().toString();
         heightStr = mail.getText().toString();
 
@@ -103,7 +106,7 @@ public class Register1 extends Fragment {
         User user = new User(id,fname,lname,email,pass,diet);
         UsersDB.child(id).setValue(user);
         Toast.makeText(getActivity().getApplicationContext(),"User added", Toast.LENGTH_LONG).show();
-        startActivity(new Intent(getActivity().getApplicationContext(), DetailsActivity.class));
+        startActivity(new Intent(getActivity().getApplicationContext(), AllActivity.class));
 
     }
 
@@ -132,7 +135,7 @@ public class Register1 extends Fragment {
     }
 
     private void checkPassword(String password , String confirm_password){
-        if(password != confirm_password){
+        if(password.equals(confirm_password)){
             Log.e(TAG, "Confirm password not match password" );
         }
     }
