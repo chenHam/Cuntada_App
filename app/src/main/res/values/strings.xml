@@ -14,6 +14,7 @@
     <string name="recipes_name">Recipes name</string>
     <string name="ingredient">Ingredient</string>
     <string name="preparation">Preparation</string>
+    <string name="category">Category</string>
     <string-array name="weight_arrays">
         <item>40</item>
         <item>41</item>
