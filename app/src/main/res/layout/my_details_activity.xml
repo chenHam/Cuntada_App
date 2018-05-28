@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context="com.example.chen.cuntada_app.app.MyDetails">
 
     <TextView
@@ -17,7 +18,7 @@
         android:id="@+id/target_weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal|numberSigned"/>
+        android:inputType="number"/>
 
     <TextView
         android:id="@+id/body"
@@ -31,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:inputType="numberDecimal|numberSigned"/>
+        android:inputType="number"/>
 
     <TextView
         android:id="@+id/height"
@@ -44,14 +45,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Height"
-        android:inputType="numberDecimal|numberSigned"/>
+        android:inputType="number"/>
 
     <TextView
         android:id="@+id/bmi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/bmi_title"
-        android:visibility="visible" />
+        android:text="@string/bmi_title" />
 
     <TextView
         android:id="@+id/bmi_edit"
@@ -66,4 +66,6 @@
         android:text="Calculate"
         tools:ignore="MissingConstraints" />
 
-</android.support.constraint.ConstraintLayout>
+
+
+</LinearLayout>

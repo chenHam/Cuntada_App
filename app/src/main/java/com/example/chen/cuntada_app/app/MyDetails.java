@@ -22,12 +22,12 @@ public class MyDetails extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_details);
+        setContentView(R.layout.my_details_activity);
 
         target_weight = (EditText) findViewById(R.id.target_weight);
         body_weight = (EditText) findViewById(R.id.body_weight);
         height_edit = (EditText) findViewById(R.id.height_edit);
-        bmi = (TextView) findViewById(R.id.bmi);
+        bmi = (TextView) findViewById(R.id.bmi_edit);
 
         calculateButton = (Button)findViewById(R.id.button_calculate);
         calculateButton.setOnClickListener(new View.OnClickListener(){
@@ -43,7 +43,8 @@ public class MyDetails extends Activity{
         height = Integer.parseInt(height_edit.getText().toString());
         weight = Integer.parseInt(body_weight.getText().toString());
 
-        int res_bmi = weight / (height*height);
-        bmi.setText(res_bmi);
+        double res_bmi = weight / (height*height);
+
+        bmi.setText(String.valueOf(res_bmi));
     }
 }
