@@ -103,7 +103,7 @@ public class Register1 extends Fragment {
 
     void CreateUser(){
         String id = UsersDB.push().getKey();
-        User user = new User(id,fname,lname,email,pass,diet);
+        User user = new User(id,fname,lname,email,pass,diet,weightStr,heightStr);
         UsersDB.child(id).setValue(user);
         Toast.makeText(getActivity().getApplicationContext(),"User added", Toast.LENGTH_LONG).show();
         startActivity(new Intent(getActivity().getApplicationContext(), AllActivity.class));
