@@ -8,9 +8,12 @@
     <string name="forum">Forum</string>
     <string name="recipes">Recipes</string>
     <string name="SignUp">SignUp</string>
-    <string name="new_recipe">Add wew Recipe</string>
+    <string name="new_recipe">Add new Recipe</string>
     <string name="ingredients_title">Ingredients :</string>
     <string name="preparation_title">Preparation :</string>
+    <string name="recipes_name">Recipes name</string>
+    <string name="ingredient">Ingredient</string>
+    <string name="preparation">Preparation</string>
     <string-array name="weight_arrays">
         <item>40</item>
         <item>41</item>

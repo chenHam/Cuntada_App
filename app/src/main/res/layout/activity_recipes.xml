@@ -10,7 +10,36 @@
     <FrameLayout
         android:id="@+id/main_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </FrameLayout>
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="197dp"
+        tools:ignore="MissingConstraints"></FrameLayout>
+
+    <TextView
+        android:id="@+id/recipes_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recipe name"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/ingredient"
+        android:layout_width="match_parent"
+        android:layout_height="114dp"
+        android:text="Ingredients"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="16dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/preparation"
+        android:layout_width="match_parent"
+        android:layout_height="189dp"
+        android:text="Preparation"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="130dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -30,13 +30,16 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/ingredients"
         android:text="@string/preparation_title"/>
+
     <EditText
         android:id="@+id/preparation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/preparation_title"
         android:layout_centerHorizontal="true"
-        android:hint="add here..."/>
+        android:hint="add here..."
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="142dp" />
 
     <Button
         android:id="@+id/button_save"
@@ -45,7 +48,9 @@
         android:layout_above="@+id/preparation_title"
         android:onClick="SaveRecipeButton"
         android:text="SAVE"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="280dp" />
 
 
 </android.support.constraint.ConstraintLayout>

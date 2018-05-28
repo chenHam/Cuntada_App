@@ -11,32 +11,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/new_recipe"/>
+
     <TextView
         android:id="@+id/ingredients_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/new_recipe"
-        android:text="@string/ingredients_title"/>
+        android:text="@string/ingredients_title"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="51dp" />
+
     <EditText
         android:id="@+id/ingredients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/ingredients_title"
         android:layout_centerHorizontal="true"
-        android:hint="add here..."/>
+        android:hint="add here..."
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="125dp" />
+
     <TextView
         android:id="@+id/preparation_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/ingredients"
-        android:text="@string/preparation_title"/>
+        android:text="@string/preparation_title"
+        tools:layout_editor_absoluteX="43dp"
+        tools:layout_editor_absoluteY="276dp" />
+
     <EditText
         android:id="@+id/preparation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/preparation_title"
         android:layout_centerHorizontal="true"
-        android:hint="add here..."/>
+        android:hint="add here..."
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="189dp" />
 
     <Button
         android:id="@+id/button_save"
@@ -45,7 +57,9 @@
         android:layout_above="@+id/preparation"
         android:onClick="SaveRecipeButton"
         android:text="SAVE"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="314dp" />
 
 
 </android.support.constraint.ConstraintLayout>
