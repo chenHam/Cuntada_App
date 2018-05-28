@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.chen.cuntada_app.app.MyDetails">
+
+    <TextView
+        android:id="@+id/target"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/target_weight"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="48dp" />
+
+    <TextView
+        android:id="@+id/body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/body_weight"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <EditText
+        android:id="@+id/target_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:hint="Target weight" />
+
+    <EditText
+        android:id="@+id/body_weight"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_above="@+id/target_weight"
+        android:gravity="center"
+        android:hint="Body weight" />
+
+    <TextView
+        android:id="@+id/height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/body_weight" />
+
+    <EditText
+        android:id="@+id/height_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Height" />
+
+    <TextView
+        android:id="@+id/bmi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bmi_title" />
+
+    <TextView
+        android:id="@+id/bmi_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/button_calculate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="CalculateBMI"
+        android:text="Calculate"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="379dp"
+        tools:ignore="MissingConstraints" />
+
+</LinearLayout>

@@ -8,6 +8,9 @@
     <string name="forum">Forum</string>
     <string name="recipes">Recipes</string>
     <string name="SignUp">SignUp</string>
+    <string name="target_weight">Target Weight</string>
+    <string name="body_weight">Body weight</string>
+    <string name="bmi_title">BMI</string>
     <string name="new_recipe">Add wew Recipe</string>
     <string name="ingredients_title">Ingredients :</string>
     <string name="preparation_title">Preparation :</string>
