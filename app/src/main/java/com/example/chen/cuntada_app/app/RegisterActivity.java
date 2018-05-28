@@ -49,13 +49,13 @@ public class RegisterActivity extends AppCompatActivity{
         pass = (EditText) findViewById(R.id.password);
         confirm_pass = (EditText) findViewById(R.id.confirm_password);
 
-        buttonAdd = (Button) findViewById(R.id.button_register);
-        buttonAdd.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                RegisterButton(view);
-            }
-        });
+//        buttonAdd = (Button) findViewById(R.id.button_register);
+//        buttonAdd.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view){
+//                RegisterButton(view);
+//            }
+//        });
     }
 
     public void RegisterButton(View view){
