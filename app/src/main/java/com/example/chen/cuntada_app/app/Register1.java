@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,29 +77,29 @@ public class Register1 extends Fragment {
         confirm_pass = confirm_password.getText().toString();
         diet = dietican.isChecked();
         weightStr = weight.getText().toString();
-        heightStr = mail.getText().toString();
+        heightStr = height.getText().toString();
 
         CheckValidation(fname,lname,email,pass,confirm_pass);
         checkPassword(pass,confirm_pass);
 
         ref = FirebaseDatabase.getInstance().getReference();
 
-        ref.child("users").child("email").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    Toast.makeText(getActivity().getApplicationContext(),"The user is already exist",Toast.LENGTH_SHORT).show();
-                }
-                else{
+//        ref.child("users").child("email").addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                if(dataSnapshot.exists()){
+//                    Toast.makeText(getActivity().getApplicationContext(),"The user is already exist",Toast.LENGTH_SHORT).show();
+//                }
+//                else{
                     CreateUser();
-                }
-            }
+//                }
+//            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
     }
 
     void CreateUser(){

@@ -33,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity{
     EditText pass;
     EditText confirm_pass;
     Boolean diet;
-    String fname,lname,email,ps,cps;
+    String fname,lname,email,ps,cps,weight,height;
 
     Button buttonAdd;
 
@@ -66,6 +66,8 @@ public class RegisterActivity extends AppCompatActivity{
         ps = pass.getText().toString().trim();
         cps = confirm_pass.getText().toString().trim();
         diet = false;
+        weight ="dd";
+        height = "12";
 //        boolean checked = ((CheckBox) view).isChecked();
 //        if (checked){
 //            diet = true;
@@ -141,7 +143,7 @@ public class RegisterActivity extends AppCompatActivity{
 
      void CreateUser(){
         String id = UsersDB.push().getKey();
-        User user = new User(id,fname,lname,email,ps,diet);
+        User user = new User(id,fname,lname,email,ps,diet,weight,height);
          addUser(user, new OnCreation() {
              @Override
              public void onCompletion(boolean success) {
@@ -157,25 +159,25 @@ public class RegisterActivity extends AppCompatActivity{
      //TODO : check if this log error show on the screen
     private void CheckValidation(String first_name,String last_name, String email, String password, String confirm_password){
 
-        //check for null
-        if(first_name == null){
-            Log.e(TAG, "please enter First name" );
-        }
-        if(last_name == null){
-            Log.e(TAG, "please enter Last name" );
-        }
-        if(email == null){
-            Log.e(TAG, "please enter Email" );
-        }
-//        if (!(android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())){
-//            Log.e(TAG, "please enter valid Email" );
+//        //check for null
+//        if(first_name == null){
+//            Log.e(TAG, "please enter First name" );
 //        }
-        if(password == null){
-            Log.e(TAG, "please enter Password" );
-        }
-        if(confirm_password == null){
-            Log.e(TAG, "please enter Confirm password" );
-        }
+//        if(last_name == null){
+//            Log.e(TAG, "please enter Last name" );
+//        }
+//        if(email == null){
+//            Log.e(TAG, "please enter Email" );
+//        }
+////        if (!(android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())){
+////            Log.e(TAG, "please enter valid Email" );
+////        }
+//        if(password == null){
+//            Log.e(TAG, "please enter Password" );
+//        }
+//        if(confirm_password == null){
+//            Log.e(TAG, "please enter Confirm password" );
+//        }
 
     }
 
