@@ -10,14 +10,18 @@ public class User {
     String Email;
     String Password;
     Boolean dietician;
+    String weight;
+    String height;
 
-    public User(String userid, String firstName, String lastName, String email, String password, Boolean dietician) {
+    public User(String userid, String firstName, String lastName, String email, String password, Boolean dietician, String weight, String height) {
         this.userid = userid;
         this.FirstName = firstName;
         this.LastName = lastName;
         this. Email = email;
         this.Password = password;
         this.dietician = dietician;
+        this.weight = weight;
+        this.height = height;
     }
 
     public String getUserid() {
@@ -44,13 +48,9 @@ public class User {
         return dietician;
     }
 
-    public void setDietician(Boolean dietician) {
-        this.dietician = dietician;
-    }
+    public String getWeight() { return weight; }
 
-    public void setEmail(String email) {
-        Email = email;
-    }
+    public String getHeight() { return height; }
 
     public void setFirstName(String firstName) {
         FirstName = firstName;
@@ -60,13 +60,25 @@ public class User {
         LastName = lastName;
     }
 
+    public void setEmail(String email) {
+        Email = email;
+    }
+
     public void setPassword(String password) {
         Password = password;
+    }
+
+    public void setDietician(Boolean dietician) {
+        this.dietician = dietician;
     }
 
     public void setUserid(String userid) {
         this.userid = userid;
     }
+
+    public void setWeight(String weight){ this.weight = weight; }
+
+    public void setHeight(String height) { this.height = height; }
 
     HashMap<String,Object> toJson(){
         HashMap<String, Object> result = new HashMap<>();
@@ -76,6 +88,8 @@ public class User {
         result.put("Email", Email);
         result.put("Password", Password);
         result.put("dietician", dietician);
+        result.put("weight", weight);
+        result.put("height", height);
         return result;
     }
 }
