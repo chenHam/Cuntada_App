@@ -121,8 +121,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         String fname = arrayDetails[2].split("=")[1];
                         String lname = arrayDetails[4].split("=")[1];
                         String email = arrayDetails[5].split("=")[1];
+                        String weight = arrayDetails[6].split("=")[1];
+                        String height = arrayDetails[7].split("=")[1];
 
-                        userLogIn = new User(id, fname, lname, email, pass, Boolean.FALSE);
+                        userLogIn = new User(id, fname, lname, email, pass, Boolean.FALSE,weight,height);
                         startActivity(new Intent(getApplicationContext(), AllActivity.class));
 
                     }
