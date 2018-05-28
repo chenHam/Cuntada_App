@@ -20,9 +20,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
+
+import java.util.HashMap;
 
 
 public class Register1 extends Fragment {
@@ -70,19 +73,19 @@ public class Register1 extends Fragment {
 
     public void RegisterButton(View view){
 
-        fname = first_name.getText().toString();
-        lname = last_name.getText().toString();
-        email = mail.getText().toString();
+        fname = first_name.getText().toString().trim();
+        lname = last_name.getText().toString().trim();
+        email = mail.getText().toString().trim();
         pass = password.getText().toString().trim();
-        confirm_pass = confirm_password.getText().toString();
+        confirm_pass = confirm_password.getText().toString().trim();
         diet = dietican.isChecked();
-        weightStr = weight.getText().toString();
-        heightStr = height.getText().toString();
+        weightStr = weight.getText().toString().trim();
+        heightStr = height.getText().toString().trim();
 
         CheckValidation(fname,lname,email,pass,confirm_pass);
         checkPassword(pass,confirm_pass);
 
-        ref = FirebaseDatabase.getInstance().getReference();
+//        ref = FirebaseDatabase.getInstance().getReference();
 
 //        ref.child("users").child("email").addListenerForSingleValueEvent(new ValueEventListener() {
 //            @Override
@@ -91,7 +94,7 @@ public class Register1 extends Fragment {
 //                    Toast.makeText(getActivity().getApplicationContext(),"The user is already exist",Toast.LENGTH_SHORT).show();
 //                }
 //                else{
-                    CreateUser();
+//                    CreateUser();
 //                }
 //            }
 
@@ -100,14 +103,75 @@ public class Register1 extends Fragment {
 //
 //            }
 //        });
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("users").child(email);
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+
+
+                }
+                else{
+                    CreateUser();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     void CreateUser(){
+//        String id = UsersDB.push().getKey();
+//        User user = new User(id,fname,lname,email,pass,diet,weightStr,heightStr);
+//        UsersDB.child(email).setValue(user);
+//        Toast.makeText(getActivity().getApplicationContext(),"User added", Toast.LENGTH_LONG).show();
+//        startActivity(new Intent(getActivity().getApplicationContext(), AllActivity.class));
+
         String id = UsersDB.push().getKey();
         User user = new User(id,fname,lname,email,pass,diet,weightStr,heightStr);
-        UsersDB.child(id).setValue(user);
-        Toast.makeText(getActivity().getApplicationContext(),"User added", Toast.LENGTH_LONG).show();
+        addUser(user, new OnCreation() {
+            @Override
+            public void onCompletion(boolean success) {
+                Log.d("TAG","created user");
+                //Toast.makeText(getActivity(), "User Details Updated!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        Toast.makeText(getActivity(),"User added", Toast.LENGTH_LONG).show();
         startActivity(new Intent(getActivity().getApplicationContext(), AllActivity.class));
+
+
+    }
+    public interface OnCreation{
+        public void onCompletion(boolean success);
+    }
+
+    public static void addUser(User user, final OnCreation listener) {
+        Log.d("TAG", "add user to firebase");
+        HashMap<String, Object> json = user.toJson();
+        json.put("lastUpdated", ServerValue.TIMESTAMP);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("users");
+        DatabaseReference ref = myRef.child(user.Email);
+        ref.setValue(json, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                if (databaseError != null) {
+                    Log.e("TAG", "Error: User could not be saved "
+                            + databaseError.getMessage());
+                    listener.onCompletion(false);
+                } else {
+                    Log.e("TAG", "Success : User saved successfully.");
+                    listener.onCompletion(true);
+                }
+            }
+        });
 
     }
 
