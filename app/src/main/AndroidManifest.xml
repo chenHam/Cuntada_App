@@ -31,6 +31,8 @@
             android:exported="true" />
         <activity android:name=".ProfileActivity"
             android:exported="true" />
+        <activity android:name=".RecipesActivity"
+            android:exported="true" />
         <activity android:name=".AllActivity"
             android:exported="true" ></activity>
     </application>

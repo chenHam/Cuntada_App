@@ -18,6 +18,15 @@
     <string name="recipes_name">Recipes name :</string>
     <string name="ingredient">Ingredient :</string>
     <string name="preparation">Preparation :</string>
+    <string name="main_container">main_container :</string>
+    <string name="list1">list1 :</string>
+
+    <string-array name="category">
+    <item>Vegan</item>
+    <item>Gluten free</item>
+    <item>Kosher</item>
+    </string-array>
+
     <string-array name="weight_arrays">
         <item>40</item>
         <item>41</item>

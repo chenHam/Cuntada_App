@@ -53,7 +53,7 @@ public class AllActivity extends AppCompatActivity {
     }
     public void Recipes(View view){
         finish();
-        startActivity(new Intent(getApplicationContext(), DetailsActivity.class));
+        startActivity(new Intent(getApplicationContext(), RecipesActivity.class));
 
     }
     public void Forum(View view){

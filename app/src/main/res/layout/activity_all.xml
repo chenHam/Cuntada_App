@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/privateDetails"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="Details"
         android:text="Details"
@@ -21,20 +21,20 @@
 
     <Button
         android:id="@+id/forum"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/privateDetails"
         android:onClick="Forum"
         android:text="Forum"
         app:layout_column="0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_row="4"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="54dp" />
+        tools:layout_editor_absoluteY="142dp" />
 
     <Button
         android:id="@+id/recipes"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/forum"
         android:onClick="Recipes"
