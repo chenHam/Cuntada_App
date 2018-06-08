@@ -69,7 +69,5 @@
             android:checked="false"
             android:text="Famle" />
     </RadioGroup>
-
-
-
+    
 </LinearLayout>
