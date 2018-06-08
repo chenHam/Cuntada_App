@@ -4,19 +4,14 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,17 +19,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     User userLogIn;
-    private Button buttonSignIn;
+    private Button loginButton;
     private EditText Email;
     private EditText Pass;
-    private Button SignUp;
+    private Button signUpButton;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
 
@@ -47,28 +38,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        firebaseAuth = FirebaseAuth.getInstance();
+        Log.d("Dani", "before anything happens");
+
+        /*firebaseAuth = FirebaseAuth.getInstance();
 
         if(firebaseAuth.getCurrentUser()!=null){
             finish();
             startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-        }
+        }*/
+
 
         Email = (EditText) findViewById(R.id.user_login);
         Pass = (EditText) findViewById(R.id.pass_login);
-        SignUp = (Button) findViewById(R.id.SignUpFromLogin);
-        buttonSignIn = (Button) findViewById(R.id.button_login);
+        signUpButton = (Button) findViewById(R.id.signUpButton);
+        loginButton = (Button) findViewById(R.id.loginButton);
         progressDialog = new ProgressDialog(this);
 
 
-        buttonSignIn.setOnClickListener(new View.OnClickListener(){
+        loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 login_Button(view);
             }
         });
 
-        SignUp.setOnClickListener(new View.OnClickListener() {
+        signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SignUp(view);
@@ -161,10 +155,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        if(view==buttonSignIn){
+        if(view==loginButton){
             UserLogin();
         }
-        if(view==SignUp){
+        if(view==signUpButton){
             finish();
             startActivity(new Intent(this,RegisterActivity.class));
         }
