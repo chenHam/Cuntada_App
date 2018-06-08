@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -12,6 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,26 +28,26 @@ public class MainActivity extends AppCompatActivity {
     User userLogIn;
 
     private Button loginButton;
-    private EditText Email;
+    private EditText email;
     private EditText Pass;
     private Button signUpButton;
     private ProgressDialog progressDialog;
+
     private FirebaseAuth firebaseAuth;
 
-    private static final String TAG = MainActivity.class.getSimpleName();
-    private DatabaseReference mFirebaseDatabase;
-    private FirebaseDatabase mFirebaseInstance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Email = (EditText) findViewById(R.id.user_login);
+        email = (EditText) findViewById(R.id.user_login);
         Pass = (EditText) findViewById(R.id.pass_login);
         signUpButton = (Button) findViewById(R.id.signUpButton);
         loginButton = (Button) findViewById(R.id.loginButton);
+
         progressDialog = new ProgressDialog(this);
+        firebaseAuth = FirebaseAuth.getInstance();
 
         loginButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
@@ -54,6 +58,17 @@ public class MainActivity extends AppCompatActivity {
         signUpButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 Log.d("Tokyo", "signUp Button clicked");
+
+                // TODO: check input
+
+                progressDialog.setMessage("Registering user...");
+                progressDialog.show();
+
+                String emailString = email.getText().toString().trim();
+                String pwString = Pass.getText().toString().trim();
+
+                createUser(emailString, pwString);
+
             }
         });
 
@@ -75,10 +90,29 @@ public class MainActivity extends AppCompatActivity {
         });*/
     }
 
+    public void createUser(String emailString, String pwString){
+        firebaseAuth.createUserWithEmailAndPassword(emailString, pwString)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            String id1 = firebaseAuth.getCurrentUser().getUid();
+                            Log.d("Tokyo", "Added user " + id1);
+                            progressDialog.hide();
+                            startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+                        } else {
+                            Log.d("Tokyo", "Not added user");
+                        }
+                    }
+                });
+
+    }
+
+
         public void login_Button(View view){
-        String userEmail = Email.getText().toString().trim();
+        String userEmail = email.getText().toString().trim();
         String pas = Pass.getText().toString().trim();
-        UserLogin();
+        //UserLogin();
 //        startActivity(new Intent(getApplicationContext(), AllActivity.class));
 
         }
@@ -88,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-     void UserLogin(){
+     /*void UserLogin(){
 
         String email = Email.getText().toString().trim();
         final String password = Pass.getText().toString().trim();
@@ -156,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    }
+    }*/
 
     /*@Override
     public void onClick(View view) {
