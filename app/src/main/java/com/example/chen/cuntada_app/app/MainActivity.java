@@ -19,9 +19,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     User userLogIn;
+
     private Button loginButton;
     private EditText Email;
     private EditText Pass;
@@ -38,24 +39,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.d("Dani", "before anything happens");
-
-        /*firebaseAuth = FirebaseAuth.getInstance();
-
-        if(firebaseAuth.getCurrentUser()!=null){
-            finish();
-            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-        }*/
-
-
         Email = (EditText) findViewById(R.id.user_login);
         Pass = (EditText) findViewById(R.id.pass_login);
         signUpButton = (Button) findViewById(R.id.signUpButton);
         loginButton = (Button) findViewById(R.id.loginButton);
         progressDialog = new ProgressDialog(this);
 
-
         loginButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                Log.d("Tokyo", "login Button clicked");
+            }
+        });
+
+        signUpButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                Log.d("Tokyo", "signUp Button clicked");
+            }
+        });
+
+
+
+
+        /*loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 login_Button(view);
@@ -67,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View view) {
                 SignUp(view);
             }
-        });
+        });*/
     }
 
         public void login_Button(View view){
@@ -153,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    @Override
+    /*@Override
     public void onClick(View view) {
         if(view==loginButton){
             UserLogin();
@@ -163,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(this,RegisterActivity.class));
         }
 
-    }
+    }*/
 
 
 //    @Override
