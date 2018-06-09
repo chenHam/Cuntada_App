@@ -3,7 +3,8 @@ package com.example.chen.cuntada_app.app;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
+//import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
@@ -20,8 +21,7 @@ public class AllActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all);
-
-
+        
         RecipesButton = (Button) findViewById(R.id.recipes);
         RecipesButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +52,7 @@ public class AllActivity extends AppCompatActivity {
 
     }
     public void Recipes(View view){
-        finish();
+        //finish();
         startActivity(new Intent(getApplicationContext(), RecipesActivity.class));
 
     }

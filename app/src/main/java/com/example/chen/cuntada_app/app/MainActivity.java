@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                             String id1 = firebaseAuth.getCurrentUser().getUid();
                             Log.d("Tokyo", "Added user " + id1);
                             progressDialog.hide();
-                            startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+                            startActivity(new Intent(getApplicationContext(),AllActivity.class));
                         } else {
                             Log.d("Tokyo", "Not added user");
                         }
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    /*
         public void login_Button(View view){
         String userEmail = email.getText().toString().trim();
         String pas = Pass.getText().toString().trim();
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
     public void SignUp(View view){
         finish();
         startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
-    }
+    }*/
 
 
      /*void UserLogin(){

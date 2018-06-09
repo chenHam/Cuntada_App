@@ -13,36 +13,30 @@
         android:layout_height="wrap_content"
         android:onClick="Details"
         android:text="Details"
-        app:layout_column="0"
-        app:layout_row="3"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="236dp"
-        tools:layout_editor_absoluteY="275dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="123dp" />
 
     <Button
         android:id="@+id/forum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/privateDetails"
+
         android:onClick="Forum"
         android:text="Forum"
-        app:layout_column="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_row="4"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="142dp" />
+        tools:layout_editor_absoluteY="53dp" />
 
     <Button
         android:id="@+id/recipes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/forum"
+
         android:onClick="Recipes"
         android:text="Recipes"
-        app:layout_column="0"
-        app:layout_row="2"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="432dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="5dp" />
 
 </android.support.constraint.ConstraintLayout>

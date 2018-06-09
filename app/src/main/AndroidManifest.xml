@@ -31,8 +31,6 @@
         <activity
             android:name=".MyDetails"
             android:exported="true" />
-        <activity android:name=".ProfileActivity"
-            android:exported="true" />
         <activity android:name=".RecipesActivity"
             android:exported="true" />
         <activity android:name=".AllActivity"
