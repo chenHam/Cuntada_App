@@ -28,13 +28,13 @@ public class AllActivity extends AppCompatActivity {
         Log.d("Tokyo", "AllActivity");
 
 
-        final Recipe r = new Recipe();
+        /*final Recipe r = new Recipe();
         r.name = "shuit eruka";
         r.category = "tasty food";
         r.ingredients = "ingredi";
         r.instructions = "instru";
         r.publisherId = "sadajukdnaks";
-        Model.instance.addStudent(r);
+        Model.instance.addStudent(r);*/
 
         RecipesButton = (Button) findViewById(R.id.recipes);
         RecipesButton.setOnClickListener(new View.OnClickListener() {

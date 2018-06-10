@@ -14,7 +14,7 @@ public class Model {
         modelFirebase = new ModelFirebase();
     }
 
-    public void cancellGetAllStudents() {
+    public void cancellGetAllRecipes() {
         modelFirebase.cancellGetAllRecipes();
     }
 
