@@ -8,27 +8,6 @@
     tools:context="com.example.chen.cuntada_app.app.AllActivity">
 
     <Button
-        android:id="@+id/privateDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="Details"
-        android:text="Details"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="123dp" />
-
-    <Button
-        android:id="@+id/forum"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:onClick="Forum"
-        android:text="Forum"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="53dp" />
-
-    <Button
         android:id="@+id/recipes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

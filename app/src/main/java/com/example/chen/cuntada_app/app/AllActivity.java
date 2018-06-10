@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.Toast;
 
+import com.example.chen.cuntada_app.app.Model.Model;
+import com.example.chen.cuntada_app.app.Model.Recipe;
+
 public class AllActivity extends AppCompatActivity {
 
 
@@ -21,7 +24,18 @@ public class AllActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all);
-        
+
+        Log.d("Tokyo", "AllActivity");
+
+
+        final Recipe r = new Recipe();
+        r.name = "shuit eruka";
+        r.category = "tasty food";
+        r.ingredients = "ingredi";
+        r.instructions = "instru";
+        r.publisherId = "sadajukdnaks";
+        Model.instance.addStudent(r);
+
         RecipesButton = (Button) findViewById(R.id.recipes);
         RecipesButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,7 +43,7 @@ public class AllActivity extends AppCompatActivity {
                 Recipes(view);
             }
         });
-        ForumButton = (Button) findViewById(R.id.forum);
+        /*ForumButton = (Button) findViewById(R.id.forum);
         ForumButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,7 +56,7 @@ public class AllActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Details(view);
             }
-        });
+        });*/
 
     }
 
