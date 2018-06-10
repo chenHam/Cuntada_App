@@ -8,14 +8,24 @@
     tools:context="com.example.chen.cuntada_app.app.AllActivity">
 
     <Button
-        android:id="@+id/recipes"
+        android:id="@+id/recipesButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
+        android:layout_marginTop="16dp"
         android:onClick="Recipes"
         android:text="Recipes"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="5dp" />
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/addRecipeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Add recipe"
+        app:layout_constraintTop_toBottomOf="@+id/recipesButton"
+        tools:layout_editor_absoluteX="0dp" />
 
 </android.support.constraint.ConstraintLayout>

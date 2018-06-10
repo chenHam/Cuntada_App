@@ -16,9 +16,10 @@ import com.example.chen.cuntada_app.app.Model.Recipe;
 public class AllActivity extends AppCompatActivity {
 
 
-    Button RecipesButton;
-    Button ForumButton;
-    Button DetailsButton;
+    Button recipesButton;
+    //Button ForumButton;
+    //Button DetailsButton;
+    Button addRecipeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,21 +29,32 @@ public class AllActivity extends AppCompatActivity {
         Log.d("Tokyo", "AllActivity");
 
 
-        /*final Recipe r = new Recipe();
-        r.name = "shuit eruka";
-        r.category = "tasty food";
-        r.ingredients = "ingredi";
-        r.instructions = "instru";
-        r.publisherId = "sadajukdnaks";
-        Model.instance.addStudent(r);*/
 
-        RecipesButton = (Button) findViewById(R.id.recipes);
-        RecipesButton.setOnClickListener(new View.OnClickListener() {
+
+        recipesButton = (Button) findViewById(R.id.recipesButton);
+        recipesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Recipes(view);
+                startActivity(new Intent(getApplicationContext(), RecipesActivity.class));
             }
         });
+
+        addRecipeButton = (Button) findViewById(R.id.addRecipeButton);
+        addRecipeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Recipe r = new Recipe();
+                r.name = "rise";
+                r.category = "fast&easy";
+                r.ingredients = "ingredi";
+                r.instructions = "instru";
+                r.publisherId = "sadajukdnaks";
+                Model.instance.addStudent(r);
+            }
+        });
+
+
+
         /*ForumButton = (Button) findViewById(R.id.forum);
         ForumButton.setOnClickListener(new View.OnClickListener() {
             @Override

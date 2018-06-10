@@ -8,13 +8,11 @@
     android:gravity="center"
     tools:context="com.example.chen.cuntada_app.app.RecipesActivity">
 
-
-    <fragment
-        android:name="com.example.chen.cuntada_app.app.AddRecipes"
-        android:id="@+id/list1"
-        android:layout_gravity="center"
+    <FrameLayout
+        android:id="@+id/main_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
 
+    </FrameLayout>
 
 </LinearLayout>

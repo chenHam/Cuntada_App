@@ -1,6 +1,8 @@
 package com.example.chen.cuntada_app.app.Model;
 
 import android.os.AsyncTask;
+import android.util.Log;
+
 import java.util.List;
 
 public class RecipeAsynchDao {
@@ -14,7 +16,9 @@ public class RecipeAsynchDao {
         class MyAsynchTask extends AsyncTask<String,String,List<Recipe>>{
             @Override
             protected List<Recipe> doInBackground(String... strings) {
+                Log.d("Tokyo", "@@@@@@@@@@@@ before get all");
                 List<Recipe> stList = AppLocalDb.db.recipeDao().getAll();
+                Log.d("Tokyo", "@@@@@@@@@@@@ after get all");
                 return stList;
             }
 
