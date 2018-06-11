@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        startActivity(new Intent(getApplicationContext(),AllActivity.class));
+        //startActivity(new Intent(getApplicationContext(),AllActivity.class));
 
 
         /*loginButton.setOnClickListener(new View.OnClickListener(){

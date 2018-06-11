@@ -28,8 +28,16 @@ public class AllActivity extends AppCompatActivity {
 
         Log.d("Tokyo", "AllActivity");
 
-
-
+        Log.d("Tokyo", "before myApplication");
+        MyApplication myApplication = new MyApplication();
+        if(MyApplication.context == null){
+            Log.d("Tokyo", "context is null");
+        }
+        MyApplication.context = getApplicationContext();
+        if(MyApplication.context == null){
+            Log.d("Tokyo", "context is **still** null");
+        }
+        Log.d("Tokyo", "after myApplication");
 
         recipesButton = (Button) findViewById(R.id.recipesButton);
         recipesButton.setOnClickListener(new View.OnClickListener() {
@@ -43,8 +51,9 @@ public class AllActivity extends AppCompatActivity {
         addRecipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("Berlin", "addRecipeButton clicked");
                 final Recipe r = new Recipe();
-                r.name = "rise";
+                r.name = "sushi";
                 r.category = "fast&easy";
                 r.ingredients = "ingredi";
                 r.instructions = "instru";
