@@ -125,9 +125,7 @@ public class RecipesListFragment extends Fragment {
             TextView recipeCategoryTextView = view.findViewById(R.id.recipeCategoryTextView);
             TextView recipeIngredientsTextView = view.findViewById(R.id.recipeIngredientsTextView);
             TextView recipeInstructionsTextView = view.findViewById(R.id.recipeInstructionsTextView);
-
-
-            //final ImageView avatarView = view.findViewById(R.id.stListItem_avatar);
+            final ImageView avatarView = view.findViewById(R.id.recipeImage);
 
             //cb.setTag(i);
 
@@ -138,19 +136,19 @@ public class RecipesListFragment extends Fragment {
 
             /*nameTv.setText(s.name);
             idTv.setText(s.id);
-            cb.setChecked(s.checked);
-            avatarView.setImageResource(R.drawable.avatar);
-            avatarView.setTag(s.id);*/
-            /*if (s.avatar != null){
-                Model.instance.getImage(s.avatar, new Model.GetImageListener() {
+            cb.setChecked(s.checked);*/
+            //avatarView.setImageResource(R.drawable.avatar); -- default value!!
+            //avatarView.setTag(s.id);*/
+            if (recipe.avatar != null){
+                Model.instance.getImage(recipe.avatar, new Model.GetImageListener() {
                     @Override
                     public void onDone(Bitmap imageBitmap) {
-                        if (s.id.equals(avatarView.getTag()) && imageBitmap != null) {
+                        //if (recipe.id.equals(avatarView.getTag()) && imageBitmap != null) {
                             avatarView.setImageBitmap(imageBitmap);
-                        }
+                        //}
                     }
                 });
-            }*/
+            }
             return view;
         }
     }

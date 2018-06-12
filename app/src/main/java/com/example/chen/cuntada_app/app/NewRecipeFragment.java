@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+
+import com.example.chen.cuntada_app.app.Model.Model;
+import com.example.chen.cuntada_app.app.Model.Recipe;
+import com.google.firebase.auth.FirebaseAuth;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -56,9 +61,17 @@ public class NewRecipeFragment extends Fragment {
             public void onClick(View view) {
                 //progress . setVisibility(View.VISIBLE);
 
-                /*final Student st = new Student();
-                st.name = nameEt.getText().toString();
-                st.id = idEt.getText().toString();
+                final Recipe recipe = new Recipe();
+                recipe.name = nameEditText.getText().toString();
+                recipe.category = categoryEditText.getText().toString();
+                recipe.ingredients = ingredientsEditText.getText().toString();
+                recipe.instructions = instructionsEditText.getText().toString();
+
+                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                String userId = firebaseAuth.getCurrentUser().getUid();
+
+                recipe.publisherId = userId;
+
 
                 //save image
                 if (imageBitmap != null) {
@@ -66,12 +79,13 @@ public class NewRecipeFragment extends Fragment {
                         @Override
                         public void onDone(String url) {
                             //save student obj
-                            st.avatar = url;
-                            Model.instance.addStudent(st);
+                            Log.d("Tokyo", url);
+                            recipe.avatar = url;
+                            Model.instance.addStudent(recipe);
                             getActivity().getSupportFragmentManager().popBackStack();
                         }
                     });
-                }*/
+                }
             }
         });
 

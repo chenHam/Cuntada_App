@@ -14,7 +14,7 @@ public class Recipe {
     public String ingredients;
     public String instructions;
     public String publisherId;
-    //public String avatar;
+    public String avatar;
 
     // get functions
     public String getName(){
@@ -32,9 +32,9 @@ public class Recipe {
     public String getPublisherId(){
         return publisherId;
     }
-    /*public String getAvatar() {
+    public String getAvatar() {
         return avatar;
-    }*/
+    }
 
     //set functions
     public void setName(String name){
@@ -52,8 +52,8 @@ public class Recipe {
     public void setPublisherId(String publisherId){
         this.publisherId = publisherId;
     }
-    /*public void setAvatar(String avatar) {
+    public void setAvatar(String avatar) {
         this.avatar = avatar;
-    }*/
+    }
 
 }
