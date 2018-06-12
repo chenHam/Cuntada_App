@@ -13,7 +13,6 @@ public class RecipeListViewModel extends ViewModel {
     LiveData<List<Recipe>> data;
 
     public LiveData<List<Recipe>> getData(){
-        Log.d("Tokyo", "@@@@@@@ before get all students");
         data = Model.instance.getAllStudents();
         return data;
     }

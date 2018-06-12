@@ -14,6 +14,9 @@ public class User {
     String height;
     boolean isMale;
 
+    public  User(){
+
+    }
     public User(String firstName, String lastName, String email, String pw,
                 boolean dietician, String weight, String height, boolean isMale) {
         //this.userId = userId;
