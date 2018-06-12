@@ -49,14 +49,25 @@ public class MainActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
 
-        final String emailString = emailEditText.getText().toString().trim();
-        final String pwString = pwEditText.getText().toString().trim();
-
         loginButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 Log.d("Tokyo", "login Button clicked");
+                final String emailString = emailEditText.getText().toString();
+                final String pwString = pwEditText.getText().toString();
 
                 // check input
+
+                firebaseAuth.signInWithEmailAndPassword(emailString, pwString).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            startActivity(new Intent(getApplicationContext(),AllActivity.class));
+                        } else {
+                            Log.d("Tokyo", "wrong email or pw");
+                        }
+                    }
+                });
+
 
             }
         });
@@ -65,14 +76,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("Tokyo", "signUp Button clicked");
                 startActivity(new Intent(getApplicationContext(),RegistrationActivity.class));
-                // TODO: check input
+
 
                 //progressDialog.setMessage("Registering user...");
                 //progressDialog.show();
 
-
-
-                //createUser(emailString, pwString);
 
             }
         });
@@ -80,23 +88,6 @@ public class MainActivity extends AppCompatActivity {
         //startActivity(new Intent(getApplicationContext(),AllActivity.class));
     }
 
-    public void createUser(String emailString, String pwString){
-        firebaseAuth.createUserWithEmailAndPassword(emailString, pwString)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            String id1 = firebaseAuth.getCurrentUser().getUid();
-                            Log.d("Tokyo", "Added user " + id1);
-                            progressDialog.hide();
-                            startActivity(new Intent(getApplicationContext(),AllActivity.class));
-                        } else {
-                            Log.d("Tokyo", "Not added user");
-                        }
-                    }
-                });
-
-    }
 
     /*
         public void login_Button(View view){
