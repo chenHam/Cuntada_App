@@ -14,7 +14,7 @@ public class Recipe {
     public String ingredients;
     public String instructions;
     public String publisherId;
-    public String avatar;
+    //public String avatar;
 
     // get functions
     public String getName(){

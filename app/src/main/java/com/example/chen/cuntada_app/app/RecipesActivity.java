@@ -6,6 +6,9 @@ import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 //package com.example.chen.cuntada_app.app;
 //
@@ -52,6 +55,28 @@ public class RecipesActivity extends AppCompatActivity{
             tran.commit();
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_add:
+                Log.d("TAG","menu add selected");
+                NewRecipeFragment fragment = new NewRecipeFragment();
+                FragmentTransaction tran = getSupportFragmentManager().beginTransaction();
+                tran.replace(R.id.main_container, fragment);
+                tran.addToBackStack("tag");
+                tran.commit();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
 //    private static final String TAG = MainActivity.class.getSimpleName();
