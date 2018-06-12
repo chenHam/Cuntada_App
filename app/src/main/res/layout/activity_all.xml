@@ -20,21 +20,12 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
-        android:id="@+id/addRecipeButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Add recipe"
-        app:layout_constraintTop_toBottomOf="@+id/recipesButton"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <Button
         android:id="@+id/logOutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="log out"
-        app:layout_constraintTop_toBottomOf="@+id/addRecipeButton"
+        app:layout_constraintTop_toBottomOf="@+id/recipesButton"
         tools:layout_editor_absoluteX="0dp" />
 
     <Button

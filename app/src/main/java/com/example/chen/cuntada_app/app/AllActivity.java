@@ -62,7 +62,7 @@ public class AllActivity extends AppCompatActivity {
             }
         });
 
-        addRecipeButton = (Button) findViewById(R.id.addRecipeButton);
+        /*addRecipeButton = (Button) findViewById(R.id.addRecipeButton);
         addRecipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,7 +75,7 @@ public class AllActivity extends AppCompatActivity {
                 r.publisherId = "sadajukdnaks";
                 Model.instance.addStudent(r);
             }
-        });
+        });*/
 
         logOutButton = (Button) findViewById(R.id.logOutButton);
         logOutButton.setOnClickListener(new View.OnClickListener() {
