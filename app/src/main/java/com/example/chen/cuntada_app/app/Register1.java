@@ -1,10 +1,8 @@
 package com.example.chen.cuntada_app.app;
 
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -23,12 +19,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
 import java.util.HashMap;
 
+public class Register1 {
 
-public class Register1 extends Fragment {
+}
+
+/*public class Register1 extends Fragment {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private DatabaseReference UsersDB;
@@ -52,8 +49,8 @@ public class Register1 extends Fragment {
 
         UsersDB = FirebaseDatabase.getInstance().getReference("users");
 
-        first_name = (EditText) view.findViewById(R.id.first_name);
-        last_name = (EditText) view.findViewById(R.id.last_name);
+        first_name = (EditText) view.findViewById(R.id.firstNameEditText);
+        last_name = (EditText) view.findViewById(R.id.lastNameEditText);
         mail = (EditText) view.findViewById(R.id.email);
         password = (EditText) view.findViewById(R.id.password);
         confirm_password = (EditText) view.findViewById(R.id.confirm_password);
@@ -206,3 +203,4 @@ public class Register1 extends Fragment {
     }
 
 }
+*/

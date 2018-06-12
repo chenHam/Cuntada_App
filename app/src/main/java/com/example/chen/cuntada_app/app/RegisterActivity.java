@@ -6,12 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity{
+
     private static final String TAG = MainActivity.class.getSimpleName();
     private DatabaseReference UsersDB;
     DatabaseReference ref;
@@ -43,11 +41,11 @@ public class RegisterActivity extends AppCompatActivity{
         setContentView(R.layout.activity_register);
         UsersDB = FirebaseDatabase.getInstance().getReference("users");
 
-        firstname = (EditText) findViewById(R.id.first_name);
-        lastname = (EditText) findViewById(R.id.last_name);
+        /*firstname = (EditText) findViewById(R.id.firstNameEditText);
+        lastname = (EditText) findViewById(R.id.lastNameEditText);
         mail = (EditText) findViewById(R.id.email);
         pass = (EditText) findViewById(R.id.password);
-        confirm_pass = (EditText) findViewById(R.id.confirm_password);
+        confirm_pass = (EditText) findViewById(R.id.confirm_password);*/
 
 //        buttonAdd = (Button) findViewById(R.id.button_save);
 //        buttonAdd.setOnClickListener(new View.OnClickListener(){
@@ -58,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity{
 //        });
     }
 
-    public void RegisterButton(View view){
+    /*public void RegisterButton(View view){
 
         fname = firstname.getText().toString().trim();
         lname = lastname.getText().toString().trim();
@@ -238,6 +236,6 @@ public class RegisterActivity extends AppCompatActivity{
 //        if(password != confirm_password){
 //            Log.e(TAG, "Confirm password not match password" );
 //        }
-//    }
+//    }*/
 
 }

@@ -3,16 +3,11 @@ package com.example.chen.cuntada_app.app;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class DetailsActivity extends Activity{
@@ -55,7 +50,7 @@ public class DetailsActivity extends Activity{
     }
 
     protected void SaveDetailsButton(View view){
-        String weight = findViewById(R.id.weight).toString();
+        String weight = findViewById(R.id.weightEditText).toString();
         String height = findViewById(R.id.height).toString();
         RadioButton gender = findViewById(rg.getCheckedRadioButtonId());
         //TODO: need to save to DB?

@@ -17,19 +17,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
     User userLogIn;
 
     private Button loginButton;
-    private EditText email;
-    private EditText Pass;
+    private EditText emailEditText;
+    private EditText pwEditText;
     private Button signUpButton;
     private ProgressDialog progressDialog;
 
@@ -41,53 +36,48 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        email = (EditText) findViewById(R.id.user_login);
-        Pass = (EditText) findViewById(R.id.pass_login);
+        firebaseAuth = FirebaseAuth.getInstance();
+        if(firebaseAuth.getCurrentUser() != null){
+            startActivity(new Intent(getApplicationContext(), AllActivity.class));
+        }
+
+        emailEditText = (EditText) findViewById(R.id.emailEditText);
+        pwEditText = (EditText) findViewById(R.id.pwEditText);
         signUpButton = (Button) findViewById(R.id.signUpButton);
         loginButton = (Button) findViewById(R.id.loginButton);
 
         progressDialog = new ProgressDialog(this);
-        firebaseAuth = FirebaseAuth.getInstance();
+
+
+        final String emailString = emailEditText.getText().toString().trim();
+        final String pwString = pwEditText.getText().toString().trim();
 
         loginButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 Log.d("Tokyo", "login Button clicked");
+
+                // check input
+
             }
         });
 
         signUpButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 Log.d("Tokyo", "signUp Button clicked");
-
+                startActivity(new Intent(getApplicationContext(),RegistrationActivity.class));
                 // TODO: check input
 
-                progressDialog.setMessage("Registering user...");
-                progressDialog.show();
+                //progressDialog.setMessage("Registering user...");
+                //progressDialog.show();
 
-                String emailString = email.getText().toString().trim();
-                String pwString = Pass.getText().toString().trim();
 
-                createUser(emailString, pwString);
+
+                //createUser(emailString, pwString);
 
             }
         });
 
         //startActivity(new Intent(getApplicationContext(),AllActivity.class));
-
-
-        /*loginButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                login_Button(view);
-            }
-        });
-
-        signUpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SignUp(view);
-            }
-        });*/
     }
 
     public void createUser(String emailString, String pwString){
@@ -127,14 +117,7 @@ public class MainActivity extends AppCompatActivity {
         String email = Email.getText().toString().trim();
         final String password = Pass.getText().toString().trim();
 
-        if(TextUtils.isEmpty(email)){
-            Toast.makeText(this, "Please enter email", Toast.LENGTH_LONG).show();
-            return;
-        }
-        if(TextUtils.isEmpty(password)){
-            Toast.makeText(this, "Please enter password", Toast.LENGTH_LONG).show();
-            return;
-        }
+
 
 
          FirebaseDatabase database = FirebaseDatabase.getInstance();

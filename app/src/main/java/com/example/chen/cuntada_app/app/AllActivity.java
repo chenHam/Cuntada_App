@@ -12,19 +12,23 @@ import android.widget.Toast;
 
 import com.example.chen.cuntada_app.app.Model.Model;
 import com.example.chen.cuntada_app.app.Model.Recipe;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class AllActivity extends AppCompatActivity {
 
 
     Button recipesButton;
-    //Button ForumButton;
-    //Button DetailsButton;
     Button addRecipeButton;
+    Button logOutButton;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
 
         Log.d("Tokyo", "AllActivity");
 
@@ -59,6 +63,17 @@ public class AllActivity extends AppCompatActivity {
                 r.instructions = "instru";
                 r.publisherId = "sadajukdnaks";
                 Model.instance.addStudent(r);
+            }
+        });
+
+        logOutButton = (Button) findViewById(R.id.logOutButton);
+        logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("Tokyo", "Logout button has been clicked");
+                firebaseAuth.signOut();
+                finish();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
 

@@ -32,7 +32,7 @@
         tools:layout_editor_absoluteY="146dp" />
 
     <EditText
-        android:id="@+id/weight"
+        android:id="@+id/weightEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -43,7 +43,7 @@
         android:id="@+id/height"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/weight"
+        android:layout_above="@+id/weightEditText"
         android:layout_centerHorizontal="true"
         android:hint="height(in cm)" />
 

@@ -28,4 +28,13 @@
         app:layout_constraintTop_toBottomOf="@+id/recipesButton"
         tools:layout_editor_absoluteX="0dp" />
 
+    <Button
+        android:id="@+id/logOutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="log out"
+        app:layout_constraintTop_toBottomOf="@+id/addRecipeButton"
+        tools:layout_editor_absoluteX="0dp" />
+
 </android.support.constraint.ConstraintLayout>
