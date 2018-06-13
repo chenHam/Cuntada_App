@@ -4,44 +4,50 @@ import java.util.HashMap;
 
 public class User {
 
-    String userid;
-    String FirstName;
-    String LastName;
-    String Email;
-    String Password;
-    Boolean dietician;
+    //String userId;
+    String firstName;
+    String lastName;
+    String email;
+    String pw;
+    boolean dietician;
     String weight;
     String height;
+    boolean isMale;
 
-    public User(String userid, String firstName, String lastName, String email, String password, Boolean dietician, String weight, String height) {
-        this.userid = userid;
-        this.FirstName = firstName;
-        this.LastName = lastName;
-        this. Email = email;
-        this.Password = password;
+    public  User(){
+
+    }
+    public User(String firstName, String lastName, String email, String pw,
+                boolean dietician, String weight, String height, boolean isMale) {
+        //this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.pw = pw;
         this.dietician = dietician;
         this.weight = weight;
         this.height = height;
+        this.isMale = isMale;
     }
 
-    public String getUserid() {
-        return userid;
-    }
+    /*public String getUserId() {
+        return userId;
+    }*/
 
     public String getFirstName() {
-        return FirstName;
+        return firstName;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public String getPassword() {
-        return Password;
+        return pw;
     }
 
     public Boolean getDietician() {
@@ -52,35 +58,41 @@ public class User {
 
     public String getHeight() { return height; }
 
+    public boolean getIsMale() { return isMale; }
+
     public void setFirstName(String firstName) {
-        FirstName = firstName;
+        this.firstName = firstName;
     }
 
     public void setLastName(String lastName) {
-        LastName = lastName;
+        this.lastName = lastName;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.pw = password;
     }
 
-    public void setDietician(Boolean dietician) {
+    public void setDietician(boolean dietician) {
         this.dietician = dietician;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
-    }
+    /*public void setUserid(String userId) {
+        this.userId = userId;
+    }*/
 
     public void setWeight(String weight){ this.weight = weight; }
 
     public void setHeight(String height) { this.height = height; }
 
-    HashMap<String,Object> toJson(){
+    public void setIsMale(boolean isMale) { this.isMale = isMale; }
+
+
+
+    /*HashMap<String,Object> toJson(){
         HashMap<String, Object> result = new HashMap<>();
         result.put("userid", userid);
         result.put("FirstName", FirstName);
@@ -91,5 +103,5 @@ public class User {
         result.put("weight", weight);
         result.put("height", height);
         return result;
-    }
+    }*/
 }

@@ -8,7 +8,7 @@
     tools:context="com.example.chen.cuntada_app.app.DetailsActivity">
 
     <Spinner
-        android:id="@+id/weight"
+        android:id="@+id/weightEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:drawable/btn_dropdown"

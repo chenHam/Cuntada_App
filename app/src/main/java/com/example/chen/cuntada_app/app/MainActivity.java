@@ -7,40 +7,29 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     User userLogIn;
-    private Button buttonSignIn;
-    private EditText Email;
-    private EditText Pass;
-    private Button SignUp;
+
+    private Button loginButton;
+    private EditText emailEditText;
+    private EditText pwEditText;
+    private Button signUpButton;
     private ProgressDialog progressDialog;
+
     private FirebaseAuth firebaseAuth;
 
-    private static final String TAG = MainActivity.class.getSimpleName();
-    private DatabaseReference mFirebaseDatabase;
-    private FirebaseDatabase mFirebaseInstance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,60 +37,78 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
-        if(firebaseAuth.getCurrentUser()!=null){
-            finish();
-            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+        if(firebaseAuth.getCurrentUser() != null){
+            startActivity(new Intent(getApplicationContext(), AllActivity.class));
         }
 
-        Email = (EditText) findViewById(R.id.user_login);
-        Pass = (EditText) findViewById(R.id.pass_login);
-        SignUp = (Button) findViewById(R.id.SignUpFromLogin);
-        buttonSignIn = (Button) findViewById(R.id.button_login);
+        emailEditText = (EditText) findViewById(R.id.emailEditText);
+        pwEditText = (EditText) findViewById(R.id.pwEditText);
+        signUpButton = (Button) findViewById(R.id.signUpButton);
+        loginButton = (Button) findViewById(R.id.loginButton);
+
         progressDialog = new ProgressDialog(this);
 
 
-        buttonSignIn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                login_Button(view);
+        loginButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                Log.d("Tokyo", "login Button clicked");
+                final String emailString = emailEditText.getText().toString();
+                final String pwString = pwEditText.getText().toString();
+
+                // check input
+
+                firebaseAuth.signInWithEmailAndPassword(emailString, pwString).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            startActivity(new Intent(getApplicationContext(),AllActivity.class));
+                        } else {
+                            Log.d("Tokyo", "wrong email or pw");
+                        }
+                    }
+                });
+
+
             }
         });
 
-        SignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SignUp(view);
+        signUpButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                Log.d("Tokyo", "signUp Button clicked");
+                startActivity(new Intent(getApplicationContext(),RegistrationActivity.class));
+
+
+                //progressDialog.setMessage("Registering user...");
+                //progressDialog.show();
+
+
             }
         });
+
+        //startActivity(new Intent(getApplicationContext(),AllActivity.class));
     }
 
+
+    /*
         public void login_Button(View view){
-        String userEmail = Email.getText().toString().trim();
+        String userEmail = email.getText().toString().trim();
         String pas = Pass.getText().toString().trim();
-        UserLogin();
+        //UserLogin();
 //        startActivity(new Intent(getApplicationContext(), AllActivity.class));
 
         }
     public void SignUp(View view){
         finish();
         startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
-    }
+    }*/
 
 
-     void UserLogin(){
+     /*void UserLogin(){
 
         String email = Email.getText().toString().trim();
         final String password = Pass.getText().toString().trim();
 
-        if(TextUtils.isEmpty(email)){
-            Toast.makeText(this, "Please enter email", Toast.LENGTH_LONG).show();
-            return;
-        }
-        if(TextUtils.isEmpty(password)){
-            Toast.makeText(this, "Please enter password", Toast.LENGTH_LONG).show();
-            return;
-        }
+
 
 
          FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -157,19 +164,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-    }
+    }*/
 
-    @Override
+    /*@Override
     public void onClick(View view) {
-        if(view==buttonSignIn){
+        if(view==loginButton){
             UserLogin();
         }
-        if(view==SignUp){
+        if(view==signUpButton){
             finish();
             startActivity(new Intent(this,RegisterActivity.class));
         }
 
-    }
+    }*/
 
 
 //    @Override
