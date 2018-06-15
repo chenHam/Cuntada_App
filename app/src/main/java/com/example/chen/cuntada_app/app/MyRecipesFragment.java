@@ -77,9 +77,9 @@ public class MyRecipesFragment extends Fragment {
                 //Log.d("TAG","item selected:" + i);
                 Log.d("Tokyo", "item selected");
                 TextView name = (TextView) view.findViewById(R.id.recipeNameTextView);
-                TextView cateogry = (TextView) view.findViewById(R.id.recipeNameTextView);
-                TextView ingredients = (TextView) view.findViewById(R.id.recipeNameTextView);
-                TextView instructions = (TextView) view.findViewById(R.id.recipeNameTextView);
+                TextView cateogry = (TextView) view.findViewById(R.id.recipeCategoryTextView);
+                TextView ingredients = (TextView) view.findViewById(R.id.recipeIngredientsTextView);
+                TextView instructions = (TextView) view.findViewById(R.id.recipeInstructionsTextView);
                 ImageView avatar = (ImageView) view.findViewById(R.id.recipeImage);
                 Bitmap bitmap = ((BitmapDrawable)avatar.getDrawable()).getBitmap();
 

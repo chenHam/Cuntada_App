@@ -95,6 +95,11 @@ public class RecipesActivity extends AppCompatActivity{
                 String instructions = intent.getStringExtra("instructions");
                 Bitmap avatar = (Bitmap) intent.getExtras().get("avatar");
 
+                Log.d("Tokyo", name);
+                Log.d("Tokyo", category);
+                Log.d("Tokyo", ingredients);
+                Log.d("Tokyo", instructions);
+
                 Bundle bundle = new Bundle();
                 bundle.putString("name", name);
                 bundle.putString("category", category);

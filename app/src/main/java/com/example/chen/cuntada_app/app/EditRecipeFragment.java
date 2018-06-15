@@ -17,6 +17,10 @@ import android.widget.Toast;
 import com.example.chen.cuntada_app.app.Model.Model;
 import com.example.chen.cuntada_app.app.Model.Recipe;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -61,10 +65,12 @@ public class EditRecipeFragment extends Fragment {
 
         //progress . setVisibility(View.GONE);
 
-        /*addRecipeButton.setOnClickListener(new View.OnClickListener() {
+        addRecipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //progress . setVisibility(View.VISIBLE);
+
+                // check if valid
 
                 final Recipe recipe = new Recipe();
                 recipe.name = nameEditText.getText().toString();
@@ -81,7 +87,6 @@ public class EditRecipeFragment extends Fragment {
 
                 recipe.publisherId = userId;
 
-
                 //save image
                 if (imageBitmap != null) {
                     Model.instance.saveImage(imageBitmap, new Model.SaveImageListener() {
@@ -90,8 +95,17 @@ public class EditRecipeFragment extends Fragment {
                             //save student obj
                             Log.d("Tokyo", "adding recipe");
                             recipe.avatar = url;
-                            Model.instance.addStudent(recipe);
-                            //getActivity().getSupportFragmentManager().popBackStack();
+                            final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("recipes");
+                            HashMap<String, Object> result = new HashMap<>();
+                            //result.put("name", rec);
+                            result.put("category", recipe.category);
+                            result.put("ingredients", recipe.ingredients);
+                            result.put("instructions", recipe.instructions);
+                            result.put("avatar", recipe.avatar);
+                            databaseReference.child(recipe.name).updateChildren(result);
+
+                            //Model.instance.addStudent(recipe);
+                            getActivity().getSupportFragmentManager().popBackStack();
                         }
                     });
                 }
@@ -107,7 +121,7 @@ public class EditRecipeFragment extends Fragment {
                     startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
                 }
             }
-        });*/
+        });
         return view;
     }
 
