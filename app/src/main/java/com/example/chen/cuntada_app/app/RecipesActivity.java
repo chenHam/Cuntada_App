@@ -44,6 +44,8 @@ import com.google.firebase.auth.FirebaseAuth;
 //
 public class RecipesActivity extends AppCompatActivity{
 
+    // auth check if logged in
+
     //private FirebaseAuth firebaseAuth;
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     String userId = firebaseAuth.getCurrentUser().getUid();
@@ -53,29 +55,24 @@ public class RecipesActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipes);
 
-        boolean b = getIntent().getBooleanExtra("showMyRecipes", false);
-        if(b){
-            Log.d("Tokyo","showMyRecipes = true");
-        } else{
-            Log.d("Tokyo","showMyRecipes = false");
-        }
+        boolean showMyRecipes = getIntent().getBooleanExtra("showMyRecipes", false);
 
         if (savedInstanceState == null) {
-            /*RecipesListFragment fragment = new RecipesListFragment();
-            FragmentTransaction tran = getSupportFragmentManager().beginTransaction();
-            tran.add(R.id.main_container, fragment);
-            //tran.addToBackStack("");
-            tran.commit();*/
-            Log.d("Tokyo", "the userId for creating MyRecipesFragment is: " + userId);
-            MyRecipesFragment fragment =  new MyRecipesFragment();
-            FragmentTransaction tran = getSupportFragmentManager().beginTransaction();
-            tran.add(R.id.main_container, fragment);
-            //tran.addToBackStack("");
-            tran.commit();
+            if(!showMyRecipes){
+                RecipesListFragment fragment = new RecipesListFragment();
+                FragmentTransaction tran = getSupportFragmentManager().beginTransaction();
+                tran.add(R.id.main_container, fragment);
+                //tran.addToBackStack("");
+                tran.commit();
+            } else {
+                MyRecipesFragment fragment =  new MyRecipesFragment();
+                FragmentTransaction tran = getSupportFragmentManager().beginTransaction();
+                tran.add(R.id.main_container, fragment);
+                //tran.addToBackStack("");
+                tran.commit();
+            }
+
         }
-
-        Log.d("Tokyo", "recipes activity on create");
-
     }
 
     @Override
@@ -93,122 +90,10 @@ public class RecipesActivity extends AppCompatActivity{
                 NewRecipeFragment fragment = new NewRecipeFragment();
                 FragmentTransaction tran = getSupportFragmentManager().beginTransaction();
                 tran.replace(R.id.main_container, fragment);
-                //tran.addToBackStack("tag");
+                tran.addToBackStack("tag");
                 tran.commit();
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
 }
-//    private static final String TAG = MainActivity.class.getSimpleName();
-//
-//    private DatabaseReference RecipeDB;
-//    EditText recipes_name, ingredients, preparation;
-//    Button saveButton;
-//    Spinner category;
-//    String rn, ing, pr, ca;
-//
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        View view = inflater.inflate(R.layout.activity_recipes, container, false);
-//        RecipeDB = FirebaseDatabase.getInstance().getReference("recipes");
-//
-//        EditText recipes_name = view.findViewById(R.id.recipes_name);
-//        EditText ingredients = view.findViewById(R.id.ingredients);
-//        EditText preparation = view.findViewById(R.id.preparation);
-//        String[] categoryList = new String[]{"Vegan", "Gluten free", "Kosher"};
-//
-//
-//        if (savedInstanceState == null) {
-//            AddRecipes fragmentAddRecipes = new AddRecipes();
-//            ShowRecipes fragmentShowRecipes = new ShowRecipes();
-//            FragmentTransaction tran = getFragmentManager().beginTransaction();
-//            tran.add(R.id.main_container, fragmentAddRecipes);
-//            tran.add(R.id.main_container, fragmentShowRecipes);
-//            tran.commit();
-//        }
-//
-//        saveButton = (Button) view.findViewById(R.id.button_save_recipe);
-//        saveButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(), AllActivity.class);
-//                getActivity().startActivity(intent);
-//                SaveRecipeButton(view);
-//            }
-//        });
-//        return view;
-//    }
-//
-//    protected void SaveRecipeButton(View view){
-//        rn = recipes_name.getText().toString().trim();
-//        ing = ingredients.getText().toString().trim();
-//        pr = preparation.getText().toString().trim();
-//        ca = category.toString().trim();
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("recipe").child(rn);
-//
-//        myRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                if(dataSnapshot.exists()){
-//
-//
-//                }
-//                else{
-//                    CreateRecipe();
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//    }
-//
-//    void CreateRecipe(){
-//
-//        String id = RecipeDB.push().getKey();
-//        Recipes recipe = new Recipes(rn,ing,pr,ca);
-//        addRecipe(recipe, new OnCreation() {
-//            @Override
-//            public void onCompletion(boolean success) {
-//                Log.d("TAG","created");
-//                //Toast.makeText(getActivity(), "User Details Updated!", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        Toast.makeText(getActivity(),"added", Toast.LENGTH_LONG).show();
-//        startActivity(new Intent(getActivity().getApplicationContext(), AllActivity.class));
-//
-//
-//    }
-//    public interface OnCreation{
-//        public void onCompletion(boolean success);
-//    }
-//    public static void addRecipe(Recipes recipe, final OnCreation listener) {
-//        Log.d("TAG", "add user to firebase");
-//        HashMap<String, Object> json = recipe.toJson();
-//        json.put("lastUpdated", ServerValue.TIMESTAMP);
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("recipe");
-//        DatabaseReference ref = myRef.child(recipe.RecipeName);
-//        ref.setValue(json, new DatabaseReference.CompletionListener() {
-//            @Override
-//            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-//                if (databaseError != null) {
-//                    Log.e("TAG", "Error: User could not be saved "
-//                            + databaseError.getMessage());
-//                    listener.onCompletion(false);
-//                } else {
-//                    Log.e("TAG", "Success : User saved successfully.");
-//                    listener.onCompletion(true);
-//                }
-//            }
-//        });
-//
-//    }
-//
-//}

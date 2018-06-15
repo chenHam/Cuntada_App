@@ -55,8 +55,6 @@ public class AllActivity extends AppCompatActivity {
 
         final Intent intent = new Intent(getApplicationContext(), RecipesActivity.class);
 
-        //startActivity(intent);
-
         recipesButton = (Button) findViewById(R.id.recipesButton);
         recipesButton.setOnClickListener(new View.OnClickListener() {
             @Override
