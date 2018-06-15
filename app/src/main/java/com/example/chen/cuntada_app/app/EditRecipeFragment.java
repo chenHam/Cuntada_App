@@ -34,6 +34,10 @@ public class EditRecipeFragment extends Fragment {
     //ProgressBar progress;
     Button addRecipeButton;
     Button editPictureButton;
+    Button deleteRecipeButton;
+
+    final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("recipes");
+
 
     public EditRecipeFragment() {
         // Required empty public constructor
@@ -52,6 +56,7 @@ public class EditRecipeFragment extends Fragment {
         avatar = view.findViewById(R.id.recipeImage);
         addRecipeButton = view.findViewById(R.id.addRecipeButton);
         editPictureButton = view.findViewById(R.id.editPictureButton);
+        deleteRecipeButton = view.findViewById(R.id.deleteRecipeButton);
 
         nameEditText.setText(getArguments().getString("name"));
         categoryEditText.setText(getArguments().getString("category"));
@@ -60,6 +65,7 @@ public class EditRecipeFragment extends Fragment {
 
         Bitmap bitmapimage = getArguments().getParcelable("avatar");
         avatar.setImageBitmap(bitmapimage);
+
         // load
 
 
@@ -95,7 +101,6 @@ public class EditRecipeFragment extends Fragment {
                             //save student obj
                             Log.d("Tokyo", "adding recipe");
                             recipe.avatar = url;
-                            final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("recipes");
                             HashMap<String, Object> result = new HashMap<>();
                             //result.put("name", rec);
                             result.put("category", recipe.category);
@@ -122,7 +127,19 @@ public class EditRecipeFragment extends Fragment {
                 }
             }
         });
+
+        deleteRecipeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                databaseReference.child(nameEditText.getText().toString()).removeValue();
+                getActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
+
+
         return view;
+
+
     }
 
     Bitmap imageBitmap;

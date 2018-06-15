@@ -53,7 +53,13 @@
         android:id="@+id/editPictureButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Picture" />
+        android:text="Edit Picture" />
+
+    <Button
+        android:id="@+id/deleteRecipeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete Recipe" />
 
     <ImageView
         android:id="@+id/recipeImage"
