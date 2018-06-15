@@ -23,9 +23,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegisterActivity"
-            android:exported="true" />
-        <activity
             android:name=".DetailsActivity"
             android:exported="true" />
         <activity
