@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -25,12 +26,22 @@ import java.util.HashMap;
 
 public class MyDetails extends Activity{
 
-    Button calculateButton;
-    EditText body_weight,height_edit;
-    TextView bmi;
-    int height,weight;
-    Button saveDetailsButton;
+
+
     private FirebaseAuth firebaseAuth;
+
+    EditText firstNameEditText;
+    EditText lastNameEditText;
+    CheckBox dieticanCheckBox;
+    EditText weightEditText;
+    EditText heightEditText;
+    RadioGroup genderRadioGroup;
+
+    Button saveDetailsButton;
+    Button calculateBmiButton;
+
+    TextView bmiTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,25 +53,39 @@ public class MyDetails extends Activity{
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
 
-        body_weight = (EditText) findViewById(R.id.body_weight);
-        height_edit = (EditText) findViewById(R.id.height_edit);
-        bmi = (TextView) findViewById(R.id.bmi_edit);
+        firstNameEditText = (EditText) findViewById(R.id.firstNameEditText);
+        lastNameEditText = (EditText) findViewById(R.id.lastNameEditText);
+        dieticanCheckBox = (CheckBox) findViewById(R.id.dieticanCheckBox);
+        weightEditText = (EditText) findViewById(R.id.weightEditText);
+        heightEditText = (EditText) findViewById(R.id.heightEditText);
+        genderRadioGroup = (RadioGroup) findViewById(R.id.genderRadioGroup);
 
+        saveDetailsButton = (Button) findViewById(R.id.saveDetailsButton);
+        calculateBmiButton = (Button) findViewById(R.id.calculateBmiButton);
 
-        //User aux = new User();
+        bmiTextView = (TextView) findViewById(R.id.bmiTextView);
+        bmiTextView.setVisibility(View.INVISIBLE);
 
         final String userId = firebaseAuth.getCurrentUser().getUid();
-        final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
 
+        //load data
+        final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
         databaseReference.child(userId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 //System.out.println(snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
                 // add spiner
-                String weight = (String) snapshot.child("weight").getValue();
-                String height = (String) snapshot.child("height").getValue();
-                body_weight.setText(weight);
-                height_edit.setText(height);
+                firstNameEditText.setText((String) snapshot.child("firstName").getValue());
+                lastNameEditText.setText((String) snapshot.child("lastName").getValue());
+                dieticanCheckBox.setChecked((Boolean) snapshot.child("dietician").getValue());
+                weightEditText.setText((String) snapshot.child("weight").getValue());
+                heightEditText.setText((String) snapshot.child("height").getValue());
+                boolean isMale = (Boolean) snapshot.child("isMale").getValue();
+                if(isMale){
+                    genderRadioGroup.check(R.id.maleGender);
+                } else {
+                    genderRadioGroup.check(R.id.femaleGender);
+                }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -70,22 +95,49 @@ public class MyDetails extends Activity{
         //databaseReference.child(userId).setValue(user);
 
 
-        calculateButton = (Button)findViewById(R.id.button_calculate);
-        calculateButton.setOnClickListener(new View.OnClickListener(){
+        calculateBmiButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                CalculateBMI(view);
+                if(weightEditText.getText().toString().equals("") ||
+                        heightEditText.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(),
+                            "You must fill weight and height fields!", Toast.LENGTH_LONG).show();
+                }
+
+                int weight;
+                try {
+                    weight = Integer.parseInt(weightEditText.getText().toString());
+                } catch (Exception e){
+                    Toast.makeText(getApplicationContext(), "Weight must be a number!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                int height;
+                try {
+                    height = Integer.parseInt(heightEditText.getText().toString());
+                } catch (Exception e){
+                    Toast.makeText(getApplicationContext(), "Height must be a number!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                double res_bmi = (double)weight / (height*height);
+                bmiTextView.setText(String.valueOf(res_bmi));
+                bmiTextView.setVisibility(View.VISIBLE);
             }
         });
 
-        saveDetailsButton = (Button) findViewById(R.id.saveDetailsButton);
         saveDetailsButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                HashMap<String, Object> result = new HashMap<>();
-                result.put("weight", body_weight.getText().toString());
-                result.put("height", height_edit.getText().toString());
 
+                // TODO: check if fields are legal and toast& return if not
+
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("firstName", firstNameEditText.getText().toString());
+                result.put("lastName", lastNameEditText.getText().toString());
+                result.put("dietican", dieticanCheckBox.isChecked());
+                result.put("weight", weightEditText.getText().toString());
+                result.put("height", heightEditText.getText().toString());
+                result.put("isMale", genderRadioGroup.getCheckedRadioButtonId() == R.id.maleGender);
                 databaseReference.child(userId).updateChildren(result);
                 startActivity(new Intent(getApplicationContext(), AllActivity.class));
 
@@ -95,11 +147,6 @@ public class MyDetails extends Activity{
 
 
     public void CalculateBMI(View view){
-        height = Integer.parseInt(height_edit.getText().toString());
-        weight = Integer.parseInt(body_weight.getText().toString());
 
-        double res_bmi = weight / (height*height);
-
-        bmi.setText(String.valueOf(res_bmi));
     }
 }

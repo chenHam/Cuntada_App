@@ -3,7 +3,9 @@ package com.example.chen.cuntada_app.app;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -73,7 +76,21 @@ public class MyRecipesFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //Log.d("TAG","item selected:" + i);
                 Log.d("Tokyo", "item selected");
-                getFragmentManager().popBackStack();
+                TextView name = (TextView) view.findViewById(R.id.recipeNameTextView);
+                TextView cateogry = (TextView) view.findViewById(R.id.recipeNameTextView);
+                TextView ingredients = (TextView) view.findViewById(R.id.recipeNameTextView);
+                TextView instructions = (TextView) view.findViewById(R.id.recipeNameTextView);
+                ImageView avatar = (ImageView) view.findViewById(R.id.recipeImage);
+                Bitmap bitmap = ((BitmapDrawable)avatar.getDrawable()).getBitmap();
+
+                //Log.d("Tokyo", textView.getText().toString());
+                Intent intent = new Intent("EDIT_RECIPE");
+                intent.putExtra("name", name.getText().toString());
+                intent.putExtra("cateogry", cateogry.getText().toString());
+                intent.putExtra("ingredients", ingredients.getText().toString());
+                intent.putExtra("instructions", instructions.getText().toString());
+                intent.putExtra("avatar", bitmap);
+                getActivity().sendBroadcast(intent);
             }
         });
         return view;

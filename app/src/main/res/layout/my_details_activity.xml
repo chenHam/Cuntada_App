@@ -24,22 +24,6 @@
         android:hint="Last name" />
 
 
-    <EditText
-        android:id="@+id/emailEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/lastNameEditText"
-        android:layout_centerHorizontal="true"
-        android:hint="Email" />
-
-    <EditText
-        android:id="@+id/pwEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:hint="Password"
-        android:inputType="textPassword" />
     <CheckBox
         android:id="@+id/dieticanCheckBox"
         android:layout_width="match_parent"
@@ -88,33 +72,26 @@
 
 
     <Button
-        android:id="@+id/registerButton"
+        android:id="@+id/saveDetailsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SAVE"
+        android:text="Save details"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="379dp" />
 
 
+    <Button
+        android:id="@+id/calculateBmiButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="CalculateBMI"
+        android:text="Calculate BMI"
+        tools:ignore="MissingConstraints" />
+
     <TextView
-        android:id="@+id/bmi"
+        android:id="@+id/bmiTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/bmi_title" />
-
-    <Button
-        android:id="@+id/button_calculate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="CalculateBMI"
-        android:text="Calculate"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/saveDetailsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save details" />
-
 </LinearLayout>

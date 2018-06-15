@@ -1,6 +1,11 @@
 package com.example.chen.cuntada_app.app;
 
 import android.app.Fragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
@@ -50,6 +55,9 @@ public class RecipesActivity extends AppCompatActivity{
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     String userId = firebaseAuth.getCurrentUser().getUid();
 
+    private BroadcastReceiver receiver;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +81,38 @@ public class RecipesActivity extends AppCompatActivity{
             }
 
         }
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("EDIT_RECIPE");
+
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                String name = intent.getStringExtra("name");
+                String category = intent.getStringExtra("cateogry");
+                String ingredients = intent.getStringExtra("ingredients");
+                String instructions = intent.getStringExtra("instructions");
+                Bitmap avatar = (Bitmap) intent.getExtras().get("avatar");
+
+                Bundle bundle = new Bundle();
+                bundle.putString("name", name);
+                bundle.putString("category", category);
+                bundle.putString("ingredients", ingredients);
+                bundle.putString("instructions", instructions);
+                bundle.putParcelable("avatar", avatar);
+
+                EditRecipeFragment fragment = new EditRecipeFragment();
+                fragment.setArguments(bundle);
+                FragmentTransaction tran = getSupportFragmentManager().beginTransaction();
+                tran.replace(R.id.main_container, fragment);
+                tran.addToBackStack("tag");
+                tran.commit();
+
+                //getSupportFragmentManager().popBackStack();
+            }
+        };
+        registerReceiver(receiver, filter);
     }
 
     @Override
@@ -96,4 +136,14 @@ public class RecipesActivity extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    protected void onDestroy() {
+        if (receiver != null) {
+            unregisterReceiver(receiver);
+            receiver = null;
+        }
+        super.onDestroy();
+    }
+
 }
