@@ -7,43 +7,48 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.chen.cuntada_app.app.Model.Model;
 import com.example.chen.cuntada_app.app.Model.Recipe;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
-
-public class RecipesListFragment extends Fragment {
-    //private OnFragmentInteractionListener mListener;
+public class MyRecipesFragment extends Fragment {
 
     ListView list;
-    MyAdapter myAdapter = new MyAdapter();;
-    RecipeListViewModel dataModel;
+    MyAdapter myAdapter2 = new MyAdapter();
+    RecipesByPublisherIdListViewModel dataModel;
+    public String publisherId;
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    final String userId = firebaseAuth.getCurrentUser().getUid();
 
-    public static RecipesListFragment newInstance() {
-        RecipesListFragment fragment = new RecipesListFragment();
+
+    public static MyRecipesFragment newInstance(String publisherId) {
+        MyRecipesFragment fragment = new MyRecipesFragment();
+        //fragment.publisherId = publisherId;
         return fragment;
     }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        dataModel = ViewModelProviders.of(this).get(RecipeListViewModel.class);
-        dataModel.getData().observe(this, new Observer<List<Recipe>>() {
+        Log.d("Tokyo", "before the userId");
+        Log.d("Tokyo", userId);
+        dataModel = ViewModelProviders.of(this).get(RecipesByPublisherIdListViewModel.class);
+        dataModel.getData(userId).observe(this, new Observer<List<Recipe>>() {
             @Override
             public void onChanged(@Nullable List<Recipe> recipes) {
-                myAdapter.notifyDataSetChanged();
+                myAdapter2.notifyDataSetChanged();
                 Log.d("TAG","notifyDataSetChanged" + recipes.size());
             }
         });
@@ -55,24 +60,24 @@ public class RecipesListFragment extends Fragment {
         Model.instance.cancellGetAllRecipes();
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_recipes_list, container, false);
 
         list = view.findViewById(R.id.recipesListView);
-        list.setAdapter(myAdapter);
-        /*list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        list.setAdapter(myAdapter2);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("TAG","item selected:" + i);
+                //Log.d("TAG","item selected:" + i);
+                Log.d("Tokyo", "item selected");
+                getFragmentManager().popBackStack();
             }
-        });*/
+        });
         return view;
     }
-
-
-
     @Override
     public void onDetach() {
         super.onDetach();
@@ -86,9 +91,7 @@ public class RecipesListFragment extends Fragment {
 
         @Override
         public int getCount() {
-            Log.d("TAG","list size:" + dataModel.getData().getValue().size());
-
-            return dataModel.getData().getValue().size();
+            return dataModel.getData(userId).getValue().size();
 
         }
 
@@ -104,9 +107,6 @@ public class RecipesListFragment extends Fragment {
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-
-            Log.d("London", "getView is called!");
-
             if (view == null){
                 view = LayoutInflater.from(getActivity()).inflate(R.layout.recipe_list_item,null);
 
@@ -121,7 +121,7 @@ public class RecipesListFragment extends Fragment {
                 });*/
             }
 
-            final Recipe recipe = dataModel.getData().getValue().get(i);
+            final Recipe recipe = dataModel.getData(userId).getValue().get(i);
 
             TextView recipeNameTextView = view.findViewById(R.id.recipeNameTextView);
             TextView recipeCategoryTextView = view.findViewById(R.id.recipeCategoryTextView);
@@ -146,7 +146,7 @@ public class RecipesListFragment extends Fragment {
                     @Override
                     public void onDone(Bitmap imageBitmap) {
                         //if (recipe.id.equals(avatarView.getTag()) && imageBitmap != null) {
-                            avatarView.setImageBitmap(imageBitmap);
+                        avatarView.setImageBitmap(imageBitmap);
                         //}
                     }
                 });

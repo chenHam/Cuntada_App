@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 //package com.example.chen.cuntada_app.app;
 //
 //import android.app.Activity;
@@ -42,18 +44,30 @@ import android.view.MenuItem;
 //
 public class RecipesActivity extends AppCompatActivity{
 
+    //private FirebaseAuth firebaseAuth;
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    String userId = firebaseAuth.getCurrentUser().getUid();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipes);
 
         if (savedInstanceState == null) {
-            RecipesListFragment fragment = new RecipesListFragment();
+            /*RecipesListFragment fragment = new RecipesListFragment();
             FragmentTransaction tran = getSupportFragmentManager().beginTransaction();
             tran.add(R.id.main_container, fragment);
-            tran.addToBackStack("");
+            //tran.addToBackStack("");
+            tran.commit();*/
+            Log.d("Tokyo", "the userId for creating MyRecipesFragment is: " + userId);
+            MyRecipesFragment fragment =  new MyRecipesFragment();
+            FragmentTransaction tran = getSupportFragmentManager().beginTransaction();
+            tran.add(R.id.main_container, fragment);
+            //tran.addToBackStack("");
             tran.commit();
         }
+
+        Log.d("Tokyo", "recipes activity on create");
 
     }
 
@@ -72,7 +86,7 @@ public class RecipesActivity extends AppCompatActivity{
                 NewRecipeFragment fragment = new NewRecipeFragment();
                 FragmentTransaction tran = getSupportFragmentManager().beginTransaction();
                 tran.replace(R.id.main_container, fragment);
-                tran.addToBackStack("tag");
+                //tran.addToBackStack("tag");
                 tran.commit();
                 return true;
         }

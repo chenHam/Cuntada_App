@@ -16,9 +16,7 @@ public class RecipeAsynchDao {
         class MyAsynchTask extends AsyncTask<String,String,List<Recipe>>{
             @Override
             protected List<Recipe> doInBackground(String... strings) {
-                Log.d("Tokyo", "@@@@@@@@@@@@ before get all");
                 List<Recipe> stList = AppLocalDb.db.recipeDao().getAll();
-                Log.d("Tokyo", "@@@@@@@@@@@@ after get all");
                 return stList;
             }
 
@@ -31,6 +29,25 @@ public class RecipeAsynchDao {
         MyAsynchTask task = new MyAsynchTask();
         task.execute();
     }
+
+    static public void getRecipesByPublisherId(final String publisherId, final RecipeAsynchDaoListener<List<Recipe>> listener) {
+        class MyAsynchTask extends AsyncTask<String,String,List<Recipe>>{
+            @Override
+            protected List<Recipe> doInBackground(String... strings) {
+                List<Recipe> stList = AppLocalDb.db.recipeDao().getRecipesByPublisherId(publisherId);
+                return stList;
+            }
+
+            @Override
+            protected void onPostExecute(List<Recipe> recipes) {
+                super.onPostExecute(recipes);
+                listener.onComplete(recipes);
+            }
+        }
+        MyAsynchTask task = new MyAsynchTask();
+        task.execute();
+    }
+
 
 
     static void insertAll(final List<Recipe> recipes, final RecipeAsynchDaoListener<Boolean> listener){
@@ -52,5 +69,7 @@ public class RecipeAsynchDao {
         MyAsynchTask task = new MyAsynchTask();
         task.execute(recipes);
     }
+
+
 
 }

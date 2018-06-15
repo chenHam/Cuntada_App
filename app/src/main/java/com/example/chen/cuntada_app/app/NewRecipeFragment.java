@@ -79,7 +79,7 @@ public class NewRecipeFragment extends Fragment {
                         @Override
                         public void onDone(String url) {
                             //save student obj
-                            Log.d("Tokyo", url);
+                            Log.d("Tokyo", "adding recipe");
                             recipe.avatar = url;
                             Model.instance.addStudent(recipe);
                             getActivity().getSupportFragmentManager().popBackStack();

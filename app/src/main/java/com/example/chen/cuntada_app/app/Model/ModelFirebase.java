@@ -70,6 +70,31 @@ public class ModelFirebase {
         });
     }
 
+    public void getAllRecipesByPublisherId(final String publisherId, final GetAllRecipesListener listener) {
+        DatabaseReference reRef = FirebaseDatabase.getInstance().getReference().child("recipes");
+        eventListener = reRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Recipe> recipesList = new LinkedList<>();
+
+                for (DataSnapshot stSnapshot: dataSnapshot.getChildren()) {
+                    Recipe recipe = stSnapshot.getValue(Recipe.class);
+                    if(recipe.publisherId.equals(publisherId)){
+                        recipesList.add(recipe);
+                    }
+                }
+                listener.onSuccess(recipesList);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+
     //Managing Files
     public void saveImage(Bitmap imageBitmap, final Model.SaveImageListener listener) {
         FirebaseStorage storage = FirebaseStorage.getInstance();

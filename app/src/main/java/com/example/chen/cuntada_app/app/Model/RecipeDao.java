@@ -14,6 +14,10 @@ public interface RecipeDao {
     @Query("select * from Recipe")
     List<Recipe> getAll();
 
+
+    @Query("SELECT * FROM Recipe WHERE publisherId=:publisherId")
+    List<Recipe> getRecipesByPublisherId(String publisherId);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(Recipe... recipes);
 

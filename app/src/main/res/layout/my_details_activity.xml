@@ -1,50 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    tools:context="com.example.chen.cuntada_app.app.MyDetails">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/body"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/firstNameEditText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/body_weight" />
+        android:layout_centerHorizontal="true"
+        android:hint="First name" />
+
+    <EditText
+        android:id="@+id/lastNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/firstNameEditText"
+        android:layout_centerHorizontal="true"
+        android:hint="Last name" />
 
 
     <EditText
-        android:id="@+id/body_weight"
-        android:layout_width="wrap_content"
+        android:id="@+id/emailEditText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:inputType="number"/>
-
-    <TextView
-        android:id="@+id/height"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Body Height" />
+        android:layout_above="@+id/lastNameEditText"
+        android:layout_centerHorizontal="true"
+        android:hint="Email" />
 
     <EditText
-        android:id="@+id/height_edit"
-        android:layout_width="wrap_content"
+        android:id="@+id/pwEditText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Height"
-        android:inputType="number"/>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:hint="Password"
+        android:inputType="textPassword" />
+    <CheckBox
+        android:id="@+id/dieticanCheckBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Dietician" />
+
+    <EditText
+        android:id="@+id/weightEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:hint="weight(in kg)" />
+
+    <EditText
+        android:id="@+id/heightEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/weightEditText"
+        android:layout_centerHorizontal="true"
+        android:hint="height(in cm)" />
+
+    <RadioGroup
+        android:id="@+id/genderRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="67dp">
+
+        <RadioButton
+            android:id="@+id/maleGender"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:checked="false"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/femaleGender"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:checked="false"
+            android:text="Famle" />
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SAVE"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="379dp" />
+
 
     <TextView
         android:id="@+id/bmi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/bmi_title" />
-
-    <TextView
-        android:id="@+id/bmi_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/button_calculate"
@@ -59,6 +116,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save details" />
-
 
 </LinearLayout>
