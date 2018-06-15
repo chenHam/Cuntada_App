@@ -8,6 +8,15 @@
     tools:context="com.example.chen.cuntada_app.app.AllActivity">
 
     <Button
+        android:id="@+id/bmiCalculatorButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:text="My Details"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
         android:id="@+id/recipesButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,21 +29,25 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
+        android:id="@+id/myRecipesButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:onClick="Recipes"
+        android:text="My Recipes"
+        app:layout_constraintTop_toBottomOf="@+id/recipesButton"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
         android:id="@+id/logOutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="log out"
-        app:layout_constraintTop_toBottomOf="@+id/recipesButton"
+        app:layout_constraintTop_toBottomOf="@+id/myRecipesButton"
         tools:layout_editor_absoluteX="0dp" />
 
-    <Button
-        android:id="@+id/bmiCalculatorButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:text="BMI Calculator"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+
 
 </android.support.constraint.ConstraintLayout>

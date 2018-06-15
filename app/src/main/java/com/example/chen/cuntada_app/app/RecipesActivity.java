@@ -53,6 +53,13 @@ public class RecipesActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipes);
 
+        boolean b = getIntent().getBooleanExtra("showMyRecipes", false);
+        if(b){
+            Log.d("Tokyo","showMyRecipes = true");
+        } else{
+            Log.d("Tokyo","showMyRecipes = false");
+        }
+
         if (savedInstanceState == null) {
             /*RecipesListFragment fragment = new RecipesListFragment();
             FragmentTransaction tran = getSupportFragmentManager().beginTransaction();

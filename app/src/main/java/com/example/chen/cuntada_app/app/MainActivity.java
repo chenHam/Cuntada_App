@@ -55,7 +55,10 @@ public class MainActivity extends AppCompatActivity {
                 final String emailString = emailEditText.getText().toString();
                 final String pwString = pwEditText.getText().toString();
 
-                // check input
+                if(emailString.equals("") || pwString.equals("")){
+                    Toast.makeText(getApplicationContext(), "You have to fill all fields!", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
                 firebaseAuth.signInWithEmailAndPassword(emailString, pwString).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -63,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             startActivity(new Intent(getApplicationContext(),AllActivity.class));
                         } else {
-                            Log.d("Tokyo", "wrong email or pw");
+                            Toast.makeText(getApplicationContext(), "Wrong Email or Password!", Toast.LENGTH_LONG).show();
+
                         }
                     }
                 });

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.chen.cuntada_app.app.Model.Model;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -45,7 +46,9 @@ public class RegistrationActivity extends AppCompatActivity {
         weightEditText = (EditText) findViewById(R.id.weightEditText);
         heightEditText = (EditText) findViewById(R.id.heightEditText);
         genderRadioGroup = (RadioGroup) findViewById(R.id.genderRadioGroup);
+        genderRadioGroup.check(R.id.maleGender);
         registerButton = (Button) findViewById(R.id.registerButton);
+
 
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -68,7 +71,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 boolean res = validateInput(firstName, lastName, email, pw, confirmPw, weight, height);
 
                 if(!res){
-                    return; // + error
+                    return;
                 }
 
                 final User user = new User(firstName, lastName, email, pw, isDietican, weight, height, isMale);
@@ -103,16 +106,31 @@ public class RegistrationActivity extends AppCompatActivity {
     public boolean validateInput(String firstName, String lastName, String email, String pw,
                                  String confirmPw, String weight, String height){
 
-        /*boolean res = false;
+        boolean res = false;
         if(firstName.equals("") || lastName.equals("") || email.equals("") || pw.equals("") ||
                 confirmPw.equals("") || weight.equals("") || height.equals("")){
-            // output
+            Toast.makeText(getApplicationContext(), "You have to fill all fields!", Toast.LENGTH_LONG).show();
+
             return res;
         }
         if(!pw.equals(confirmPw)){
-            //output
+            Toast.makeText(getApplicationContext(), "Passwords don't match!", Toast.LENGTH_LONG).show();
             return res;
-        }*/
+        }
+
+        try {
+            Integer.parseInt(weight);
+        } catch (Exception e){
+            Toast.makeText(getApplicationContext(), "Weight must be a number!", Toast.LENGTH_LONG).show();
+            return res;
+        }
+
+        try {
+            Integer.parseInt(height);
+        } catch (Exception e){
+            Toast.makeText(getApplicationContext(), "Height must be a number!", Toast.LENGTH_LONG).show();
+            return res;
+        }
 
         return true;
 
