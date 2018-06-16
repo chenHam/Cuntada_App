@@ -15,6 +15,7 @@
         android:layout_marginTop="72dp"
         android:hint="Email"
         app:layout_constraintHorizontal_bias="0.0"
+        android:textSize="25sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +29,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pwEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/pwEditText"
+        android:background="@drawable/button_background"/>
 
     <Button
         android:id="@+id/signUpButton"
@@ -39,7 +41,8 @@
         android:textAlignment="center"
         app:layout_constraintTop_toBottomOf="@+id/loginButton"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="0dp"
+        android:background="@drawable/button_background"/>
 
     <EditText
         android:id="@+id/pwEditText"
@@ -49,6 +52,8 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:textSize="25sp"
+        android:textColor="#000"
         app:layout_constraintTop_toBottomOf="@+id/emailEditText"
         tools:layout_editor_absoluteX="16dp" />
 

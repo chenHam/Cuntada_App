@@ -81,11 +81,13 @@ public class NewRecipeFragment extends Fragment {
                             //save student obj
                             Log.d("Tokyo", url);
                             recipe.avatar = url;
-                            Model.instance.addStudent(recipe);
-                            getActivity().getSupportFragmentManager().popBackStack();
+//                            Model.instance.addStudent(recipe);
+//                            getActivity().getSupportFragmentManager().popBackStack();
                         }
                     });
                 }
+                Model.instance.addStudent(recipe);
+                getActivity().getSupportFragmentManager().popBackStack();
             }
         });
 

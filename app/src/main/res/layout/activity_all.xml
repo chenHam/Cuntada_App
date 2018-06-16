@@ -11,13 +11,13 @@
         android:id="@+id/recipesButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginTop="16dp"
         android:onClick="Recipes"
         android:text="Recipes"
         app:layout_constraintTop_toBottomOf="@+id/bmiCalculatorButton"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="0dp"
+        android:background="@drawable/button_background"/>
 
     <Button
         android:id="@+id/logOutButton"
@@ -26,7 +26,8 @@
         android:layout_marginTop="16dp"
         android:text="log out"
         app:layout_constraintTop_toBottomOf="@+id/recipesButton"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="0dp"
+        android:background="@drawable/button_background"/>
 
     <Button
         android:id="@+id/bmiCalculatorButton"
@@ -35,6 +36,7 @@
         android:layout_marginTop="17dp"
         android:text="BMI Calculator"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="0dp"
+        android:background="@drawable/button_background"/>
 
 </android.support.constraint.ConstraintLayout>

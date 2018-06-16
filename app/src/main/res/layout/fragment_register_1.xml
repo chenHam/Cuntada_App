@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:textSize="20sp"
         android:hint="First name" />
 
     <EditText
@@ -21,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/firstNameEditText"
         android:layout_centerHorizontal="true"
+        android:textSize="20sp"
         android:hint="Last name" />
 
 
@@ -30,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/lastNameEditText"
         android:layout_centerHorizontal="true"
+        android:textSize="20sp"
         android:hint="Email" />
 
     <EditText
@@ -39,6 +42,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:hint="Password"
+        android:textSize="20sp"
         android:inputType="textPassword" />
 
     <EditText
@@ -48,12 +52,14 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:hint="Confirm password"
+        android:textSize="20sp"
         android:inputType="textPassword" />
 
     <CheckBox
         android:id="@+id/dieticanCheckBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="25sp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="Dietician" />
@@ -63,6 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:textSize="20sp"
         android:hint="weight(in kg)" />
 
     <EditText
@@ -71,6 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/weightEditText"
         android:layout_centerHorizontal="true"
+        android:textSize="20sp"
         android:hint="height(in cm)" />
 
     <RadioGroup
@@ -78,6 +86,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
+        android:textSize="20sp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="67dp">
 
@@ -85,6 +94,7 @@
             android:id="@+id/maleGender"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textSize="20sp"
             android:checked="false"
             android:text="Male" />
 
@@ -92,6 +102,7 @@
             android:id="@+id/femaleGender"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textSize="20sp"
             android:checked="false"
             android:text="Famle" />
     </RadioGroup>
@@ -104,6 +115,7 @@
         android:text="SAVE"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="379dp" />
+        tools:layout_editor_absoluteY="379dp"
+        android:background="@drawable/button_background"/>
 
 </LinearLayout>
