@@ -69,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressDialog.dismiss();
                         if(task.isSuccessful()){
+
                             startActivity(new Intent(getApplicationContext(),AllActivity.class));
                         } else {
                             Toast.makeText(getApplicationContext(), "Wrong Email or Password!", Toast.LENGTH_LONG).show();
-
                         }
                     }
                 });

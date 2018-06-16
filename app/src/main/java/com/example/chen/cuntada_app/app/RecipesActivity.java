@@ -63,6 +63,11 @@ public class RecipesActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipes);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+        if(firebaseAuth.getCurrentUser() == null){
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        }
+
         boolean showMyRecipes = getIntent().getBooleanExtra("showMyRecipes", false);
 
         if (savedInstanceState == null) {
