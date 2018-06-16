@@ -17,6 +17,9 @@ public class Recipe {
     public String avatar;
 
     // get functions
+    /*public String getId() {
+        return id;
+    }*/
     public String getName(){
         return name;
     }

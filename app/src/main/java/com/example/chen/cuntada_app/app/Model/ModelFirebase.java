@@ -36,6 +36,11 @@ public class ModelFirebase {
         mDatabase.child("recipes").child(recipe.name).setValue(recipe);
     }
 
+    public void deleteRecipe(String name){
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("recipes");
+        mDatabase.child(name).removeValue();
+    }
+
     public void cancellGetAllRecipes() {
         DatabaseReference reRef = FirebaseDatabase.getInstance().getReference().child("recipes");
         reRef.removeEventListener(eventListener);

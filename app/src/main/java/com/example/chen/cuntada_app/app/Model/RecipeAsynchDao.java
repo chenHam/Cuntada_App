@@ -70,6 +70,24 @@ public class RecipeAsynchDao {
         task.execute(recipes);
     }
 
+    static public void deleteRecipeByName(final String name, final RecipeAsynchDaoListener<List<Recipe>> listener) {
+        class MyAsynchTask extends AsyncTask<String,String,List<Recipe>>{
+            @Override
+            protected List<Recipe> doInBackground(String... strings) {
+                //List<Recipe> stList = AppLocalDb.db.recipeDao().getRecipesByPublisherId(publisherId);
+                AppLocalDb.db.recipeDao().deleteByName(name);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(List<Recipe> recipes) {
+                super.onPostExecute(recipes);
+                listener.onComplete(recipes);
+            }
+        }
+        MyAsynchTask task = new MyAsynchTask();
+        task.execute();
+    }
 
 
 }

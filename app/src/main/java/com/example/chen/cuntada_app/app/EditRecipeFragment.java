@@ -68,7 +68,6 @@ public class EditRecipeFragment extends Fragment {
 
         // load
 
-
         //progress . setVisibility(View.GONE);
 
         addRecipeButton.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +112,8 @@ public class EditRecipeFragment extends Fragment {
                             getActivity().getSupportFragmentManager().popBackStack();
                         }
                     });
+                } else {
+                    Log.d("Tokyo", "imageBitmap is null");
                 }
             }
         });
@@ -131,14 +132,11 @@ public class EditRecipeFragment extends Fragment {
         deleteRecipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                databaseReference.child(nameEditText.getText().toString()).removeValue();
+                Model.instance.deleteReciple(nameEditText.getText().toString());
                 getActivity().getSupportFragmentManager().popBackStack();
             }
         });
-
-
         return view;
-
 
     }
 

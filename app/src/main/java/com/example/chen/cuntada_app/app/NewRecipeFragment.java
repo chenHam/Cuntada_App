@@ -59,7 +59,7 @@ public class NewRecipeFragment extends Fragment {
 
         //progress . setVisibility(View.GONE);
 
-        /*addRecipeButton.setOnClickListener(new View.OnClickListener() {
+        addRecipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //progress . setVisibility(View.VISIBLE);
@@ -94,7 +94,7 @@ public class NewRecipeFragment extends Fragment {
                     });
                 }
             }
-        });*/
+        });
 
 
         /*Button cancel = view.findViewById(R.id.new_student_cancel);

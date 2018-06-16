@@ -23,4 +23,7 @@ public interface RecipeDao {
 
     @Delete
     void delete(Recipe student);
+
+    @Query("DELETE FROM Recipe WHERE name=:name")
+    void deleteByName(String name);
 }

@@ -90,6 +90,15 @@ public class Model {
         modelFirebase.addRecipe(recipe);
     }
 
+    public void deleteReciple(final String name){
+        RecipeAsynchDao.deleteRecipeByName(name, new RecipeAsynchDao.RecipeAsynchDaoListener<List<Recipe>>() {
+            @Override
+            public void onComplete(List<Recipe> data) {
+                modelFirebase.deleteRecipe(name);
+            }
+        });
+    }
+
 
     ////////////////////////////////////////////////////////
     //  getting recipes by id
