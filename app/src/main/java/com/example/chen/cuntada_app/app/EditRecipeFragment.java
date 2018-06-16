@@ -36,9 +36,6 @@ public class EditRecipeFragment extends Fragment {
     Button editPictureButton;
     Button deleteRecipeButton;
 
-    final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("recipes");
-
-
     public EditRecipeFragment() {
         // Required empty public constructor
     }
@@ -71,14 +68,9 @@ public class EditRecipeFragment extends Fragment {
         addRecipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // check if valid
 
                 final Recipe recipe = new Recipe();
                 recipe.name = nameEditText.getText().toString();
-
-                if (recipe.name.equals("")) {
-                    Toast.makeText(getActivity(), "You have to fill all fields!", Toast.LENGTH_LONG).show();
-                }
                 recipe.category = categoryEditText.getText().toString();
                 recipe.ingredients = ingredientsEditText.getText().toString();
                 recipe.instructions = instructionsEditText.getText().toString();
@@ -88,23 +80,31 @@ public class EditRecipeFragment extends Fragment {
 
                 recipe.publisherId = userId;
 
+                if (recipe.name.equals("") || recipe.category.equals("")
+                        || recipe.ingredients.equals("") || recipe.instructions.equals("")) {
+                    Toast.makeText(getActivity(), "You have to fill all fields!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                final HashMap<String, Object> result = new HashMap<>();
+                result.put("category", recipe.category);
+                result.put("ingredients", recipe.ingredients);
+                result.put("instructions", recipe.instructions);
+
                 //save image
                 if (imageBitmap != null) {
                     Model.instance.saveImage(imageBitmap, new Model.SaveImageListener() {
                         @Override
                         public void onDone(String url) {
                             recipe.avatar = url;
-                            HashMap<String, Object> result = new HashMap<>();
-                            result.put("category", recipe.category);
-                            result.put("ingredients", recipe.ingredients);
-                            result.put("instructions", recipe.instructions);
                             result.put("avatar", recipe.avatar);
                             Model.instance.updateRecipe(recipe.name, result);
                             getActivity().getSupportFragmentManager().popBackStack();
                         }
                     });
                 } else {
-                    Log.d("Tokyo", "imageBitmap is null");
+                    Model.instance.updateRecipe(recipe.name, result);
+                    getActivity().getSupportFragmentManager().popBackStack();
                 }
             }
         });

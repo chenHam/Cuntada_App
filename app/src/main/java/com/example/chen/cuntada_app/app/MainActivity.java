@@ -60,9 +60,14 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
+                progressDialog.setMessage("Logging in...");
+                progressDialog.show();
+
+
                 firebaseAuth.signInWithEmailAndPassword(emailString, pwString).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressDialog.dismiss();
                         if(task.isSuccessful()){
                             startActivity(new Intent(getApplicationContext(),AllActivity.class));
                         } else {
@@ -71,8 +76,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-
-
             }
         });
 
@@ -80,11 +83,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("Tokyo", "signUp Button clicked");
                 startActivity(new Intent(getApplicationContext(),RegistrationActivity.class));
-
-
-                //progressDialog.setMessage("Registering user...");
-                //progressDialog.show();
-
 
             }
         });

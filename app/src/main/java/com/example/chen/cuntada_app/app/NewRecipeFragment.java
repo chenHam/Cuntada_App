@@ -1,5 +1,6 @@
 package com.example.chen.cuntada_app.app;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ public class NewRecipeFragment extends Fragment {
     //ProgressBar progress;
     Button addRecipeButton;
     Button editPictureButton;
+    private ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,8 +57,7 @@ public class NewRecipeFragment extends Fragment {
         addRecipeButton  = view.findViewById(R.id.addRecipeButton);
         editPictureButton = view.findViewById(R.id.editPictureButton);
 
-        
-
+        progressDialog = new ProgressDialog(getActivity());
         //progress . setVisibility(View.GONE);
 
         addRecipeButton.setOnClickListener(new View.OnClickListener() {
@@ -66,10 +67,6 @@ public class NewRecipeFragment extends Fragment {
 
                 final Recipe recipe = new Recipe();
                 recipe.name = nameEditText.getText().toString();
-
-                if(recipe.name.equals("")){
-                    Toast.makeText(getActivity(), "You have to fill all fields!", Toast.LENGTH_LONG).show();
-                }
                 recipe.category = categoryEditText.getText().toString();
                 recipe.ingredients = ingredientsEditText.getText().toString();
                 recipe.instructions = instructionsEditText.getText().toString();
@@ -79,16 +76,29 @@ public class NewRecipeFragment extends Fragment {
 
                 recipe.publisherId = userId;
 
+                if(recipe.name.equals("") || recipe.category.equals("") ||
+                        recipe.ingredients.equals("") || recipe.instructions.equals("")){
+                    Toast.makeText(getActivity(), "You have to fill all fields!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                if(imageBitmap == null){
+                    progressDialog.dismiss();
+                    Toast.makeText(getActivity(), "You have to add a picture!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                progressDialog.setMessage("Saving Recipe...");
+                progressDialog.show();
 
                 //save image
                 if (imageBitmap != null) {
                     Model.instance.saveImage(imageBitmap, new Model.SaveImageListener() {
                         @Override
                         public void onDone(String url) {
-                            //save student obj
-                            Log.d("Tokyo", "adding recipe");
                             recipe.avatar = url;
                             Model.instance.addRecipe(recipe);
+                            progressDialog.dismiss();
                             getActivity().getSupportFragmentManager().popBackStack();
                         }
                     });

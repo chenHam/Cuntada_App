@@ -154,7 +154,7 @@ public class MyRecipesFragment extends Fragment {
             /*nameTv.setText(s.name);
             idTv.setText(s.id);
             cb.setChecked(s.checked);*/
-            //avatarView.setImageResource(R.drawable.avatar); -- default value!!
+            //avatarView.setImageResource(R.drawable.ic_launcher_background);
             //avatarView.setTag(s.id);*/
             if (recipe.avatar != null){
                 Model.instance.getImage(recipe.avatar, new Model.GetImageListener() {

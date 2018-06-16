@@ -153,8 +153,9 @@ public class ModelFirebase {
     //  Handle User
     ////////////////////////////////////////////////////////
 
-    public void addUser(User user){
-
+    public void addUser(String userId, User user){
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
+        databaseReference.child(userId).setValue(user);
     }
 
     public void updateUser(String userId, HashMap keyValues){

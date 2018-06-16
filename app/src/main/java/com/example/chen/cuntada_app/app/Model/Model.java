@@ -9,6 +9,8 @@ import android.util.Log;
 import android.webkit.URLUtil;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -259,8 +261,8 @@ public class Model {
     //  Handle User
     ////////////////////////////////////////////////////////
 
-    public void addUser(User user){
-
+    public void addUser(String userId, User user){
+        modelFirebase.addUser(userId, user);
     }
 
     public void updateUser(String userId, HashMap keyValues){

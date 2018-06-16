@@ -1,6 +1,7 @@
 package com.example.chen.cuntada_app.app;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,7 +43,7 @@ public class MyDetails extends Activity{
     Button calculateBmiButton;
 
     TextView bmiTextView;
-
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,14 +70,15 @@ public class MyDetails extends Activity{
 
         final String userId = firebaseAuth.getCurrentUser().getUid();
 
-        //load data
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading user data...");
+        progressDialog.show();
+
 
         final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
         databaseReference.child(userId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                //System.out.println(snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
-                // add spiner
                 firstNameEditText.setText((String) snapshot.child("firstName").getValue());
                 lastNameEditText.setText((String) snapshot.child("lastName").getValue());
                 dieticanCheckBox.setChecked((Boolean) snapshot.child("dietician").getValue());
@@ -88,13 +90,12 @@ public class MyDetails extends Activity{
                 } else {
                     genderRadioGroup.check(R.id.femaleGender);
                 }
+                progressDialog.dismiss();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-
-        //databaseReference.child(userId).setValue(user);
 
 
         calculateBmiButton.setOnClickListener(new View.OnClickListener(){
@@ -131,14 +132,37 @@ public class MyDetails extends Activity{
             @Override
             public void onClick(View view){
 
-                // TODO: check if fields are legal and toast& return if not
+                String firstName = firstNameEditText.getText().toString();
+                String lastName = firstNameEditText.getText().toString();
+                String weightStr = weightEditText.getText().toString();
+                String heightStr = heightEditText.getText().toString();
+
+                if(firstName.equals("") || lastName.equals("") || weightStr.equals("") || heightStr.equals("")){
+                    Toast.makeText(getApplicationContext(), "You must fill weight and height fields!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                int weight;
+                try {
+                    weight = Integer.parseInt(weightEditText.getText().toString());
+                } catch (Exception e){
+                    Toast.makeText(getApplicationContext(), "Weight must be a number!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                int height;
+                try {
+                    height = Integer.parseInt(heightEditText.getText().toString());
+                } catch (Exception e){
+                    Toast.makeText(getApplicationContext(), "Height must be a number!", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
                 HashMap<String, Object> result = new HashMap<>();
-                result.put("firstName", firstNameEditText.getText().toString());
-                result.put("lastName", lastNameEditText.getText().toString());
+                result.put("firstName", firstName);
+                result.put("lastName", lastName);
                 result.put("dietican", dieticanCheckBox.isChecked());
-                result.put("weight", weightEditText.getText().toString());
-                result.put("height", heightEditText.getText().toString());
+                result.put("weight", weightStr);
+                result.put("height", heightStr);
                 result.put("isMale", genderRadioGroup.getCheckedRadioButtonId() == R.id.maleGender);
 
                 Model.instance.updateUser(userId, result);
@@ -149,8 +173,4 @@ public class MyDetails extends Activity{
         });
     }
 
-
-    public void CalculateBMI(View view){
-
-    }
 }

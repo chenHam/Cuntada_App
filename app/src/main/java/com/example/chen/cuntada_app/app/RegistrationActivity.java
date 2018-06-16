@@ -1,5 +1,6 @@
 package com.example.chen.cuntada_app.app;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.chen.cuntada_app.app.Model.Model;
 import com.example.chen.cuntada_app.app.Model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,7 +31,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private RadioGroup genderRadioGroup;
     private Button registerButton;
     private Boolean dietBoolean;
-
+    private ProgressDialog progressDialog;
 
 
     @Override
@@ -49,6 +51,7 @@ public class RegistrationActivity extends AppCompatActivity {
         genderRadioGroup.check(R.id.maleGender);
         registerButton = (Button) findViewById(R.id.registerButton);
 
+        progressDialog = new ProgressDialog(this);
 
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -75,22 +78,19 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
 
                 final User user = new User(firstName, lastName, email, pw, isDietican, weight, height, isMale);
-                //Model.instance.addUser(user);
 
-
+                progressDialog.setMessage("Creating user...");
+                progressDialog.show();
 
                 final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
                 firebaseAuth.createUserWithEmailAndPassword(email, pw)
                         .addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+                                progressDialog.dismiss();
                                 if(task.isSuccessful()){
-
                                     String userId = firebaseAuth.getCurrentUser().getUid();
-                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
-                                    databaseReference.child(userId).setValue(user);
-
-
+                                    Model.instance.addUser(userId, user);
                                     startActivity(new Intent(getApplicationContext(),AllActivity.class));
                                 } else {
                                     Log.d("Tokyo", "Not added user: ");
