@@ -88,7 +88,7 @@ public class NewRecipeFragment extends Fragment {
                             //save student obj
                             Log.d("Tokyo", "adding recipe");
                             recipe.avatar = url;
-                            Model.instance.addStudent(recipe);
+                            Model.instance.addRecipe(recipe);
                             getActivity().getSupportFragmentManager().popBackStack();
                         }
                     });

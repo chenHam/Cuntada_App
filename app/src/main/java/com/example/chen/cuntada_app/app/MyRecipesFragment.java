@@ -74,8 +74,7 @@ public class MyRecipesFragment extends Fragment {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //Log.d("TAG","item selected:" + i);
-                Log.d("Tokyo", "item selected");
+
                 TextView name = (TextView) view.findViewById(R.id.recipeNameTextView);
                 TextView cateogry = (TextView) view.findViewById(R.id.recipeCategoryTextView);
                 TextView ingredients = (TextView) view.findViewById(R.id.recipeIngredientsTextView);
@@ -83,7 +82,6 @@ public class MyRecipesFragment extends Fragment {
                 ImageView avatar = (ImageView) view.findViewById(R.id.recipeImage);
                 Bitmap bitmap = ((BitmapDrawable)avatar.getDrawable()).getBitmap();
 
-                //Log.d("Tokyo", textView.getText().toString());
                 Intent intent = new Intent("EDIT_RECIPE");
                 intent.putExtra("name", name.getText().toString());
                 intent.putExtra("cateogry", cateogry.getText().toString());

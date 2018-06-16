@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.chen.cuntada_app.app.Model.Model;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -69,6 +70,7 @@ public class MyDetails extends Activity{
         final String userId = firebaseAuth.getCurrentUser().getUid();
 
         //load data
+
         final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
         databaseReference.child(userId).addValueEventListener(new ValueEventListener() {
             @Override
@@ -138,7 +140,9 @@ public class MyDetails extends Activity{
                 result.put("weight", weightEditText.getText().toString());
                 result.put("height", heightEditText.getText().toString());
                 result.put("isMale", genderRadioGroup.getCheckedRadioButtonId() == R.id.maleGender);
-                databaseReference.child(userId).updateChildren(result);
+
+                Model.instance.updateUser(userId, result);
+
                 startActivity(new Intent(getApplicationContext(), AllActivity.class));
 
             }

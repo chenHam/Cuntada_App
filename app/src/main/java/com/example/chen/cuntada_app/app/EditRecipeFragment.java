@@ -66,15 +66,11 @@ public class EditRecipeFragment extends Fragment {
         Bitmap bitmapimage = getArguments().getParcelable("avatar");
         avatar.setImageBitmap(bitmapimage);
 
-        // load
-
-        //progress . setVisibility(View.GONE);
+        nameEditText.setEnabled(false);
 
         addRecipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //progress . setVisibility(View.VISIBLE);
-
                 // check if valid
 
                 final Recipe recipe = new Recipe();
@@ -97,18 +93,13 @@ public class EditRecipeFragment extends Fragment {
                     Model.instance.saveImage(imageBitmap, new Model.SaveImageListener() {
                         @Override
                         public void onDone(String url) {
-                            //save student obj
-                            Log.d("Tokyo", "adding recipe");
                             recipe.avatar = url;
                             HashMap<String, Object> result = new HashMap<>();
-                            //result.put("name", rec);
                             result.put("category", recipe.category);
                             result.put("ingredients", recipe.ingredients);
                             result.put("instructions", recipe.instructions);
                             result.put("avatar", recipe.avatar);
-                            databaseReference.child(recipe.name).updateChildren(result);
-
-                            //Model.instance.addStudent(recipe);
+                            Model.instance.updateRecipe(recipe.name, result);
                             getActivity().getSupportFragmentManager().popBackStack();
                         }
                     });

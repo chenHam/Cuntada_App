@@ -13,7 +13,7 @@ public class RecipeListViewModel extends ViewModel {
     LiveData<List<Recipe>> data;
 
     public LiveData<List<Recipe>> getData(){
-          data = Model.instance.getAllStudents();
+          data = Model.instance.getAllRecipes();
         return data;
     }
 }
