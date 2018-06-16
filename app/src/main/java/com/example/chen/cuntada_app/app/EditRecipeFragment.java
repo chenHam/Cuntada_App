@@ -1,11 +1,10 @@
 package com.example.chen.cuntada_app.app;
 
-import android.app.ProgressDialog;
+import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,25 +12,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.chen.cuntada_app.app.Model.Model;
 import com.example.chen.cuntada_app.app.Model.Recipe;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 import static android.app.Activity.RESULT_OK;
 
-public class NewRecipeFragment extends Fragment {
-
-
-    private static final String ARG_NAME = "ARG_NAME";
-    private static final String ARG_ID = "ARG_ID";
-
-    public NewRecipeFragment() {
-        // Required empty public constructor
-    }
-
+public class EditRecipeFragment extends Fragment {
     EditText nameEditText;
     EditText categoryEditText;
     EditText ingredientsEditText;
@@ -41,29 +34,40 @@ public class NewRecipeFragment extends Fragment {
     //ProgressBar progress;
     Button addRecipeButton;
     Button editPictureButton;
-    private ProgressDialog progressDialog;
+    Button deleteRecipeButton;
+
+    public EditRecipeFragment() {
+        // Required empty public constructor
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_new_recipe, container, false);
+        View view = inflater.inflate(R.layout.fragment_edit_recipe, container, false);
 
         nameEditText = view.findViewById(R.id.nameEditText);
         categoryEditText = view.findViewById(R.id.categoryEditText);
         ingredientsEditText = view.findViewById(R.id.ingredientsEditText);
         instructionsEditText = view.findViewById(R.id.instructionsEditText);
         avatar = view.findViewById(R.id.recipeImage);
-        addRecipeButton  = view.findViewById(R.id.addRecipeButton);
+        addRecipeButton = view.findViewById(R.id.addRecipeButton);
         editPictureButton = view.findViewById(R.id.editPictureButton);
+        deleteRecipeButton = view.findViewById(R.id.deleteRecipeButton);
 
-        progressDialog = new ProgressDialog(getActivity());
-        //progress . setVisibility(View.GONE);
+        nameEditText.setText(getArguments().getString("name"));
+        categoryEditText.setText(getArguments().getString("category"));
+        ingredientsEditText.setText(getArguments().getString("ingredients"));
+        instructionsEditText.setText(getArguments().getString("instructions"));
+
+        Bitmap bitmapimage = getArguments().getParcelable("avatar");
+        avatar.setImageBitmap(bitmapimage);
+
+        nameEditText.setEnabled(false);
 
         addRecipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //progress . setVisibility(View.VISIBLE);
 
                 final Recipe recipe = new Recipe();
                 recipe.name = nameEditText.getText().toString();
@@ -76,20 +80,16 @@ public class NewRecipeFragment extends Fragment {
 
                 recipe.publisherId = userId;
 
-                if(recipe.name.equals("") || recipe.category.equals("") ||
-                        recipe.ingredients.equals("") || recipe.instructions.equals("")){
+                if (recipe.name.equals("") || recipe.category.equals("")
+                        || recipe.ingredients.equals("") || recipe.instructions.equals("")) {
                     Toast.makeText(getActivity(), "You have to fill all fields!", Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                if(imageBitmap == null){
-                    progressDialog.dismiss();
-                    Toast.makeText(getActivity(), "You have to add a picture!", Toast.LENGTH_LONG).show();
-                    return;
-                }
-
-                progressDialog.setMessage("Saving Recipe...");
-                progressDialog.show();
+                final HashMap<String, Object> result = new HashMap<>();
+                result.put("category", recipe.category);
+                result.put("ingredients", recipe.ingredients);
+                result.put("instructions", recipe.instructions);
 
                 //save image
                 if (imageBitmap != null) {
@@ -97,35 +97,17 @@ public class NewRecipeFragment extends Fragment {
                         @Override
                         public void onDone(String url) {
                             recipe.avatar = url;
-                            Model.instance.addRecipe(recipe);
-                            progressDialog.dismiss();
+                            result.put("avatar", recipe.avatar);
+                            Model.instance.updateRecipe(recipe.name, result);
                             getActivity().getSupportFragmentManager().popBackStack();
                         }
                     });
+                } else {
+                    Model.instance.updateRecipe(recipe.name, result);
+                    getActivity().getSupportFragmentManager().popBackStack();
                 }
             }
         });
-
-
-        /*Button cancel = view.findViewById(R.id.new_student_cancel);
-
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().getSupportFragmentManager().popBackStack();
-            }
-        });*/
-        /*if (savedInstanceState != null) {
-            String name = savedInstanceState.getString(ARG_NAME);
-            if (name != null) {
-                nameEt.setText(name);
-            }
-            String id = savedInstanceState.getString(ARG_ID);
-            if (id != null) {
-                idEt.setText(id);
-            }
-        }*/
-
         editPictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -137,7 +119,16 @@ public class NewRecipeFragment extends Fragment {
                 }
             }
         });
+
+        deleteRecipeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Model.instance.deleteReciple(nameEditText.getText().toString());
+                getActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
         return view;
+
     }
 
     Bitmap imageBitmap;
@@ -162,9 +153,4 @@ public class NewRecipeFragment extends Fragment {
         //bundle.putString(ARG_NAME, nameEt.getText().toString());
         //bundle.putString(ARG_ID, idEt.getText().toString());
     }
-
-
-
-
-
 }

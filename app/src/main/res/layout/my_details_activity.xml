@@ -1,73 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    tools:context="com.example.chen.cuntada_app.app.MyDetails">
-
-    <TextView
-        android:id="@+id/body"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:text="@string/body_weight" />
-
+    android:orientation="vertical">
 
     <EditText
-        android:id="@+id/body_weight"
-        android:layout_width="wrap_content"
+        android:id="@+id/firstNameEditText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:hint="Weight"
-        android:inputType="number"/>
-
-    <TextView
-        android:id="@+id/height"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:text="Body Height" />
+        android:layout_centerHorizontal="true"
+        android:hint="First name" />
 
     <EditText
-        android:id="@+id/height_edit"
-        android:layout_width="wrap_content"
+        android:id="@+id/lastNameEditText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:hint="Height"
-        android:inputType="number"/>
+        android:layout_above="@+id/firstNameEditText"
+        android:layout_centerHorizontal="true"
+        android:hint="Last name" />
 
-    <TextView
-        android:id="@+id/bmi"
-        android:layout_width="wrap_content"
+
+    <CheckBox
+        android:id="@+id/dieticanCheckBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:text="@string/bmi_title" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Dietician" />
 
-    <TextView
-        android:id="@+id/bmi_edit"
-        android:layout_width="wrap_content"
-        android:textSize="25sp"
-        android:layout_height="wrap_content"/>
-
-    <Button
-        android:id="@+id/button_calculate"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/weightEditText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="CalculateBMI"
-        android:text="Calculate"
+        android:layout_centerHorizontal="true"
+        android:hint="weight(in kg)" />
+
+    <EditText
+        android:id="@+id/heightEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/weightEditText"
+        android:layout_centerHorizontal="true"
+        android:hint="height(in cm)" />
+
+    <RadioGroup
+        android:id="@+id/genderRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
-        android:background="@drawable/button_background"/>
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="67dp">
+
+        <RadioButton
+            android:id="@+id/maleGender"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:checked="false"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/femaleGender"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:checked="false"
+            android:text="Famle" />
+    </RadioGroup>
+
 
     <Button
         android:id="@+id/saveDetailsButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Save details"
-        android:background="@drawable/button_background"/>
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="379dp" />
 
 
+    <Button
+        android:id="@+id/calculateBmiButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="CalculateBMI"
+        android:text="Calculate BMI"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/bmiTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bmi_title" />
 </LinearLayout>
