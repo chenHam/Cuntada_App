@@ -18,10 +18,9 @@ public class AllActivity extends AppCompatActivity {
 
 
     Button recipesButton;
-    Button addRecipeButton;
     Button logOutButton;
     Button bmiCalculatorButton;
-
+    Button myRecipesButton;
     FirebaseAuth firebaseAuth;
 
     @Override
@@ -54,28 +53,27 @@ public class AllActivity extends AppCompatActivity {
             }
         });
 
+        final Intent intent = new Intent(getApplicationContext(), RecipesActivity.class);
+
         recipesButton = (Button) findViewById(R.id.recipesButton);
         recipesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), RecipesActivity.class));
+                //startActivity(new Intent(getApplicationContext(), RecipesActivity.class));
+                intent.putExtra("showMyRecipes", false);
+                startActivity(intent);
             }
         });
 
-        /*addRecipeButton = (Button) findViewById(R.id.addRecipeButton);
-        addRecipeButton.setOnClickListener(new View.OnClickListener() {
+        myRecipesButton = (Button) findViewById(R.id.myRecipesButton);
+        myRecipesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Berlin", "addRecipeButton clicked");
-                final Recipe r = new Recipe();
-                r.name = "sushi";
-                r.category = "fast&easy";
-                r.ingredients = "ingredi";
-                r.instructions = "instru";
-                r.publisherId = "sadajukdnaks";
-                Model.instance.addStudent(r);
+                intent.putExtra("showMyRecipes", true);
+                //startActivity(new Intent(getApplicationContext(), RecipesActivity.class));
+                startActivity(intent);
             }
-        });*/
+        });
 
         logOutButton = (Button) findViewById(R.id.logOutButton);
         logOutButton.setOnClickListener(new View.OnClickListener() {
@@ -88,40 +86,6 @@ public class AllActivity extends AppCompatActivity {
             }
         });
 
-
-
-        /*ForumButton = (Button) findViewById(R.id.forum);
-        ForumButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Forum(view);
-            }
-        });
-        DetailsButton = (Button) findViewById(R.id.privateDetails);
-        DetailsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Details(view);
-            }
-        });*/
-
     }
-
-    public void Details(View view){
-        finish();
-        startActivity(new Intent(getApplicationContext(), DetailsActivity.class));
-
-    }
-    public void Recipes(View view){
-        //finish();
-        startActivity(new Intent(getApplicationContext(), RecipesActivity.class));
-
-    }
-    public void Forum(View view){
-        finish();
-       startActivity(new Intent(getApplicationContext(), DetailsActivity.class));
-
-    }
-
 
 }

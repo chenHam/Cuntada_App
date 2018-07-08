@@ -8,7 +8,9 @@ import android.os.Environment;
 import android.util.Log;
 import android.webkit.URLUtil;
 
-import com.example.chen.cuntada_app.app.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,6 +19,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,29 +34,29 @@ public class Model {
         modelFirebase.cancellGetAllRecipes();
     }
 
-    class StudentListData extends MutableLiveData<List<Recipe>> {
+    class RecipesListData extends MutableLiveData<List<Recipe>> {
         @Override
         protected void onActive() {
             super.onActive();
             // new thread tsks
-            // 1. get the students list from the local DB
+            // 1. get the recipes list from the local DB
             RecipeAsynchDao.getAll(new RecipeAsynchDao.RecipeAsynchDaoListener<List<Recipe>>() {
                 @Override
                 public void onComplete(List<Recipe> data) {
-                    // 2. update the live data with the new student list
+                    // 2. update the live data with the new recipes list
                     setValue(data);
-                    Log.d("TAG","got students from local DB " + data.size());
+                    Log.d("TAG","got recipes from local DB " + data.size());
 
-                    // 3. get the student list from firebase
+                    // 3. get the recipes list from firebase
                     modelFirebase.getAllRecipes(new ModelFirebase.GetAllRecipesListener() {
                         @Override
-                        public void onSuccess(List<Recipe> studentslist) {
-                            // 4. update the live data with the new student list
-                            setValue(studentslist);
-                            Log.d("TAG","got students from firebase " + studentslist.size());
+                        public void onSuccess(List<Recipe> recipeslist) {
+                            // 4. update the live data with the new recipes list
+                            setValue(recipeslist);
+                            Log.d("TAG","got recipes from firebase " + recipeslist.size());
 
                             // 5. update the local DB
-                            RecipeAsynchDao.insertAll(studentslist, new RecipeAsynchDao.RecipeAsynchDaoListener<Boolean>() {
+                            RecipeAsynchDao.insertAll(recipeslist, new RecipeAsynchDao.RecipeAsynchDaoListener<Boolean>() {
                                 @Override
                                 public void onComplete(Boolean data) {
 
@@ -69,25 +72,105 @@ public class Model {
         protected void onInactive() {
             super.onInactive();
             modelFirebase.cancellGetAllRecipes();
-            Log.d("TAG","cancellGetAllStudents");
+            Log.d("TAG","cancellGetAllRecipes");
         }
 
-        public StudentListData() {
+        public RecipesListData() {
             super();
-            //setValue(AppLocalDb.db.studentDao().getAll());
             setValue(new LinkedList<Recipe>());
         }
     }
 
-    StudentListData studentListData = new StudentListData();
+    RecipesListData recipesListData = new RecipesListData();
 
-    public LiveData<List<Recipe>> getAllStudents(){
-        return studentListData;
+    public LiveData<List<Recipe>> getAllRecipes(){
+        return recipesListData;
     }
 
-    public void addStudent(Recipe recipe){
+    public void addRecipe(Recipe recipe){
         modelFirebase.addRecipe(recipe);
     }
+
+    public void deleteReciple(final String name){
+        RecipeAsynchDao.deleteRecipeByName(name, new RecipeAsynchDao.RecipeAsynchDaoListener<List<Recipe>>() {
+            @Override
+            public void onComplete(List<Recipe> data) {
+                modelFirebase.deleteRecipe(name);
+            }
+        });
+    }
+
+    public void updateRecipe(String name, HashMap keyValues){
+        modelFirebase.updateRecipe(name, keyValues);
+    }
+
+    ////////////////////////////////////////////////////////
+    //  getting recipes by id
+    ////////////////////////////////////////////////////////
+
+    class RecipesByPublisherIdListData extends MutableLiveData<List<Recipe>> {
+
+        private String publisherId;
+
+        @Override
+        protected void onActive() {
+
+            FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+            final String userId = firebaseAuth.getCurrentUser().getUid();
+
+            super.onActive();
+            // new thread tsks
+            // 1. get the recipes list from the local DB
+            RecipeAsynchDao.getRecipesByPublisherId(userId, new RecipeAsynchDao.RecipeAsynchDaoListener<List<Recipe>>() {
+                @Override
+                public void onComplete(List<Recipe> data) {
+                    // 2. update the live data with the new recipes list
+                    setValue(data);
+                    Log.d("TAG","got recipes from local DB " + data.size());
+
+                    // 3. get the recipes list from firebase
+                    modelFirebase.getAllRecipesByPublisherId(userId, new ModelFirebase.GetAllRecipesListener() {
+                        @Override
+                        public void onSuccess(List<Recipe> recipeslist) {
+
+                            // 4. update the live data with the new recipe list
+                            setValue(recipeslist);
+                            Log.d("TAG","got recipes from firebase " + recipeslist.size());
+
+                            // 5. update the local DB
+                            RecipeAsynchDao.insertAll(recipeslist, new RecipeAsynchDao.RecipeAsynchDaoListener<Boolean>() {
+                                @Override
+                                public void onComplete(Boolean data) {
+
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
+
+        @Override
+        protected void onInactive() {
+            super.onInactive();
+            modelFirebase.cancellGetAllRecipes();
+            Log.d("TAG","cancellGetAllRecipes");
+        }
+
+        public RecipesByPublisherIdListData() {
+            super();
+            //this.publisherId = publisherId;
+            setValue(new LinkedList<Recipe>());
+        }
+    }
+
+
+    RecipesByPublisherIdListData recipesByIdListData = new RecipesByPublisherIdListData();
+
+    public LiveData<List<Recipe>> getAllRecipesByPublisherId(String publisherId){
+        return recipesByIdListData;
+    }
+
 
     ////////////////////////////////////////////////////////
     //  HAndle Image Files
@@ -178,7 +261,11 @@ public class Model {
     //  Handle User
     ////////////////////////////////////////////////////////
 
-    public void addUser(User user){
+    public void addUser(String userId, User user){
+        modelFirebase.addUser(userId, user);
+    }
 
+    public void updateUser(String userId, HashMap keyValues){
+        modelFirebase.updateUser(userId, keyValues);
     }
 }
