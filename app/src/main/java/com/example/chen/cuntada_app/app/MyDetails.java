@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -34,10 +35,12 @@ public class MyDetails extends Activity{
 
     EditText firstNameEditText;
     EditText lastNameEditText;
-    CheckBox dieticanCheckBox;
+//    CheckBox dieticanCheckBox;
     EditText weightEditText;
     EditText heightEditText;
     RadioGroup genderRadioGroup;
+    ImageView image;
+
 
     Button saveDetailsButton;
     Button calculateBmiButton;
@@ -57,10 +60,12 @@ public class MyDetails extends Activity{
 
         firstNameEditText = (EditText) findViewById(R.id.firstNameEditText);
         lastNameEditText = (EditText) findViewById(R.id.lastNameEditText);
-        dieticanCheckBox = (CheckBox) findViewById(R.id.dieticanCheckBox);
+//        dieticanCheckBox = (CheckBox) findViewById(R.id.dieticanCheckBox);
         weightEditText = (EditText) findViewById(R.id.weightEditText);
         heightEditText = (EditText) findViewById(R.id.heightEditText);
         genderRadioGroup = (RadioGroup) findViewById(R.id.genderRadioGroup);
+        image = findViewById(R.id.UserImage);
+
 
         saveDetailsButton = (Button) findViewById(R.id.saveDetailsButton);
         calculateBmiButton = (Button) findViewById(R.id.calculateBmiButton);
@@ -81,7 +86,7 @@ public class MyDetails extends Activity{
             public void onDataChange(DataSnapshot snapshot) {
                 firstNameEditText.setText((String) snapshot.child("firstName").getValue());
                 lastNameEditText.setText((String) snapshot.child("lastName").getValue());
-                dieticanCheckBox.setChecked((Boolean) snapshot.child("dietician").getValue());
+//                dieticanCheckBox.setChecked((Boolean) snapshot.child("dietician").getValue());
                 weightEditText.setText((String) snapshot.child("weight").getValue());
                 heightEditText.setText((String) snapshot.child("height").getValue());
                 boolean isMale = (Boolean) snapshot.child("isMale").getValue();
@@ -133,7 +138,7 @@ public class MyDetails extends Activity{
             public void onClick(View view){
 
                 String firstName = firstNameEditText.getText().toString();
-                String lastName = firstNameEditText.getText().toString();
+                String lastName = lastNameEditText.getText().toString();
                 String weightStr = weightEditText.getText().toString();
                 String heightStr = heightEditText.getText().toString();
 
@@ -160,7 +165,7 @@ public class MyDetails extends Activity{
                 HashMap<String, Object> result = new HashMap<>();
                 result.put("firstName", firstName);
                 result.put("lastName", lastName);
-                result.put("dietican", dieticanCheckBox.isChecked());
+//                result.put("dietican", dieticanCheckBox.isChecked());
                 result.put("weight", weightStr);
                 result.put("height", heightStr);
                 result.put("isMale", genderRadioGroup.getCheckedRadioButtonId() == R.id.maleGender);

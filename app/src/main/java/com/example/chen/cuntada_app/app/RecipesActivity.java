@@ -135,7 +135,8 @@ public class RecipesActivity extends AppCompatActivity{
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.menu_add:
+//            case R.id.menu_add:
+            case R.id.addRecipeItem:
                 Log.d("TAG","menu add selected");
                 NewRecipeFragment fragment = new NewRecipeFragment();
                 FragmentTransaction tran = getSupportFragmentManager().beginTransaction();

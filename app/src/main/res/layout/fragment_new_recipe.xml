@@ -6,13 +6,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:fontFamily="serif">
 
-    <ImageView
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@drawable/circulebackgrouns"
-        android:src="@drawable/ic_add_black_24dp" />
 
     <EditText
         android:id="@+id/nameEditText"
@@ -20,7 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:hint="Recipe name"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:fontFamily="serif"/>
 
     <EditText
         android:id="@+id/categoryEditText"
@@ -29,7 +26,8 @@
         android:layout_above="@+id/firstNameEditText"
         android:layout_centerHorizontal="true"
         android:textSize="25sp"
-        android:hint="Recipe category" />
+        android:hint="Recipe category"
+        android:fontFamily="serif"/>
 
 
     <EditText
@@ -39,7 +37,8 @@
         android:layout_above="@+id/lastNameEditText"
         android:layout_centerHorizontal="true"
         android:textSize="25sp"
-        android:hint="Recipe ingredients" />
+        android:hint="Recipe ingredients"
+        android:fontFamily="serif"/>
 
     <EditText
         android:id="@+id/instructionsEditText"
@@ -48,7 +47,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:textSize="25sp"
-        android:hint="Recipe instructions " />
+        android:hint="Recipe instructions "
+        android:fontFamily="serif"/>
 
 
 
@@ -60,14 +60,16 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="379dp"
-        android:background="@drawable/button_background"/>
+        android:background="@drawable/button_background"
+        android:fontFamily="serif"/>
 
     <Button
         android:id="@+id/editPictureButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add Picture"
-        android:background="@drawable/button_background"/>
+        android:background="@drawable/button_background"
+        android:fontFamily="serif"/>
 
     <ImageView
         android:id="@+id/recipeImage"

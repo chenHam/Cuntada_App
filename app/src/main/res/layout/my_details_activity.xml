@@ -13,7 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:hint="First name" />
+        android:hint="First name"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints"
+        android:fontFamily="serif"/>
 
     <EditText
         android:id="@+id/lastNameEditText"
@@ -21,23 +25,35 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/firstNameEditText"
         android:layout_centerHorizontal="true"
-        android:hint="Last name" />
+        android:hint="Last name"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="46dp"
+        tools:ignore="MissingConstraints"
+        android:fontFamily="serif"/>
 
 
-    <CheckBox
-        android:id="@+id/dieticanCheckBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Dietician" />
+    <!--<CheckBox-->
+        <!--android:id="@+id/dieticanCheckBox"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:text="Dietician"-->
+        <!--tools:layout_editor_absoluteX="0dp"-->
+        <!--tools:layout_editor_absoluteY="248dp"-->
+        <!--tools:ignore="MissingConstraints"-->
+        <!--android:fontFamily="serif"/>-->
 
     <EditText
         android:id="@+id/weightEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:hint="weight(in kg)" />
+        android:hint="weight(in kg)"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="138dp"
+        tools:ignore="MissingConstraints"
+        android:fontFamily="serif"/>
 
     <EditText
         android:id="@+id/heightEditText"
@@ -45,53 +61,81 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/weightEditText"
         android:layout_centerHorizontal="true"
-        android:hint="height(in cm)" />
+        android:hint="height(in cm)"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="92dp"
+        tools:ignore="MissingConstraints"
+        android:fontFamily="serif"/>
 
     <RadioGroup
         android:id="@+id/genderRadioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="67dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="184dp"
+        android:fontFamily="serif">
 
         <RadioButton
             android:id="@+id/maleGender"
-            android:layout_width="match_parent"
+            android:layout_width="182dp"
             android:layout_height="match_parent"
             android:checked="false"
-            android:text="Male" />
+            android:text="Male"
+            android:fontFamily="serif"/>
 
         <RadioButton
             android:id="@+id/femaleGender"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="183dp"
+            android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Famle" />
+            android:text="Famle"
+            android:fontFamily="serif"/>
     </RadioGroup>
 
 
-    <Button
-        android:id="@+id/saveDetailsButton"
+    <TextView
+        android:id="@+id/bmiTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save details"
+        android:text="@string/bmi_title"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="280dp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="379dp" />
-
+        android:fontFamily="serif"/>
 
     <Button
         android:id="@+id/calculateBmiButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
         android:onClick="CalculateBMI"
         android:text="Calculate BMI"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="299dp"
+        android:fontFamily="serif"/>
 
-    <TextView
-        android:id="@+id/bmiTextView"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/saveDetailsButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/bmi_title" />
+        android:background="@drawable/button_background"
+        android:text="Save details"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="435dp"
+        android:fontFamily="serif"/>
+
+
+    <ImageView
+        android:id="@+id/UserImage"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 </LinearLayout>

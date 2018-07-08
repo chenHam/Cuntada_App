@@ -19,6 +19,9 @@
     <string name="ingredient">Ingredient :</string>
     <string name="preparation">Preparation :</string>
     <string name="main_container">main_container :</string>
+    <string name="addRecipeItem">add recipe</string>
+
+
     <string name="list1">list1 :</string>
 
     <string-array name="category">

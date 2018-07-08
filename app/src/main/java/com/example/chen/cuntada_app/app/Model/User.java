@@ -9,7 +9,7 @@ public class User {
     String lastName;
     String email;
     String pw;
-    boolean dietician;
+//    boolean dietician;
     String weight;
     String height;
     boolean isMale;
@@ -17,14 +17,13 @@ public class User {
     public  User(){
 
     }
-    public User(String firstName, String lastName, String email, String pw,
-                boolean dietician, String weight, String height, boolean isMale) {
+    public User(String firstName, String lastName, String email, String pw, String weight, String height, boolean isMale) {
         //this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.pw = pw;
-        this.dietician = dietician;
+//        this.dietician = dietician;
         this.weight = weight;
         this.height = height;
         this.isMale = isMale;
@@ -50,9 +49,9 @@ public class User {
         return pw;
     }
 
-    public Boolean getDietician() {
-        return dietician;
-    }
+//    public Boolean getDietician() {
+//        return dietician;
+//    }
 
     public String getWeight() { return weight; }
 
@@ -76,9 +75,9 @@ public class User {
         this.pw = password;
     }
 
-    public void setDietician(boolean dietician) {
-        this.dietician = dietician;
-    }
+//    public void setDietician(boolean dietician) {
+//        this.dietician = dietician;
+//    }
 
     /*public void setUserid(String userId) {
         this.userId = userId;

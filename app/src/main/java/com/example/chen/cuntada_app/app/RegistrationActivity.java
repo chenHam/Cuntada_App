@@ -22,16 +22,20 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.regex.Pattern;
+
 public class RegistrationActivity extends AppCompatActivity {
 
     private EditText firstNameEditText, lastNameEditText, emailEditText, pwEditText,
             confirmPwEditText, weightEditText, heightEditText;
-    private CheckBox dieticanCheckBox;
+//    private CheckBox dieticanCheckBox;
 
     private RadioGroup genderRadioGroup;
     private Button registerButton;
-    private Boolean dietBoolean;
+//    private Boolean dietBoolean;
     private ProgressDialog progressDialog;
+    Pattern regex = Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]");
+
 
 
     @Override
@@ -44,7 +48,7 @@ public class RegistrationActivity extends AppCompatActivity {
         emailEditText = (EditText) findViewById(R.id.emailEditText);
         pwEditText = (EditText) findViewById(R.id.pwEditText);
         confirmPwEditText = (EditText) findViewById(R.id.confirmPwEditText);
-        dieticanCheckBox = (CheckBox) findViewById(R.id.dieticanCheckBox);
+//        dieticanCheckBox = (CheckBox) findViewById(R.id.dieticanCheckBox);
         weightEditText = (EditText) findViewById(R.id.weightEditText);
         heightEditText = (EditText) findViewById(R.id.heightEditText);
         genderRadioGroup = (RadioGroup) findViewById(R.id.genderRadioGroup);
@@ -61,7 +65,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 String email = emailEditText.getText().toString().trim();
                 String pw = pwEditText.getText().toString().trim();
                 String confirmPw = confirmPwEditText.getText().toString().trim();
-                boolean isDietican = dieticanCheckBox.isChecked();
+//                boolean isDietican = dieticanCheckBox.isChecked();
                 String weight = weightEditText.getText().toString().trim();
                 String height = heightEditText.getText().toString().trim();
 
@@ -77,7 +81,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     return;
                 }
 
-                final User user = new User(firstName, lastName, email, pw, isDietican, weight, height, isMale);
+                final User user = new User(firstName, lastName, email, pw, weight, height, isMale);
 
                 progressDialog.setMessage("Creating user...");
                 progressDialog.show();
@@ -113,15 +117,32 @@ public class RegistrationActivity extends AppCompatActivity {
 
             return res;
         }
+
         if(!pw.equals(confirmPw)){
             Toast.makeText(getApplicationContext(), "Passwords don't match!", Toast.LENGTH_LONG).show();
             return res;
+        }
+
+        if(pw.length()<6){
+            Toast.makeText(getApplicationContext(), "Password must contain at least six characters!", Toast.LENGTH_LONG).show();
+            return res;
+        }
+
+        if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            Toast.makeText(getApplicationContext(), "Please enter a valid Email!", Toast.LENGTH_LONG).show();
+
+            return res;
+
         }
 
         try {
             Integer.parseInt(weight);
         } catch (Exception e){
             Toast.makeText(getApplicationContext(), "Weight must be a number!", Toast.LENGTH_LONG).show();
+            if (regex.matcher(weight).find()){
+                Toast.makeText(getApplicationContext(), "test!", Toast.LENGTH_LONG).show();
+            }
+
             return res;
         }
 
@@ -135,6 +156,9 @@ public class RegistrationActivity extends AppCompatActivity {
         return true;
 
     }
+
+
+
 
 
 }

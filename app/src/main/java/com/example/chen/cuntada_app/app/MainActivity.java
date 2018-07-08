@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
                             startActivity(new Intent(getApplicationContext(),AllActivity.class));
                         } else {
-                            Toast.makeText(getApplicationContext(), "Wrong Email or Password!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Email or password is incorrect!", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

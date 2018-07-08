@@ -11,43 +11,47 @@
         android:id="@+id/recipeNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="128dp"
         android:text="TextView"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="serif"/>
 
     <TextView
         android:id="@+id/recipeCategoryTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="140dp"
         android:layout_marginTop="24dp"
         android:text="TextView"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recipeNameTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/recipeNameTextView"
+        android:fontFamily="serif"/>
 
     <TextView
         android:id="@+id/recipeIngredientsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:textSize="25sp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="28dp"
         android:text="TextView"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recipeCategoryTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/recipeCategoryTextView"
+        android:fontFamily="serif"/>
 
     <TextView
         android:id="@+id/recipeInstructionsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="28dp"
         android:text="TextView"
         android:textSize="25sp"
+        android:fontFamily="serif"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recipeIngredientsTextView" />
 
@@ -55,8 +59,8 @@
         android:id="@+id/recipeImage"
         android:layout_width="100dp"
         android:layout_height="150dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recipeInstructionsTextView" />
 
