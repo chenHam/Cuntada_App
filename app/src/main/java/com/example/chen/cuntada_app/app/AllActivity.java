@@ -19,7 +19,7 @@ public class AllActivity extends AppCompatActivity {
 
     Button recipesButton;
     Button logOutButton;
-    Button bmiCalculatorButton;
+    Button myDetailsButton;
     Button myRecipesButton;
     FirebaseAuth firebaseAuth;
 
@@ -44,11 +44,11 @@ public class AllActivity extends AppCompatActivity {
         }
         Log.d("Tokyo", "after myApplication");
 
-        bmiCalculatorButton = (Button) findViewById(R.id.bmiCalculatorButton);
-        bmiCalculatorButton.setOnClickListener(new View.OnClickListener() {
+        myDetailsButton = (Button) findViewById(R.id.myDetailsButton);
+        myDetailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Tokyo", "bmiCalculatorButton clicked");
+                Log.d("Tokyo", "myDetailsButton clicked");
                 startActivity(new Intent(getApplicationContext(), MyDetails.class));
             }
         });

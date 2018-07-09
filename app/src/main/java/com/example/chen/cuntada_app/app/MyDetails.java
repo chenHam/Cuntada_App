@@ -4,15 +4,11 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +31,6 @@ public class MyDetails extends Activity{
 
     EditText firstNameEditText;
     EditText lastNameEditText;
-//    CheckBox dieticanCheckBox;
     EditText weightEditText;
     EditText heightEditText;
     RadioGroup genderRadioGroup;
@@ -60,7 +55,6 @@ public class MyDetails extends Activity{
 
         firstNameEditText = (EditText) findViewById(R.id.firstNameEditText);
         lastNameEditText = (EditText) findViewById(R.id.lastNameEditText);
-//        dieticanCheckBox = (CheckBox) findViewById(R.id.dieticanCheckBox);
         weightEditText = (EditText) findViewById(R.id.weightEditText);
         heightEditText = (EditText) findViewById(R.id.heightEditText);
         genderRadioGroup = (RadioGroup) findViewById(R.id.genderRadioGroup);
@@ -86,7 +80,6 @@ public class MyDetails extends Activity{
             public void onDataChange(DataSnapshot snapshot) {
                 firstNameEditText.setText((String) snapshot.child("firstName").getValue());
                 lastNameEditText.setText((String) snapshot.child("lastName").getValue());
-//                dieticanCheckBox.setChecked((Boolean) snapshot.child("dietician").getValue());
                 weightEditText.setText((String) snapshot.child("weight").getValue());
                 heightEditText.setText((String) snapshot.child("height").getValue());
                 boolean isMale = (Boolean) snapshot.child("isMale").getValue();
@@ -126,9 +119,11 @@ public class MyDetails extends Activity{
                     Toast.makeText(getApplicationContext(), "Height must be a number!", Toast.LENGTH_LONG).show();
                     return;
                 }
+                double height_double = (double)height / 100;
+                double weight_double = (double)weight;
+                double res_bmi =  weight_double / (height_double*height_double);
 
-                double res_bmi = (double)weight / (height*height);
-                bmiTextView.setText(String.valueOf(res_bmi));
+                bmiTextView.setText(String.format("%.2f", res_bmi));
                 bmiTextView.setVisibility(View.VISIBLE);
             }
         });
@@ -165,7 +160,6 @@ public class MyDetails extends Activity{
                 HashMap<String, Object> result = new HashMap<>();
                 result.put("firstName", firstName);
                 result.put("lastName", lastName);
-//                result.put("dietican", dieticanCheckBox.isChecked());
                 result.put("weight", weightStr);
                 result.put("height", heightStr);
                 result.put("isMale", genderRadioGroup.getCheckedRadioButtonId() == R.id.maleGender);

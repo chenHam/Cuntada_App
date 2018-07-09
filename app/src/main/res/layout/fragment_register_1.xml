@@ -15,6 +15,7 @@
         android:layout_centerHorizontal="true"
         android:textSize="20sp"
         android:hint="First name"
+        android:background="@drawable/rounded_edittext"
         android:fontFamily="serif"/>
 
     <EditText
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/firstNameEditText"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_edittext"
         android:textSize="20sp"
         android:hint="Last name"
         android:fontFamily="serif"/>
@@ -34,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/lastNameEditText"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_edittext"
         android:textSize="20sp"
         android:hint="Email" />
 
@@ -44,6 +47,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:hint="Password"
+        android:background="@drawable/rounded_edittext"
         android:textSize="20sp"
         android:inputType="textPassword"
         android:fontFamily="serif"/>
@@ -65,6 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:textSize="20sp"
+        android:background="@drawable/rounded_edittext"
         android:hint="weight(in kg)"
         android:fontFamily="serif"/>
 
@@ -74,6 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/weightEditText"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_edittext"
         android:textSize="20sp"
         android:hint="height(in cm)"
         android:fontFamily="serif"/>

@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Cuntada</string>
     <string name="action_settings">Add Recipe</string>
-    <string name="button_login">Login</string>
-    <string name="button_register">Register</string>
+    <string name="button_login"><b>Login</b></string>
+    <string name="create_account"><b>Create Account</b></string>
+    <string name="button_register"><b>Register</b></string>
     <string name="button_save">Details</string>
     <string name="privateDetails">Private Details</string>
     <string name="forum">Forum</string>
@@ -10,8 +11,13 @@
     <string name="SignUp">SignUp</string>
     <string name="target_weight">Target Weight</string>
     <string name="body_weight">Body weight</string>
-    <string name="bmi_title">BMI</string>
+    <string name="bmi_title"><b>BMI</b></string>
+    <string name="edit_profile_title">Edit Profile</string>
+    <string name="line">-------------------------------------------------</string>
     <string name="new_recipe">Add wew Recipe</string>
+    <string name="edit_profile_photo_change">Change Profile Photo</string>
+    <string name="exit_popup_txt">Would you like to exit?</string>
+    <string name="my_recipes">My Recipes</string>
     <string name="ingredients_title">Ingredients :</string>
     <string name="preparation_title">Preparation :</string>
     <string name="button_save_recipe">save :</string>
@@ -20,37 +26,13 @@
     <string name="preparation">Preparation :</string>
     <string name="main_container">main_container :</string>
     <string name="addRecipeItem">add recipe</string>
-
-
     <string name="list1">list1 :</string>
+    <string name="category_prompt">Choose a category</string>
 
-    <string-array name="category">
+    <string-array name="recipe_category">
     <item>Vegan</item>
     <item>Gluten free</item>
     <item>Kosher</item>
     </string-array>
-
-    <string-array name="weight_arrays">
-        <item>40</item>
-        <item>41</item>
-        <item>42</item>
-        <item>43</item>
-        <item>44</item>
-        <item>45</item>
-        <item>46</item>
-        <item>47</item>
-    </string-array>
-    <string-array name="height_arrays">
-        <item>140</item>
-        <item>141</item>
-        <item>142</item>
-        <item>143</item>
-        <item>144</item>
-        <item>145</item>
-        <item>146</item>
-        <item>147</item>
-    </string-array>
-
-
 
 </resources>

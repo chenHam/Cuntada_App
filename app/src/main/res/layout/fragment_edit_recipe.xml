@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_edittext"
         android:hint="Recipe name"
         android:fontFamily="serif"/>
 
@@ -23,15 +24,37 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/firstNameEditText"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_edittext"
         android:hint="Recipe category"
         android:fontFamily="serif"/>
 
+    <ImageView
+        android:id="@+id/recipeImage"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/no_image"
+        app:layout_constraintBottom_toTopOf="@+id/editPictureButton"
+        android:gravity="center" />
+
+    <Button
+        android:id="@+id/editPictureButton"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginRight="100dp"
+        android:layout_toLeftOf="@+id/recipeImage"
+        android:background="@drawable/button_background"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="Add Picture" />
 
     <EditText
         android:id="@+id/ingredientsEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/lastNameEditText"
+        android:background="@drawable/edit_text_box"
         android:layout_centerHorizontal="true"
         android:hint="Recipe ingredients"
         android:fontFamily="serif"/>
@@ -42,44 +65,37 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/edit_text_box"
         android:hint="Recipe instructions "
         android:fontFamily="serif"/>
 
-    <Button
-        android:id="@+id/addRecipeButton"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SAVE"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="379dp"
-        android:background="@drawable/button_background"
-        android:fontFamily="serif"/>
-
-    <Button
-        android:id="@+id/editPictureButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Edit Picture"
-        android:background="@drawable/button_background"
-        android:fontFamily="serif"/>
+        android:orientation="horizontal"
+        android:layout_gravity="center">
 
     <Button
         android:id="@+id/deleteRecipeButton"
-        android:layout_width="match_parent"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:text="Delete Recipe"
-        android:background="@drawable/button_background"
+        android:gravity="center"
+        android:background="@drawable/round_button"
         android:fontFamily="serif"/>
 
-    <ImageView
-        android:id="@+id/recipeImage"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/addRecipeButton"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text="SAVE"
+            android:gravity="center"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/round_button"
+            android:fontFamily="serif"/>
+    </LinearLayout>
 
 
-</LinearLayout>
+    </LinearLayout>

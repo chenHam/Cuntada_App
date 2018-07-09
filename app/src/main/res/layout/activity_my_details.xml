@@ -8,6 +8,64 @@
     tools:context="com.example.chen.cuntada_app.app.MyDetails">
 
     <TextView
+        android:id="@+id/txt_label_edit_profile"
+        android:layout_width="179dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="102dp"
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/edit_profile_title"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/edit_profile_dashes"
+        android:layout_width="301dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="41dp"
+        android:layout_marginStart="41dp"
+        android:text="@string/line"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_label_edit_profile" />
+
+    <ImageView
+        android:id="@+id/edit_profile_avatar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="167dp"
+        android:layout_marginStart="167dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_profile_dashes"
+        app:srcCompat="@drawable/no_image" />
+
+    <Button
+        android:id="@+id/btn_edit_profile_change_avatar"
+        android:layout_width="182dp"
+        android:layout_height="23dp"
+        android:layout_marginEnd="101dp"
+        android:layout_marginStart="101dp"
+        android:background="@android:color/transparent"
+        android:text="@string/edit_profile_photo_change"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_profile_avatar" />
+
+    <TextView
         android:id="@+id/target"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

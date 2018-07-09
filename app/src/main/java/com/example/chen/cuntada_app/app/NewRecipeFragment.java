@@ -10,15 +10,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.chen.cuntada_app.app.Model.Model;
 import com.example.chen.cuntada_app.app.Model.Recipe;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -41,6 +46,7 @@ public class NewRecipeFragment extends Fragment {
     //ProgressBar progress;
     Button addRecipeButton;
     Button editPictureButton;
+    Spinner categorySpinner;
     private ProgressDialog progressDialog;
 
     @Override
@@ -56,6 +62,8 @@ public class NewRecipeFragment extends Fragment {
         avatar = view.findViewById(R.id.recipeImage);
         addRecipeButton  = view.findViewById(R.id.addRecipeButton);
         editPictureButton = view.findViewById(R.id.editPictureButton);
+        categorySpinner = (Spinner) view.findViewById(R.id.categorySpinner);
+
 
         progressDialog = new ProgressDialog(getActivity());
         //progress . setVisibility(View.GONE);
@@ -67,7 +75,8 @@ public class NewRecipeFragment extends Fragment {
 
                 final Recipe recipe = new Recipe();
                 recipe.name = nameEditText.getText().toString();
-                recipe.category = categoryEditText.getText().toString();
+//                recipe.category = categoryEditText.getText().toString();
+                recipe.category = categorySpinner.getSelectedItem().toString();
                 recipe.ingredients = ingredientsEditText.getText().toString();
                 recipe.instructions = instructionsEditText.getText().toString();
 
@@ -106,26 +115,6 @@ public class NewRecipeFragment extends Fragment {
             }
         });
 
-
-        /*Button cancel = view.findViewById(R.id.new_student_cancel);
-
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().getSupportFragmentManager().popBackStack();
-            }
-        });*/
-        /*if (savedInstanceState != null) {
-            String name = savedInstanceState.getString(ARG_NAME);
-            if (name != null) {
-                nameEt.setText(name);
-            }
-            String id = savedInstanceState.getString(ARG_ID);
-            if (id != null) {
-                idEt.setText(id);
-            }
-        }*/
-
         editPictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -139,6 +128,19 @@ public class NewRecipeFragment extends Fragment {
         });
         return view;
     }
+
+//    // add items into spinner dynamically
+//    public void addItemsOnSpinner2() {
+//
+//        List<String> list = new ArrayList<String>();
+//        list.add("list 1");
+//        list.add("list 2");
+//        list.add("list 3");
+//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+//                android.R.layout.simple_spinner_item, list);
+//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        categorySpinner.setAdapter(dataAdapter);
+//    }
 
     Bitmap imageBitmap;
     @Override
