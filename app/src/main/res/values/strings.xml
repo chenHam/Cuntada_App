@@ -12,6 +12,7 @@
     <string name="target_weight">Target Weight</string>
     <string name="body_weight">Body weight</string>
     <string name="bmi_title"><b>BMI</b></string>
+    <string name="log_out">LOG OUT</string>
     <string name="edit_profile_title">Edit Profile</string>
     <string name="line">-------------------------------------------------</string>
     <string name="new_recipe">Add wew Recipe</string>
