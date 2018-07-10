@@ -9,30 +9,53 @@
     android:orientation="vertical"
     android:fontFamily="serif">
 
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:fontFamily="serif"
+        android:text="@string/name"/>
 
     <EditText
         android:id="@+id/nameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLength="10"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:background="@drawable/rounded_edittext"
         android:fontFamily="serif"
         android:hint="Recipe name"
         android:textSize="25sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:fontFamily="serif"
+            android:text="@string/category"/>
     <Spinner
         android:id="@+id/categorySpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="#05ab9a"
         android:fontFamily="serif"
-        android:hint="Recipe category"
         android:textSize="25sp"
-        android:background="@drawable/rounded_edittext"
         android:entries="@array/recipe_category"
         android:prompt="@string/category_prompt">
     </Spinner>
-
+    </LinearLayout>
 
     <EditText
         android:id="@+id/ingredientsEditText"
@@ -69,15 +92,6 @@
         android:orientation="horizontal"
         android:layout_gravity="center">
 
-        <Button
-            android:id="@+id/editPictureButton"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/button_background"
-            android:fontFamily="serif"
-            android:text="Add Picture" />
-
         <ImageView
             android:id="@+id/recipeImage"
             android:layout_width="100dp"
@@ -85,6 +99,16 @@
             android:background="@drawable/no_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/editPictureButton"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/button_background"
+            android:fontFamily="serif"
+            android:text="Add Picture" />
 
     </LinearLayout>
     <Button

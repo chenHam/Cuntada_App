@@ -56,7 +56,7 @@ public class NewRecipeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_new_recipe, container, false);
 
         nameEditText = view.findViewById(R.id.nameEditText);
-        categoryEditText = view.findViewById(R.id.categoryEditText);
+//        categoryEditText = view.findViewById(R.id.categoryEditText);
         ingredientsEditText = view.findViewById(R.id.ingredientsEditText);
         instructionsEditText = view.findViewById(R.id.instructionsEditText);
         avatar = view.findViewById(R.id.recipeImage);

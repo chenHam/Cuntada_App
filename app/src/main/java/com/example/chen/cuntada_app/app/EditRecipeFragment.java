@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.chen.cuntada_app.app.Model.Model;
@@ -26,7 +27,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class EditRecipeFragment extends Fragment {
     EditText nameEditText;
-    EditText categoryEditText;
+    Spinner categorySpinner;
     EditText ingredientsEditText;
     EditText instructionsEditText;
     ImageView avatar;
@@ -47,7 +48,9 @@ public class EditRecipeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_edit_recipe, container, false);
 
         nameEditText = view.findViewById(R.id.nameEditText);
-        categoryEditText = view.findViewById(R.id.categoryEditText);
+//        categoryEditText = view.findViewById(R.id.categoryEditText);
+        categorySpinner = (Spinner) view.findViewById(R.id.categorySpinner);
+
         ingredientsEditText = view.findViewById(R.id.ingredientsEditText);
         instructionsEditText = view.findViewById(R.id.instructionsEditText);
         avatar = view.findViewById(R.id.recipeImage);
@@ -56,7 +59,8 @@ public class EditRecipeFragment extends Fragment {
         deleteRecipeButton = view.findViewById(R.id.deleteRecipeButton);
 
         nameEditText.setText(getArguments().getString("name"));
-        categoryEditText.setText(getArguments().getString("category"));
+//        categoryEditText.setText(getArguments().getString("category"));
+        categorySpinner.setSelection(selectSpinnerValue(categorySpinner,getArguments().getString("category")));
         ingredientsEditText.setText(getArguments().getString("ingredients"));
         instructionsEditText.setText(getArguments().getString("instructions"));
 
@@ -71,7 +75,8 @@ public class EditRecipeFragment extends Fragment {
 
                 final Recipe recipe = new Recipe();
                 recipe.name = nameEditText.getText().toString();
-                recipe.category = categoryEditText.getText().toString();
+                recipe.category = categorySpinner.getSelectedItem().toString();
+//                recipe.category = categoryEditText.getText().toString();
                 recipe.ingredients = ingredientsEditText.getText().toString();
                 recipe.instructions = instructionsEditText.getText().toString();
 
@@ -129,6 +134,15 @@ public class EditRecipeFragment extends Fragment {
         });
         return view;
 
+    }
+
+    private int selectSpinnerValue(Spinner spinner, String category) {
+        for (int i = 0; i < spinner.getCount(); i++) {
+            if (spinner.getItemAtPosition(i).equals(category)) {
+                return i;
+            }
+        }
+        return 1;
     }
 
     Bitmap imageBitmap;

@@ -11,6 +11,7 @@
 
     <EditText
         android:id="@+id/nameEditText"
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -18,73 +19,85 @@
         android:hint="Recipe name"
         android:fontFamily="serif"/>
 
-    <EditText
-        android:id="@+id/categoryEditText"
+
+    <Spinner
+        android:id="@+id/categorySpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/firstNameEditText"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/rounded_edittext"
-        android:hint="Recipe category"
-        android:fontFamily="serif"/>
-
-    <ImageView
-        android:id="@+id/recipeImage"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/no_image"
-        app:layout_constraintBottom_toTopOf="@+id/editPictureButton"
-        android:gravity="center" />
-
-    <Button
-        android:id="@+id/editPictureButton"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="130dp"
-        android:layout_marginRight="100dp"
-        android:layout_toLeftOf="@+id/recipeImage"
-        android:background="@drawable/button_background"
+        android:textColorHint="#05ab9a"
+        android:layout_marginTop="5dp"
         android:fontFamily="serif"
-        android:gravity="center"
-        android:text="Add Picture" />
+        android:hint="Recipe category"
+        android:textSize="25sp"
+        android:background="@drawable/rounded_edittext"
+        android:entries="@array/recipe_category"
+        android:prompt="@string/category_prompt">
+    </Spinner>
+
 
     <EditText
         android:id="@+id/ingredientsEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_above="@+id/lastNameEditText"
-        android:background="@drawable/edit_text_box"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/rounded_edittext"
+        android:fontFamily="serif"
         android:hint="Recipe ingredients"
-        android:fontFamily="serif"/>
+        android:textSize="25sp" android:paddingLeft="5dp"
+        android:maxHeight="35dp"
+        android:scrollbars="vertical" />
 
     <EditText
         android:id="@+id/instructionsEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/edit_text_box"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/rounded_edittext"
+        android:fontFamily="serif"
         android:hint="Recipe instructions "
-        android:fontFamily="serif"/>
+        android:textSize="25sp" android:paddingLeft="5dp"
+        android:maxHeight="35dp"
+        android:scrollbars="vertical" />
+
 
     <LinearLayout
         android:id="@+id/linearLayout1"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center">
 
-    <Button
-        android:id="@+id/deleteRecipeButton"
-        android:layout_width="180dp"
+        <ImageView
+            android:id="@+id/recipeImage"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:background="@drawable/no_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/editPictureButton"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/button_background"
+            android:fontFamily="serif"
+            android:text="@string/edit_picture" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Delete Recipe"
-        android:gravity="center"
-        android:background="@drawable/round_button"
-        android:fontFamily="serif"/>
+        android:orientation="horizontal"
+        android:layout_gravity="center">
 
         <Button
             android:id="@+id/addRecipeButton"
@@ -95,6 +108,16 @@
             tools:ignore="MissingConstraints"
             android:background="@drawable/round_button"
             android:fontFamily="serif"/>
+        <Button
+            android:id="@+id/deleteRecipeButton"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text="Delete Recipe"
+            android:gravity="center"
+            android:background="@drawable/round_button"
+            android:fontFamily="serif"/>
+
+
     </LinearLayout>
 
 

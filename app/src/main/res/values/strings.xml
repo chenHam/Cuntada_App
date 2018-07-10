@@ -16,6 +16,8 @@
     <string name="edit_profile_title">Edit Profile</string>
     <string name="line">-------------------------------------------------</string>
     <string name="new_recipe">Add wew Recipe</string>
+    <string name="name"><b>Name:   </b></string>
+    <string name="category"><b>Category:    </b></string>
     <string name="edit_profile_photo_change">Change Profile Photo</string>
     <string name="exit_popup_txt">Would you like to exit?</string>
     <string name="my_recipes">My Recipes</string>
@@ -28,6 +30,7 @@
     <string name="main_container">main_container :</string>
     <string name="addRecipeItem">add recipe</string>
     <string name="list1">list1 :</string>
+    <string name="edit_picture">Edit Picture</string>
     <string name="category_prompt">Choose a category</string>
 
     <string-array name="recipe_category">
