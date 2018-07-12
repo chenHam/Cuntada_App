@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.chen.cuntada_app.app.RecipesActivity">
+    tools:context="com.example.chen.cuntada_app.app.View.RecipesActivity">
 
     <TextView
         android:id="@+id/new_recipe"
@@ -39,14 +39,14 @@
         android:layout_centerHorizontal="true"
         android:hint="add here..."
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="142dp" />
+        tools:layout_editor_absoluteY="142dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/preparation_title"
-        android:onClick="SaveRecipeButton"
         android:text="SAVE"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"

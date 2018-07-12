@@ -1,33 +1,45 @@
-package com.example.chen.cuntada_app.app;
+package com.example.chen.cuntada_app.app.View;
 
-import android.support.v4.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.chen.cuntada_app.app.Model.Model;
 import com.example.chen.cuntada_app.app.Model.Recipe;
+import com.example.chen.cuntada_app.app.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
-public class EditRecipeFragment extends Fragment {
+public class NewRecipeFragment extends Fragment {
+
+
+    private static final String ARG_NAME = "ARG_NAME";
+    private static final String ARG_ID = "ARG_ID";
+
+    public NewRecipeFragment() {
+        // Required empty public constructor
+    }
+
     EditText nameEditText;
-    Spinner categorySpinner;
+    EditText categoryEditText;
     EditText ingredientsEditText;
     EditText instructionsEditText;
     ImageView avatar;
@@ -35,48 +47,37 @@ public class EditRecipeFragment extends Fragment {
     //ProgressBar progress;
     Button addRecipeButton;
     Button editPictureButton;
-    Button deleteRecipeButton;
-
-    public EditRecipeFragment() {
-        // Required empty public constructor
-    }
+    Spinner categorySpinner;
+    private ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_edit_recipe, container, false);
+        View view = inflater.inflate(R.layout.fragment_new_recipe, container, false);
 
         nameEditText = view.findViewById(R.id.nameEditText);
 //        categoryEditText = view.findViewById(R.id.categoryEditText);
-        categorySpinner = (Spinner) view.findViewById(R.id.categorySpinner);
-
         ingredientsEditText = view.findViewById(R.id.ingredientsEditText);
         instructionsEditText = view.findViewById(R.id.instructionsEditText);
         avatar = view.findViewById(R.id.recipeImage);
-        addRecipeButton = view.findViewById(R.id.addRecipeButton);
+        addRecipeButton  = view.findViewById(R.id.addRecipeButton);
         editPictureButton = view.findViewById(R.id.editPictureButton);
-        deleteRecipeButton = view.findViewById(R.id.deleteRecipeButton);
+        categorySpinner = (Spinner) view.findViewById(R.id.categorySpinner);
 
-        nameEditText.setText(getArguments().getString("name"));
-//        categoryEditText.setText(getArguments().getString("category"));
-        categorySpinner.setSelection(selectSpinnerValue(categorySpinner,getArguments().getString("category")));
-        ingredientsEditText.setText(getArguments().getString("ingredients"));
-        instructionsEditText.setText(getArguments().getString("instructions"));
 
-        Bitmap bitmapimage = getArguments().getParcelable("avatar");
-        avatar.setImageBitmap(bitmapimage);
-
-        nameEditText.setEnabled(false);
+        progressDialog = new ProgressDialog(getActivity());
+        //progress . setVisibility(View.GONE);
 
         addRecipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //progress . setVisibility(View.VISIBLE);
 
                 final Recipe recipe = new Recipe();
                 recipe.name = nameEditText.getText().toString();
-                recipe.category = categorySpinner.getSelectedItem().toString();
 //                recipe.category = categoryEditText.getText().toString();
+                recipe.category = categorySpinner.getSelectedItem().toString();
                 recipe.ingredients = ingredientsEditText.getText().toString();
                 recipe.instructions = instructionsEditText.getText().toString();
 
@@ -85,16 +86,20 @@ public class EditRecipeFragment extends Fragment {
 
                 recipe.publisherId = userId;
 
-                if (recipe.name.equals("") || recipe.category.equals("")
-                        || recipe.ingredients.equals("") || recipe.instructions.equals("")) {
+                if(recipe.name.equals("") || recipe.category.equals("") ||
+                        recipe.ingredients.equals("") || recipe.instructions.equals("")){
                     Toast.makeText(getActivity(), "You have to fill all fields!", Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                final HashMap<String, Object> result = new HashMap<>();
-                result.put("category", recipe.category);
-                result.put("ingredients", recipe.ingredients);
-                result.put("instructions", recipe.instructions);
+                if(imageBitmap == null){
+                    progressDialog.dismiss();
+                    Toast.makeText(getActivity(), "You have to add a picture!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                progressDialog.setMessage("Saving Recipe...");
+                progressDialog.show();
 
                 //save image
                 if (imageBitmap != null) {
@@ -102,17 +107,15 @@ public class EditRecipeFragment extends Fragment {
                         @Override
                         public void onDone(String url) {
                             recipe.avatar = url;
-                            result.put("avatar", recipe.avatar);
-                            Model.instance.updateRecipe(recipe.name, result);
+                            Model.instance.addRecipe(recipe);
+                            progressDialog.dismiss();
                             getActivity().getSupportFragmentManager().popBackStack();
                         }
                     });
-                } else {
-                    Model.instance.updateRecipe(recipe.name, result);
-                    getActivity().getSupportFragmentManager().popBackStack();
                 }
             }
         });
+
         editPictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,26 +127,21 @@ public class EditRecipeFragment extends Fragment {
                 }
             }
         });
-
-        deleteRecipeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Model.instance.deleteReciple(nameEditText.getText().toString());
-                getActivity().getSupportFragmentManager().popBackStack();
-            }
-        });
         return view;
-
     }
 
-    private int selectSpinnerValue(Spinner spinner, String category) {
-        for (int i = 0; i < spinner.getCount(); i++) {
-            if (spinner.getItemAtPosition(i).equals(category)) {
-                return i;
-            }
-        }
-        return 1;
-    }
+//    // add items into spinner dynamically
+//    public void addItemsOnSpinner2() {
+//
+//        List<String> list = new ArrayList<String>();
+//        list.add("list 1");
+//        list.add("list 2");
+//        list.add("list 3");
+//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+//                android.R.layout.simple_spinner_item, list);
+//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        categorySpinner.setAdapter(dataAdapter);
+//    }
 
     Bitmap imageBitmap;
     @Override
@@ -167,4 +165,9 @@ public class EditRecipeFragment extends Fragment {
         //bundle.putString(ARG_NAME, nameEt.getText().toString());
         //bundle.putString(ARG_ID, idEt.getText().toString());
     }
+
+
+
+
+
 }

@@ -2,9 +2,11 @@ package com.example.chen.cuntada_app.app;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +15,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.chen.cuntada_app.app.Model.User;
+import com.example.chen.cuntada_app.app.View.AllActivity;
+import com.example.chen.cuntada_app.app.View.RegistrationActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -40,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         if(firebaseAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(), AllActivity.class));
         }
+
+        getPermissionsIfNeeded();
+//        MyApplication.sharedPref.edit().putBoolean("logout", false).apply();
+//        MyApplication.sharedPref.edit().putBoolean("exit", false).apply();
 
         emailEditText = (EditText) findViewById(R.id.emailEditText);
         pwEditText = (EditText) findViewById(R.id.pwEditText);
@@ -87,6 +95,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void getPermissionsIfNeeded() {
+        int check;
+        String[] permissions = { android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+        for (String permission : permissions) {
+            check = ActivityCompat.checkSelfPermission(this, permission);
+            if (check != PackageManager.PERMISSION_GRANTED)
+                requestPermissions(new String[]{ permission },1024);
+        }
     }
 
 }

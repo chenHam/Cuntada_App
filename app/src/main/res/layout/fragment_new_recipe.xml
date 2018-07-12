@@ -12,76 +12,109 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="18sp"
         android:fontFamily="serif"
+        android:textStyle="italic"
+        android:textColor="@color/black"
         android:text="@string/name"/>
 
     <EditText
         android:id="@+id/nameEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="240dp"
+        android:layout_height="35dp"
         android:maxLength="10"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:background="@drawable/rounded_edittext"
+        android:textColor="@color/black"
         android:fontFamily="serif"
         android:hint="Recipe name"
-        android:textSize="25sp" />
+        android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:orientation="horizontal" >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="18sp"
             android:fontFamily="serif"
+            android:textStyle="italic"
+            android:textColor="@color/black"
             android:text="@string/category"/>
     <Spinner
         android:id="@+id/categorySpinner"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:fontFamily="serif"
-        android:textSize="25sp"
+        android:textSize="18sp"
         android:entries="@array/recipe_category"
         android:prompt="@string/category_prompt">
     </Spinner>
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:fontFamily="serif"
+        android:layout_marginTop="5dp"
+        android:textStyle="italic"
+        android:layout_marginLeft="10dp"
+
+        android:textColor="@color/black"
+        android:text="@string/ingredient"/>
+
     <EditText
         android:id="@+id/ingredientsEditText"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="100dp"
+        android:textColor="@color/black"
         android:layout_above="@+id/lastNameEditText"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:background="@drawable/rounded_edittext"
+        android:layout_marginLeft="10dp"
         android:fontFamily="serif"
         android:hint="Recipe ingredients"
-        android:textSize="25sp" android:paddingLeft="5dp"
+        android:textSize="18sp"
+        android:paddingLeft="5dp"
         android:maxHeight="35dp"
         android:scrollbars="vertical" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:fontFamily="serif"
+        android:textStyle="italic"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/black"
+        android:text="@string/ingredients_title"/>
+
     <EditText
         android:id="@+id/instructionsEditText"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:background="@drawable/rounded_edittext"
         android:fontFamily="serif"
+        android:textColor="@color/black"
+        android:layout_marginLeft="10dp"
         android:hint="Recipe instructions "
-        android:textSize="25sp" android:paddingLeft="5dp"
+        android:textSize="18sp"
+        android:paddingLeft="5dp"
         android:maxHeight="35dp"
         android:scrollbars="vertical" />
     <LinearLayout
@@ -90,6 +123,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
         android:layout_gravity="center">
 
         <ImageView
@@ -103,9 +137,8 @@
         <Button
             android:id="@+id/editPictureButton"
             android:layout_width="120dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="50dp"
-            android:layout_marginLeft="10dp"
             android:background="@drawable/button_background"
             android:fontFamily="serif"
             android:text="Add Picture" />
@@ -114,10 +147,11 @@
     <Button
         android:id="@+id/addRecipeButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/button_background"
         android:fontFamily="serif"
+        android:gravity="center"
         android:text="SAVE"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="148dp"

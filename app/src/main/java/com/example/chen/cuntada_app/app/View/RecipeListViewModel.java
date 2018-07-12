@@ -1,4 +1,4 @@
-package com.example.chen.cuntada_app.app;
+package com.example.chen.cuntada_app.app.View;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;

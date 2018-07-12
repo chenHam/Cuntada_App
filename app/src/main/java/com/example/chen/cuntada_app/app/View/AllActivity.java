@@ -1,4 +1,4 @@
-package com.example.chen.cuntada_app.app;
+package com.example.chen.cuntada_app.app.View;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,11 +7,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.GridLayout;
-import android.widget.Toast;
 
-import com.example.chen.cuntada_app.app.Model.Model;
-import com.example.chen.cuntada_app.app.Model.Recipe;
+import com.example.chen.cuntada_app.app.MyApplication;
+import com.example.chen.cuntada_app.app.R;
+import com.example.chen.cuntada_app.app.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class AllActivity extends AppCompatActivity {
@@ -83,6 +82,8 @@ public class AllActivity extends AppCompatActivity {
                 firebaseAuth.signOut();
                 finish();
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+//                MyApplication.sharedPref.edit().putBoolean("logout", true).apply();
             }
         });
 

@@ -1,4 +1,4 @@
-package com.example.chen.cuntada_app.app;
+package com.example.chen.cuntada_app.app.View;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -12,7 +12,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.chen.cuntada_app.app.MainActivity;
 import com.example.chen.cuntada_app.app.Model.Model;
+import com.example.chen.cuntada_app.app.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

@@ -8,38 +8,99 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/firstNameEditText"
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textSize="20sp"
-        android:hint="First name"
-        android:background="@drawable/rounded_edittext"
-        android:fontFamily="serif"/>
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:fontFamily="serif"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:text="@string/first_name"/>
+        <EditText
+            android:id="@+id/firstNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textSize="18sp"
+            android:hint="First name"
+            android:fontFamily="serif"/>
+    </LinearLayout>
 
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:fontFamily="serif"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:text="@string/last_name"/>
     <EditText
         android:id="@+id/lastNameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/firstNameEditText"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/rounded_edittext"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:hint="Last name"
         android:fontFamily="serif"/>
 
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:fontFamily="serif"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:text="@string/email"/>
     <EditText
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/lastNameEditText"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/rounded_edittext"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:hint="Email" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:fontFamily="serif"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:text="@string/password"/>
     <EditText
         android:id="@+id/pwEditText"
         android:layout_width="match_parent"
@@ -47,11 +108,25 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:hint="Password"
-        android:background="@drawable/rounded_edittext"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:inputType="textPassword"
         android:fontFamily="serif"/>
-
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:fontFamily="serif"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:text="@string/confirm_pass"/>
     <EditText
         android:id="@+id/confirmPwEditText"
         android:layout_width="match_parent"
@@ -59,19 +134,51 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:hint="Confirm password"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:inputType="textPassword"
         android:fontFamily="serif"/>
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:fontFamily="serif"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:text="@string/weight"/>
     <EditText
         android:id="@+id/weightEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:textSize="20sp"
-        android:background="@drawable/rounded_edittext"
+        android:textSize="18sp"
         android:hint="weight(in kg)"
         android:fontFamily="serif"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:fontFamily="serif"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:text="@string/height"/>
 
     <EditText
         android:id="@+id/heightEditText"
@@ -79,17 +186,32 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/weightEditText"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/rounded_edittext"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:hint="height(in cm)"
         android:fontFamily="serif"/>
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:fontFamily="serif"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:text="@string/gender"/>
     <RadioGroup
         android:id="@+id/genderRadioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
-        android:textSize="20sp"
+        android:textSize="18sp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="67dp"
         android:fontFamily="serif">
@@ -98,7 +220,7 @@
             android:id="@+id/maleGender"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:checked="false"
             android:text="Male"
             android:fontFamily="serif"/>
@@ -107,28 +229,20 @@
             android:id="@+id/femaleGender"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:checked="false"
-            android:text="Famle"
+            android:text="Female"
             android:fontFamily="serif"/>
     </RadioGroup>
+    </LinearLayout>
 
-
-    <!--<CheckBox-->
-        <!--android:id="@+id/dieticanCheckBox"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:text="Dietician"-->
-        <!--android:textSize="20sp"-->
-        <!--android:fontFamily="serif"/>-->
 
     <Button
         android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SAVE"
+        android:layout_marginTop="5dp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="379dp"

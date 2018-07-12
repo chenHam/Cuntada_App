@@ -1,20 +1,19 @@
-package com.example.chen.cuntada_app.app;
+package com.example.chen.cuntada_app.app.View;
 
-import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.chen.cuntada_app.app.MainActivity;
+import com.example.chen.cuntada_app.app.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 //package com.example.chen.cuntada_app.app;

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="com.example.chen.cuntada_app.app.RecipesActivity">
+    tools:context="com.example.chen.cuntada_app.app.View.RecipesActivity">
 
     <FrameLayout
         android:id="@+id/main_container"
