@@ -99,7 +99,7 @@
         android:textStyle="italic"
         android:layout_marginLeft="10dp"
         android:textColor="@color/black"
-        android:text="@string/ingredients_title"/>
+        android:text="@string/instruction"/>
 
     <EditText
         android:id="@+id/instructionsEditText"

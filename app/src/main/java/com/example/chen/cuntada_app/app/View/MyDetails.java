@@ -60,7 +60,7 @@ public class MyDetails extends Activity{
         weightEditText = (EditText) findViewById(R.id.weightEditText);
         heightEditText = (EditText) findViewById(R.id.heightEditText);
         genderRadioGroup = (RadioGroup) findViewById(R.id.genderRadioGroup);
-        image = findViewById(R.id.UserImage);
+//        image = findViewById(R.id.UserImage);
 
 
         saveDetailsButton = (Button) findViewById(R.id.saveDetailsButton);

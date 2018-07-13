@@ -7,11 +7,7 @@ import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.util.Log;
 import android.webkit.URLUtil;
-
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

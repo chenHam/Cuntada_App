@@ -30,73 +30,75 @@
             android:layout_toLeftOf="@+id/recipeInstructionsTextView"
             android:scaleType="centerCrop"
             android:background="@drawable/no_image"/>
-
-    <LinearLayout
+        <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:layout_marginLeft="10dp"
         android:orientation="vertical" >
-        <TextView
+            <TextView
             android:id="@+id/recipeNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/text_view"
-            android:textSize="25sp"
+                android:layout_marginLeft="5dp"
+            android:textColor="@color/black"
+                android:textStyle="italic|bold"
+                android:textSize="25sp"
             android:fontFamily="serif"/>
-
-        <TextView
+            <TextView
             android:id="@+id/recipeCategoryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/text_view"
-            android:textSize="25sp"
+                android:layout_marginLeft="5dp"
+            android:textColor="@color/black"
+                android:textStyle="italic|bold"
+                android:textSize="20sp"
             android:fontFamily="serif"/>
-    </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
-    <!--<TextView-->
-        <!--android:id="@+id/recipeNameTextView"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginStart="140dp"-->
-        <!--android:layout_marginTop="128dp"-->
-        <!--android:text="TextView"-->
-        <!--android:textSize="25sp"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--android:fontFamily="serif"/>-->
 
-    <!--<TextView-->
-        <!--android:id="@+id/recipeCategoryTextView"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginStart="140dp"-->
-        <!--android:layout_marginTop="24dp"-->
-        <!--android:text="TextView"-->
-        <!--android:textSize="25sp"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/recipeNameTextView"-->
-        <!--android:fontFamily="serif"/>-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:fontFamily="serif"
+            android:textStyle="italic"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="7dp"
+            android:text="@string/ingredients_title"/>
+        <TextView
+            android:id="@+id/recipeIngredientsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_marginTop="10dp"
+            android:textSize="18sp"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="serif"/>
 
-    <TextView
-        android:id="@+id/recipeIngredientsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_view"
-        android:layout_marginTop="10dp"
-        android:textSize="25sp"
-        android:fontFamily="serif"/>
-
-    <TextView
-        android:id="@+id/recipeInstructionsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_view"
-        android:textSize="25sp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="serif" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:fontFamily="serif"
+            android:textStyle="italic"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="7dp"
+            android:text="@string/instruction"/>
+        <TextView
+            android:id="@+id/recipeInstructionsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="serif" />
 
     </LinearLayout>
 
