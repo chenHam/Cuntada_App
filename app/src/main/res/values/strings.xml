@@ -37,6 +37,7 @@
     <string name="height"><b>Height :</b></string>
     <string name="gender"><b>Gender : </b></string>
     <string name="ingredient"><b>Ingredient :</b></string>
+    <string name="instruction"><b>Instruction :</b></string>
     <string name="preparation">Preparation :</string>
     <string name="main_container">main_container :</string>
     <string name="addRecipeItem">add recipe</string>

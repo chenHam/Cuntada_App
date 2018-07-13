@@ -45,9 +45,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), AllActivity.class));
         }
 
-        getPermissionsIfNeeded();
-//        MyApplication.sharedPref.edit().putBoolean("logout", false).apply();
-//        MyApplication.sharedPref.edit().putBoolean("exit", false).apply();
+        getPermissionsIfNeeded();;
 
         emailEditText = (EditText) findViewById(R.id.emailEditText);
         pwEditText = (EditText) findViewById(R.id.pwEditText);
