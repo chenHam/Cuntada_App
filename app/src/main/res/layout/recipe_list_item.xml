@@ -42,7 +42,7 @@
             android:id="@+id/recipeNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="@string/text_view"
             android:textSize="25sp"
             android:fontFamily="serif"/>
 
@@ -50,7 +50,7 @@
             android:id="@+id/recipeCategoryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="@string/text_view"
             android:textSize="25sp"
             android:fontFamily="serif"/>
     </LinearLayout>
@@ -84,7 +84,7 @@
         android:id="@+id/recipeIngredientsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/text_view"
         android:layout_marginTop="10dp"
         android:textSize="25sp"
         android:fontFamily="serif"/>
@@ -93,7 +93,7 @@
         android:id="@+id/recipeInstructionsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/text_view"
         android:textSize="25sp"
         android:layout_marginTop="10dp"
         android:fontFamily="serif" />

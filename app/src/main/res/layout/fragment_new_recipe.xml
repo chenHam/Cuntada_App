@@ -141,7 +141,7 @@
             android:layout_marginTop="50dp"
             android:background="@drawable/button_background"
             android:fontFamily="serif"
-            android:text="Add Picture" />
+            android:text="@string/add_pic" />
 
     </LinearLayout>
     <Button
@@ -152,7 +152,7 @@
         android:background="@drawable/button_background"
         android:fontFamily="serif"
         android:gravity="center"
-        android:text="SAVE"
+        android:text="@string/save"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="379dp" />

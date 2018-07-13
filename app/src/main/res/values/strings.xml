@@ -44,6 +44,17 @@
     <string name="edit_picture">Edit Picture</string>
     <string name="category_prompt">Choose a category</string>
     <string name="details_title">My Details</string>
+    <string name="recipes1">Recipes</string>
+    <string name="add_pic">Add Picture</string>
+    <string name="save">SAVE</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="save_details">Save Details</string>
+    <string name="cal_bmi">Calculate BMI</string>
+    <string name="text_view">TextView</string>
+
+
+
 
     <string-array name="recipe_category">
     <item>Vegan</item>

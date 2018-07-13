@@ -159,6 +159,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:inputType="number"
         android:textSize="18sp"
         android:hint="weight(in kg)"
         android:fontFamily="serif"/>
@@ -188,6 +189,7 @@
         android:layout_centerHorizontal="true"
         android:textSize="18sp"
         android:hint="height(in cm)"
+        android:inputType="number"
         android:fontFamily="serif"/>
     </LinearLayout>
 
@@ -222,7 +224,7 @@
             android:layout_height="match_parent"
             android:textSize="18sp"
             android:checked="false"
-            android:text="Male"
+            android:text="@string/male"
             android:fontFamily="serif"/>
 
         <RadioButton
@@ -231,7 +233,7 @@
             android:layout_height="match_parent"
             android:textSize="18sp"
             android:checked="false"
-            android:text="Female"
+            android:text="@string/female"
             android:fontFamily="serif"/>
     </RadioGroup>
     </LinearLayout>
@@ -241,7 +243,7 @@
         android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SAVE"
+        android:text="@string/save"
         android:layout_marginTop="5dp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="148dp"

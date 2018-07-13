@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.regex.Pattern;
 
 public class RegistrationActivity extends AppCompatActivity {
+    String valid_name;
 
     private EditText firstNameEditText, lastNameEditText, emailEditText, pwEditText,
             confirmPwEditText, weightEditText, heightEditText;
@@ -116,6 +117,16 @@ public class RegistrationActivity extends AppCompatActivity {
             return res;
         }
 
+
+        if(!Is_Valid_Name(firstNameEditText)){
+            Toast.makeText(getApplicationContext(), "Invalid first name, please insert valid name", Toast.LENGTH_LONG).show();
+            return res;
+        }
+        if(!Is_Valid_Name(lastNameEditText)){
+            Toast.makeText(getApplicationContext(), "Invalid last name, please insert valid name", Toast.LENGTH_LONG).show();
+            return res;
+        }
+
         if(!pw.equals(confirmPw)){
             Toast.makeText(getApplicationContext(), "Passwords don't match!", Toast.LENGTH_LONG).show();
             return res;
@@ -153,6 +164,21 @@ public class RegistrationActivity extends AppCompatActivity {
 
         return true;
 
+    }
+    public boolean Is_Valid_Name(EditText edt) throws NumberFormatException {
+        if (edt.getText().toString().length() <= 0) {
+            edt.setError("Accept Alphabets Only.");
+            valid_name = null;
+            return false;
+        } else if (!edt.getText().toString().matches("[a-zA-Z ]+")) {
+            edt.setError("Accept Alphabets Only.");
+            valid_name = null;
+            return false;
+        } else {
+            valid_name = edt.getText().toString();
+            return true;
+
+        }
     }
 
 
