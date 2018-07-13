@@ -44,6 +44,7 @@
     <string name="list1">list1 :</string>
     <string name="edit_picture">Edit Picture</string>
     <string name="category_prompt">Choose a category</string>
+    <string name="details_title">My Details</string>
 
     <string-array name="recipe_category">
     <item>Vegan</item>

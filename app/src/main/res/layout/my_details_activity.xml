@@ -6,34 +6,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/firstNameEditText"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/DetailsName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:hint="First name"
-        android:gravity="center"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
-        android:background="@drawable/rounded_edittext"
-        tools:ignore="MissingConstraints"
-        android:fontFamily="serif"/>
+        android:text="@string/details_title"
+        android:textSize="35sp"
+        android:textColor="@color/orange"
+        android:layout_marginTop="10dp"
+        android:textStyle="italic"/>
 
-    <EditText
-        android:id="@+id/lastNameEditText"
+    <TextView
+        android:id="@+id/app"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:text="@string/line"
+        android:textColor="@color/orange"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@+id/appName"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout12"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_above="@+id/firstNameEditText"
-        android:layout_centerHorizontal="true"
-        android:hint="Last name"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="46dp"
-        android:background="@drawable/rounded_edittext"
-        tools:ignore="MissingConstraints"
-        android:fontFamily="serif"/>
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:fontFamily="serif"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:text="@string/first_name"/>
+        <EditText
+            android:id="@+id/firstNameEditText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:hint="First name"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp"
+            android:background="@drawable/rounded_edittext"
+            tools:ignore="MissingConstraints"
+            android:fontFamily="serif"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout11"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:fontFamily="serif"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:text="@string/last_name"/>
+        <EditText
+            android:id="@+id/lastNameEditText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_above="@+id/firstNameEditText"
+            android:layout_centerHorizontal="true"
+            android:hint="Last name"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="46dp"
+            android:background="@drawable/rounded_edittext"
+            tools:ignore="MissingConstraints"
+            android:fontFamily="serif"/>
+
+    </LinearLayout>
+
 
 
     <!--<CheckBox-->
@@ -48,58 +106,112 @@
         <!--tools:ignore="MissingConstraints"-->
         <!--android:fontFamily="serif"/>-->
 
-    <EditText
-        android:id="@+id/weightEditText"
+    <LinearLayout
+        android:id="@+id/linearLayout9"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:hint="weight(in kg)"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="138dp"
-        android:gravity="center"
-        android:background="@drawable/rounded_edittext"
-        tools:ignore="MissingConstraints"
-        android:fontFamily="serif"/>
-
-    <EditText
-        android:id="@+id/heightEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/weightEditText"
-        android:layout_centerHorizontal="true"
-        android:hint="height(in cm)"
-        android:gravity="center"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="92dp"
-        android:background="@drawable/rounded_edittext"
-        tools:ignore="MissingConstraints"
-        android:fontFamily="serif"/>
-
-    <RadioGroup
-        android:id="@+id/genderRadioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="184dp"
-        android:fontFamily="serif">
-
-        <RadioButton
-            android:id="@+id/maleGender"
-            android:layout_width="182dp"
-            android:layout_height="match_parent"
-            android:checked="false"
-            android:text="Male"
-            android:fontFamily="serif"/>
-
-        <RadioButton
-            android:id="@+id/femaleGender"
-            android:layout_width="183dp"
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="Female"
+            android:textSize="18sp"
+            android:fontFamily="serif"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:text="@string/weight"/>
+
+        <EditText
+            android:id="@+id/weightEditText"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:hint="weight(in kg)"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="138dp"
+            android:gravity="center"
+            android:background="@drawable/rounded_edittext"
+            tools:ignore="MissingConstraints"
             android:fontFamily="serif"/>
-    </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout10"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:fontFamily="serif"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:text="@string/height"/>
+
+        <EditText
+            android:id="@+id/heightEditText"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_above="@+id/weightEditText"
+            android:layout_centerHorizontal="true"
+            android:hint="height(in cm)"
+            android:gravity="center"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="92dp"
+            android:background="@drawable/rounded_edittext"
+            tools:ignore="MissingConstraints"
+            android:fontFamily="serif"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout13"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:fontFamily="serif"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:text="@string/gender"/>
+        <RadioGroup
+            android:id="@+id/genderRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="184dp"
+            android:fontFamily="serif">
+
+            <RadioButton
+                android:id="@+id/maleGender"
+                android:layout_width="182dp"
+                android:layout_height="match_parent"
+                android:checked="false"
+                android:text="Male"
+                android:fontFamily="serif"/>
+
+            <RadioButton
+                android:id="@+id/femaleGender"
+                android:layout_width="183dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Female"
+                android:fontFamily="serif"/>
+        </RadioGroup>
+
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/saveDetailsButton"
