@@ -60,12 +60,8 @@ public class MyDetails extends Activity{
         weightEditText = (EditText) findViewById(R.id.weightEditText);
         heightEditText = (EditText) findViewById(R.id.heightEditText);
         genderRadioGroup = (RadioGroup) findViewById(R.id.genderRadioGroup);
-//        image = findViewById(R.id.UserImage);
-
-
         saveDetailsButton = (Button) findViewById(R.id.saveDetailsButton);
         calculateBmiButton = (Button) findViewById(R.id.calculateBmiButton);
-
         bmiTextView = (TextView) findViewById(R.id.bmiTextView);
         bmiTextView.setVisibility(View.INVISIBLE);
 

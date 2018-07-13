@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 
 @Entity
 public class Recipe {
-    // this primary?
+
     @NonNull
     @PrimaryKey
     public String name;
@@ -16,10 +16,6 @@ public class Recipe {
     public String publisherId;
     public String avatar;
 
-    // get functions
-    /*public String getId() {
-        return id;
-    }*/
     public String getName(){
         return name;
     }

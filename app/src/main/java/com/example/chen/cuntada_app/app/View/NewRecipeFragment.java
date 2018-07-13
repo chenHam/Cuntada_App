@@ -57,7 +57,6 @@ public class NewRecipeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_new_recipe, container, false);
 
         nameEditText = view.findViewById(R.id.nameEditText);
-//        categoryEditText = view.findViewById(R.id.categoryEditText);
         ingredientsEditText = view.findViewById(R.id.ingredientsEditText);
         instructionsEditText = view.findViewById(R.id.instructionsEditText);
         avatar = view.findViewById(R.id.recipeImage);
@@ -67,20 +66,15 @@ public class NewRecipeFragment extends Fragment {
 
 
         progressDialog = new ProgressDialog(getActivity());
-        //progress . setVisibility(View.GONE);
 
         addRecipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //progress . setVisibility(View.VISIBLE);
-
                 final Recipe recipe = new Recipe();
                 recipe.name = nameEditText.getText().toString();
-//                recipe.category = categoryEditText.getText().toString();
                 recipe.category = categorySpinner.getSelectedItem().toString();
                 recipe.ingredients = ingredientsEditText.getText().toString();
                 recipe.instructions = instructionsEditText.getText().toString();
-
                 FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
                 String userId = firebaseAuth.getCurrentUser().getUid();
 
@@ -130,18 +124,6 @@ public class NewRecipeFragment extends Fragment {
         return view;
     }
 
-//    // add items into spinner dynamically
-//    public void addItemsOnSpinner2() {
-//
-//        List<String> list = new ArrayList<String>();
-//        list.add("list 1");
-//        list.add("list 2");
-//        list.add("list 3");
-//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-//                android.R.layout.simple_spinner_item, list);
-//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        categorySpinner.setAdapter(dataAdapter);
-//    }
 
     Bitmap imageBitmap;
     @Override
@@ -162,8 +144,6 @@ public class NewRecipeFragment extends Fragment {
     @Override
     public void  onSaveInstanceState(Bundle bundle){
         super.onSaveInstanceState(bundle);
-        //bundle.putString(ARG_NAME, nameEt.getText().toString());
-        //bundle.putString(ARG_ID, idEt.getText().toString());
     }
 
 

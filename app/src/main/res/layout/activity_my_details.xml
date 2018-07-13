@@ -121,7 +121,7 @@
         android:id="@+id/button_calculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Calculate"
+        android:text="@string/cal"
         tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>

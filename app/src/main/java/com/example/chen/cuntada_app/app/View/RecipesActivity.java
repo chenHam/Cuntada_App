@@ -16,41 +16,10 @@ import com.example.chen.cuntada_app.app.MainActivity;
 import com.example.chen.cuntada_app.app.R;
 import com.google.firebase.auth.FirebaseAuth;
 
-//package com.example.chen.cuntada_app.app;
-//
-//import android.app.Activity;
-//import android.app.Fragment;
-//import android.app.FragmentTransaction;
-//import android.content.Intent;
-//import android.os.Bundle;
-//import android.util.Log;
-//import android.view.LayoutInflater;
-//import android.view.View;
-//import android.view.ViewGroup;
-//import android.widget.Button;
-//import android.widget.EditText;
-//import android.widget.RadioButton;
-//import android.widget.RadioGroup;
-//import android.widget.Spinner;
-//import android.widget.Toast;
-//
-//import com.google.firebase.database.DataSnapshot;
-//import com.google.firebase.database.DatabaseError;
-//import com.google.firebase.database.DatabaseReference;
-//import com.google.firebase.database.FirebaseDatabase;
-//import com.google.firebase.database.ServerValue;
-//import com.google.firebase.database.ValueEventListener;
-//
-//import org.w3c.dom.Text;
-//
-//import java.util.HashMap;
-//
-//
 public class RecipesActivity extends AppCompatActivity{
 
     // auth check if logged in
 
-    //private FirebaseAuth firebaseAuth;
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     String userId = firebaseAuth.getCurrentUser().getUid();
 
@@ -74,13 +43,11 @@ public class RecipesActivity extends AppCompatActivity{
                 RecipesListFragment fragment = new RecipesListFragment();
                 FragmentTransaction tran = getSupportFragmentManager().beginTransaction();
                 tran.add(R.id.main_container, fragment);
-                //tran.addToBackStack("");
                 tran.commit();
             } else {
                 MyRecipesFragment fragment =  new MyRecipesFragment();
                 FragmentTransaction tran = getSupportFragmentManager().beginTransaction();
                 tran.add(R.id.main_container, fragment);
-                //tran.addToBackStack("");
                 tran.commit();
             }
 
@@ -118,7 +85,6 @@ public class RecipesActivity extends AppCompatActivity{
                 tran.addToBackStack("tag");
                 tran.commit();
 
-                //getSupportFragmentManager().popBackStack();
             }
         };
         registerReceiver(receiver, filter);
@@ -134,7 +100,6 @@ public class RecipesActivity extends AppCompatActivity{
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-//            case R.id.menu_add:
             case R.id.addRecipeItem:
                 Log.d("TAG","menu add selected");
                 NewRecipeFragment fragment = new NewRecipeFragment();

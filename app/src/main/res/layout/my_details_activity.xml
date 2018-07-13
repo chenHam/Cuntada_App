@@ -218,17 +218,6 @@
         tools:layout_editor_absoluteY="435dp"
         android:fontFamily="serif"/>
 
-
-    <!--<ImageView-->
-        <!--android:id="@+id/UserImage"-->
-        <!--android:layout_width="100dp"-->
-        <!--android:layout_height="150dp"-->
-        <!--android:layout_marginStart="32dp"-->
-        <!--android:layout_marginTop="32dp"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent" />-->
-
-
     <TextView
         android:id="@+id/bmiTextView"
         android:layout_width="match_parent"

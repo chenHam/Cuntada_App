@@ -27,14 +27,9 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private EditText firstNameEditText, lastNameEditText, emailEditText, pwEditText,
             confirmPwEditText, weightEditText, heightEditText;
-//    private CheckBox dieticanCheckBox;
-
     private RadioGroup genderRadioGroup;
     private Button registerButton;
-//    private Boolean dietBoolean;
     private ProgressDialog progressDialog;
-    Pattern regex = Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]");
-
 
 
     @Override
@@ -47,13 +42,11 @@ public class RegistrationActivity extends AppCompatActivity {
         emailEditText = (EditText) findViewById(R.id.emailEditText);
         pwEditText = (EditText) findViewById(R.id.pwEditText);
         confirmPwEditText = (EditText) findViewById(R.id.confirmPwEditText);
-//        dieticanCheckBox = (CheckBox) findViewById(R.id.dieticanCheckBox);
         weightEditText = (EditText) findViewById(R.id.weightEditText);
         heightEditText = (EditText) findViewById(R.id.heightEditText);
         genderRadioGroup = (RadioGroup) findViewById(R.id.genderRadioGroup);
         genderRadioGroup.check(R.id.maleGender);
         registerButton = (Button) findViewById(R.id.registerButton);
-
         progressDialog = new ProgressDialog(this);
 
         registerButton.setOnClickListener(new View.OnClickListener(){
@@ -64,7 +57,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 String email = emailEditText.getText().toString().trim();
                 String pw = pwEditText.getText().toString().trim();
                 String confirmPw = confirmPwEditText.getText().toString().trim();
-//                boolean isDietican = dieticanCheckBox.isChecked();
                 String weight = weightEditText.getText().toString().trim();
                 String height = heightEditText.getText().toString().trim();
 
@@ -148,10 +140,6 @@ public class RegistrationActivity extends AppCompatActivity {
             Integer.parseInt(weight);
         } catch (Exception e){
             Toast.makeText(getApplicationContext(), "Weight must be a number!", Toast.LENGTH_LONG).show();
-            if (regex.matcher(weight).find()){
-                Toast.makeText(getApplicationContext(), "test!", Toast.LENGTH_LONG).show();
-            }
-
             return res;
         }
 

@@ -83,7 +83,6 @@ public class AllActivity extends AppCompatActivity {
                 finish();
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
-//                MyApplication.sharedPref.edit().putBoolean("logout", true).apply();
             }
         });
 
