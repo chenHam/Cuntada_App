@@ -32,7 +32,7 @@
     <string name="last_name"><b>Last Name :</b></string>
     <string name="email"><b>E-mail :</b></string>
     <string name="password"><b>Password : </b></string>
-    <string name="confirm_pass"><b>Confirm Password : </b>></string>
+    <string name="confirm_pass"><b>Confirm Password : </b></string>
     <string name="register_title"><b>Sign Up</b></string>
     <string name="weight"><b>Weight :</b></string>
     <string name="height"><b>Height :</b></string>
