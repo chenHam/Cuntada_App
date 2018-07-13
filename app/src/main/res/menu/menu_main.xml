@@ -2,25 +2,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.chen.cuntada_app.app.MainActivity">
-    <!--<item-->
-        <!--android:id="@+id/menu_add"-->
-        <!--android:orderInCategory="100"-->
-        <!--android:title="@string/action_settings"-->
-        <!--app:showAsAction="never" />-->
 
     <item
         android:id="@+id/addRecipeItem"
-        android:icon="@mipmap/ic_plusss"
+        android:icon="@mipmap/ic_plus_w"
         android:title="Add Recipe"
         app:showAsAction="always"/>
 
-    <!--<ImageView-->
-        <!--android:id="@+id/plusrecipe"-->
-        <!--android:layout_width="64dp"-->
-        <!--android:layout_height="64dp"-->
-        <!--android:clickable="true"-->
-        <!--android:background="@drawable/circulebackgrouns"-->
-        <!--android:src="@drawable/ic_add_black_24dp"-->
-        <!--tools:layout_editor_absoluteX="160dp"-->
-        <!--tools:layout_editor_absoluteY="33dp" />-->
 </menu>

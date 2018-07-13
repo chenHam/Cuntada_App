@@ -95,7 +95,6 @@ public class MyRecipesFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-//        mListener = null;
     }
 
 
@@ -106,7 +105,6 @@ public class MyRecipesFragment extends Fragment {
         @Override
         public int getCount() {
             return dataModel.getData(userId).getValue().size();
-
         }
 
         @Override
@@ -123,16 +121,6 @@ public class MyRecipesFragment extends Fragment {
         public View getView(int i, View view, ViewGroup viewGroup) {
             if (view == null){
                 view = LayoutInflater.from(getActivity()).inflate(R.layout.recipe_list_item,null);
-
-                /*final CheckBox cb = view.findViewById(R.id.stListItem_check_cb);
-                cb.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        int index = (int) cb.getTag();
-                        Student s = dataModel.getData().getValue().get(index);
-                        s.checked = !s.checked;
-                    }
-                });*/
             }
 
             final Recipe recipe = dataModel.getData(userId).getValue().get(i);
@@ -143,18 +131,11 @@ public class MyRecipesFragment extends Fragment {
             TextView recipeInstructionsTextView = view.findViewById(R.id.recipeInstructionsTextView);
             final ImageView avatarView = view.findViewById(R.id.recipeImage);
 
-            //cb.setTag(i);
-
             recipeNameTextView.setText(recipe.name);
             recipeCategoryTextView.setText(recipe.category);
             recipeIngredientsTextView.setText(recipe.ingredients);
             recipeInstructionsTextView.setText(recipe.instructions);
 
-            /*nameTv.setText(s.name);
-            idTv.setText(s.id);
-            cb.setChecked(s.checked);*/
-            //avatarView.setImageResource(R.drawable.ic_launcher_background);
-            //avatarView.setTag(s.id);*/
             if (recipe.avatar != null){
                 Model.instance.getImage(recipe.avatar, new Model.GetImageListener() {
                     @Override

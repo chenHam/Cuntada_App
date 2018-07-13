@@ -49,18 +49,14 @@ public class EditRecipeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_edit_recipe, container, false);
 
         nameEditText = view.findViewById(R.id.nameEditText);
-//        categoryEditText = view.findViewById(R.id.categoryEditText);
         categorySpinner = (Spinner) view.findViewById(R.id.categorySpinner);
-
         ingredientsEditText = view.findViewById(R.id.ingredientsEditText);
         instructionsEditText = view.findViewById(R.id.instructionsEditText);
         avatar = view.findViewById(R.id.recipeImage);
         addRecipeButton = view.findViewById(R.id.addRecipeButton);
         editPictureButton = view.findViewById(R.id.editPictureButton);
         deleteRecipeButton = view.findViewById(R.id.deleteRecipeButton);
-
         nameEditText.setText(getArguments().getString("name"));
-//        categoryEditText.setText(getArguments().getString("category"));
         categorySpinner.setSelection(selectSpinnerValue(categorySpinner,getArguments().getString("category")));
         ingredientsEditText.setText(getArguments().getString("ingredients"));
         instructionsEditText.setText(getArguments().getString("instructions"));
@@ -77,7 +73,6 @@ public class EditRecipeFragment extends Fragment {
                 final Recipe recipe = new Recipe();
                 recipe.name = nameEditText.getText().toString();
                 recipe.category = categorySpinner.getSelectedItem().toString();
-//                recipe.category = categoryEditText.getText().toString();
                 recipe.ingredients = ingredientsEditText.getText().toString();
                 recipe.instructions = instructionsEditText.getText().toString();
 
@@ -165,7 +160,5 @@ public class EditRecipeFragment extends Fragment {
     @Override
     public void  onSaveInstanceState(Bundle bundle){
         super.onSaveInstanceState(bundle);
-        //bundle.putString(ARG_NAME, nameEt.getText().toString());
-        //bundle.putString(ARG_ID, idEt.getText().toString());
     }
 }

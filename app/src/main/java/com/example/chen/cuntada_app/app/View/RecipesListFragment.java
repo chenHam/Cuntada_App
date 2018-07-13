@@ -61,12 +61,6 @@ public class RecipesListFragment extends Fragment {
 
         list = view.findViewById(R.id.recipesListView);
         list.setAdapter(myAdapter);
-        /*list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("TAG","item selected:" + i);
-            }
-        });*/
         return view;
     }
 
@@ -108,45 +102,24 @@ public class RecipesListFragment extends Fragment {
 
             if (view == null){
                 view = LayoutInflater.from(getActivity()).inflate(R.layout.recipe_list_item,null);
-
-                /*final CheckBox cb = view.findViewById(R.id.stListItem_check_cb);
-                cb.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        int index = (int) cb.getTag();
-                        Student s = dataModel.getData().getValue().get(index);
-                        s.checked = !s.checked;
-                    }
-                });*/
             }
 
             final Recipe recipe = dataModel.getData().getValue().get(i);
-
             TextView recipeNameTextView = view.findViewById(R.id.recipeNameTextView);
             TextView recipeCategoryTextView = view.findViewById(R.id.recipeCategoryTextView);
             TextView recipeIngredientsTextView = view.findViewById(R.id.recipeIngredientsTextView);
             TextView recipeInstructionsTextView = view.findViewById(R.id.recipeInstructionsTextView);
             final ImageView avatarView = view.findViewById(R.id.recipeImage);
-
-            //cb.setTag(i);
-
             recipeNameTextView.setText(recipe.name);
             recipeCategoryTextView.setText(recipe.category);
             recipeIngredientsTextView.setText(recipe.ingredients);
             recipeInstructionsTextView.setText(recipe.instructions);
 
-            /*nameTv.setText(s.name);
-            idTv.setText(s.id);
-            cb.setChecked(s.checked);*/
-            //avatarView.setImageResource(R.drawable.avatar); -- default value!!
-            //avatarView.setTag(s.id);*/
             if (recipe.avatar != null){
                 Model.instance.getImage(recipe.avatar, new Model.GetImageListener() {
                     @Override
                     public void onDone(Bitmap imageBitmap) {
-                        //if (recipe.id.equals(avatarView.getTag()) && imageBitmap != null) {
                             avatarView.setImageBitmap(imageBitmap);
-                        //}
                     }
                 });
             }

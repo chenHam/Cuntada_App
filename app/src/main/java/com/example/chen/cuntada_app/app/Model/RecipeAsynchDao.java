@@ -74,7 +74,6 @@ public class RecipeAsynchDao {
         class MyAsynchTask extends AsyncTask<String,String,List<Recipe>>{
             @Override
             protected List<Recipe> doInBackground(String... strings) {
-                //List<Recipe> stList = AppLocalDb.db.recipeDao().getRecipesByPublisherId(publisherId);
                 AppLocalDb.db.recipeDao().deleteByName(name);
                 return null;
             }

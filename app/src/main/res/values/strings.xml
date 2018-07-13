@@ -32,7 +32,7 @@
     <string name="last_name"><b>Last Name :</b></string>
     <string name="email"><b>E-mail :</b></string>
     <string name="password"><b>Password : </b></string>
-    <string name="confirm_pass"><b>Confirm Password : </b>></string>
+    <string name="confirm_pass"><b>Confirm Password : </b></string>
     <string name="register_title"><b>Sign Up</b></string>
     <string name="weight"><b>Weight :</b></string>
     <string name="height"><b>Height :</b></string>
@@ -46,6 +46,20 @@
     <string name="edit_picture">Edit Picture</string>
     <string name="category_prompt">Choose a category</string>
     <string name="details_title">My Details</string>
+    <string name="recipes1">Recipes</string>
+    <string name="add_pic">Add Picture</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="save_details">Save Details</string>
+    <string name="cal_bmi">Calculate BMI</string>
+    <string name="text_view">TextView</string>
+    <string name="cal">Calculate</string>
+    <string name="delete">Delete Recipe</string>
+    <string name="save">SAVE</string>
+
+
+
+
 
     <string-array name="recipe_category">
     <item>Vegan</item>

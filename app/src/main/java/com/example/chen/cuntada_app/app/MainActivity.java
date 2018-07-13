@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText pwEditText;
     private Button signUpButton;
     private ProgressDialog progressDialog;
-
     private FirebaseAuth firebaseAuth;
 
 
